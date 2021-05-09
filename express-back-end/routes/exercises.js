@@ -24,7 +24,7 @@ module.exports = (db) => {
 
 
 CREATE TABLE exercise (
-  id SERIAL PRIMARY KEY NOT NULL,
+  id SERIAL PRIMARY KEY NOT NLL,
   muscle_group_id INTEGER REFERENCES muscle_group(id) ON DELETE CASCADE,
   exercise_picture_url VARCHAR(255) NOT NULL,
   exercise_name VARCHAR(255) NOT NULL,
