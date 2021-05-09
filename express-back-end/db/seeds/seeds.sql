@@ -31,31 +31,55 @@ VALUES (
   'Jedi Master', 60
   );
 
+
 INSERT INTO muscle_groups (
-user_id, workout_id, cardio)
-VALUES (
-2, 1, TRUE);
+  muscle_url, title)
+  VALUES (
+    'https://images.pexels.com/photos/3775566/pexels-photo-3775566.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260',
+    'Legs');
 INSERT INTO muscle_groups (
-user_id, workout_id, chest)
-VALUES (
-1, 2, TRUE);
+  muscle_url, title)
+  VALUES (
+    'https://images.pexels.com/photos/3076516/pexels-photo-3076516.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+    'Core');
 INSERT INTO muscle_groups (
-user_id, workout_id, legs)
-VALUES (
-1, 1, TRUE);
+  muscle_url, title)
+  VALUES (
+    'https://images.pexels.com/photos/700446/pexels-photo-700446.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+    'Arms');
+INSERT INTO muscle_groups (
+  muscle_url, title)
+  VALUES (
+    'https://images.pexels.com/photos/5067739/pexels-photo-5067739.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
+    'Shoulders');
+INSERT INTO muscle_groups (
+  muscle_url, title)
+  VALUES (
+    'https://images.pexels.com/photos/50597/man-male-boy-a-person-50597.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+    'Back');
+INSERT INTO muscle_groups (
+  muscle_url, title)
+  VALUES (
+    'https://images.pexels.com/photos/6009290/pexels-photo-6009290.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
+    'Cardio');
+INSERT INTO muscle_groups (
+  muscle_url, title)
+  VALUES (
+    'https://images.pexels.com/photos/4720326/pexels-photo-4720326.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+    'Chest');
 
 INSERT INTO exercises (
 muscle_group_id, exercise_picture_url, exercise_name, exercise_video_url, exercise_info, total_time, num_of_reps, num_of_sets, intensity, rating) 
 VALUES (
-1, 'https://upload.wikimedia.org/wikipedia/commons/0/0e/Falk%2C_Benjamin_J._%281853-1925%29_-_Eugen_Sandow_%281867-1925%29.jpg', 'bicep curls', 'https://media.giphy.com/media/10cylTGU0KcAsE/giphy.gif', 'info should be here', 300, 36, 3, 1, 4);
+2, 'https://upload.wikimedia.org/wikipedia/commons/0/0e/Falk%2C_Benjamin_J._%281853-1925%29_-_Eugen_Sandow_%281867-1925%29.jpg', 'bicep curls', 'https://media.giphy.com/media/10cylTGU0KcAsE/giphy.gif', 'info should be here', 300, 36, 3, 1, 4);
 INSERT INTO exercises (
 muscle_group_id, exercise_picture_url, exercise_name, exercise_video_url, exercise_info, total_time, num_of_reps, num_of_sets, intensity, rating) 
 VALUES (
-2, 'https://www.elitefts.com/wp/wp-content/uploads/2012/03/IMG_1456-600x300.jpg', 'bench press', 'https://media.giphy.com/media/3o6ZsYzuLyRfSGX4f6/giphy.gif', 'info should be here', 300, 36, 3, 3, 5);
+6, 'https://www.elitefts.com/wp/wp-content/uploads/2012/03/IMG_1456-600x300.jpg', 'bench press', 'https://media.giphy.com/media/3o6ZsYzuLyRfSGX4f6/giphy.gif', 'info should be here', 300, 36, 3, 3, 5);
 INSERT INTO exercises (
 muscle_group_id, exercise_picture_url, exercise_name, exercise_video_url, exercise_info, total_time, num_of_reps, num_of_sets, intensity, rating)
 VALUES (
-3, 'https://ericcooperfitness.com/blog/wp-content/uploads/2017/09/eric_ball-copy-copy2-copy-2.jpg', 'medicine ball wood chopper', 'https://media.giphy.com/media/mnPBQeSZp8XN6/giphy.gif', 'info should be here', 300, 50, 3, 4, 3);
+1, 'https://ericcooperfitness.com/blog/wp-content/uploads/2017/09/eric_ball-copy-copy2-copy-2.jpg', 'medicine ball wood chopper', 'https://media.giphy.com/media/mnPBQeSZp8XN6/giphy.gif', 'info should be here', 300, 50, 3, 4, 3);
 
 
 INSERT INTO workout_exercises (
