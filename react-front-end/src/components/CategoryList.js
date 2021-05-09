@@ -79,10 +79,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function CategoryList({ data, onClick, selectedCategories }) {
+export default function CategoryList({ data, onClick, selectedMuscleGroups }) {
   const classes = useStyles();
-  const categories = data.map((obj, index) => {
-    const selected = selectedCategories.find((item) => item.id === index);
+  const muscleGroups = data.map((obj, index) => {
+    // const selected = selectedMuscleGroups.find((item) => item.id === index);
     // console.log("The selected category", selected ? selected.id : null, index);
     return (
       // remove map from the return statement
@@ -95,7 +95,7 @@ export default function CategoryList({ data, onClick, selectedCategories }) {
           width: "33%",
         }}
       >
-        <div onClick={() => onClick(obj)} style={{}}>
+        <div onClick={() => onClick(obj)} /* style={{}}*/>
           <span
             className={classes.imageSrc}
             style={{
@@ -119,5 +119,5 @@ export default function CategoryList({ data, onClick, selectedCategories }) {
     );
   });
 
-  return <div className={classes.root}>{categories}</div>;
+  return <div className={classes.root}>{muscleGroups}</div>;
 }
