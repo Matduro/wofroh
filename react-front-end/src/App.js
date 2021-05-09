@@ -53,7 +53,7 @@ const App = (props) => {
     }
     setCategories(newState);
   };
-  console.log({ selectedCategories });
+  // console.log({ selectedCategories });
 
   // muscle groups for front page
   useEffect(() => {
