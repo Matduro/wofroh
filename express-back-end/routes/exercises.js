@@ -2,7 +2,10 @@ const router = require("express").Router();
 
 module.exports = (db) => {
   router.get("/", (request, response) => {
-    // console.log(request.query.categories.map(Number));
+    console.log(
+      "should be our muscleGroups",
+      request.query.muscleGroups.map(Number)
+    );
     // response.send("it worked!");
     //ids = [1,3,4];
     //var q = client.query('SELECT Id FROM MyTable WHERE Id = ANY($1::int[])',[ids]);
@@ -12,7 +15,7 @@ module.exports = (db) => {
       SELECT * FROM exercises
       WHERE muscle_group_id = ANY($1::int[])
       ;`,
-      [request.query.categories.map(Number)]
+      [request.query.muscleGroups.map(Number)]
     )
       .then((data) => {
         const exercises = data.rows;

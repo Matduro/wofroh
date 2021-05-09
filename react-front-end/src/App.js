@@ -25,8 +25,8 @@ const withRouter = (WrappedComponent) => (props) => {
 const App = (props) => {
   const history = useHistory();
   // console.log({ props });
-  const [selectedCategories, setCategories] = useState([]);
-  const [muscleGroups, setMuscleGroups] = useState([]);
+  const [selectedMuscleGroups, setSelectedMuscleGroups] = useState([]); // for muscle group selection
+  const [muscleGroups, setMuscleGroups] = useState([]); // for initial rendering of the muscle groups
 
   // const fetchData = () => {
   //   axios
@@ -42,8 +42,9 @@ const App = (props) => {
   //     });
   // };
 
-  const handleSelectCategory = (item) => {
-    let newState = [...selectedCategories];
+  const handleSelectMuscleGroup = (item) => {
+    // console.log({ item });
+    let newState = [...selectedMuscleGroups];
     if (newState.includes(item)) {
       const index = newState.indexOf(item);
       // newState = newState.splice(index, 1);
@@ -51,9 +52,9 @@ const App = (props) => {
     } else {
       newState = [...newState, item];
     }
-    setCategories(newState);
+    setSelectedMuscleGroups(newState);
   };
-  // console.log({ selectedCategories });
+  console.log({ selectedMuscleGroups });
 
   // muscle groups for front page
   useEffect(() => {
@@ -67,7 +68,7 @@ const App = (props) => {
   const handleGenerateExercise = () => {
     // access endpoint/query with the state value
     const params = {
-      categories: selectedCategories.map((cat) => cat.id),
+      muscleGroups: selectedMuscleGroups.map((cat) => cat.id),
     };
     axios.get("/api/exercises", { params }).then((res) => console.log({ res }));
     // request from server
@@ -85,8 +86,8 @@ const App = (props) => {
         <Route exact={true} path="/">
           <CategoryList
             data={muscleGroups} //categoryData
-            onClick={handleSelectCategory}
-            selectedCategories={selectedCategories}
+            onClick={handleSelectMuscleGroup}
+            selectedMuscleGroups={selectedMuscleGroups}
           />
 
           <GenerateExercise onClick={handleGenerateExercise} />
