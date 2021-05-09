@@ -80,6 +80,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function CategoryList({ data, onClick, selectedMuscleGroups }) {
+  console.log({ data });
   const classes = useStyles();
   const muscleGroups = data.map((obj, index) => {
     // const selected = selectedMuscleGroups.find((item) => item.id === index);
@@ -95,11 +96,15 @@ export default function CategoryList({ data, onClick, selectedMuscleGroups }) {
           width: "33%",
         }}
       >
-        <div onClick={() => onClick(obj)} /* style={{}}*/>
+        <div
+          onClick={() =>
+            onClick(obj)
+          } /* style={{}} TODO Set Style for clicked categories*/
+        >
           <span
             className={classes.imageSrc}
             style={{
-              backgroundImage: `url(${obj.url})`,
+              backgroundImage: `url(${obj.muscle_url})`,
             }}
           />
           <span className={classes.imageBackdrop} />
