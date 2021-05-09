@@ -42,4 +42,3 @@ export default [
     width: "33%",
   },
 ].map((item, id) => Object.assign(item, { id }));
-
