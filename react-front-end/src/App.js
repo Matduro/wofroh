@@ -7,6 +7,7 @@ import CategoryList from "./components/CategoryList";
 import GenerateExercise from "./components/GenerateExercise";
 import ExerciseList from "./components/ExerciseList";
 import categoryData from "./components/testData/categoryData";
+import TestWorkout from "./components/Workout";
 
 const withRouter = (WrappedComponent) => (props) => {
   return (
@@ -68,6 +69,7 @@ const App = (props) => {
         <Route path="/exercises" component={ExerciseList} />
         <Route path="/workout" component={ExerciseList} />
       </Switch>
+      <TestWorkout/>
     </>
   );
 
