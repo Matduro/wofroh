@@ -64,8 +64,9 @@ const useStyles = makeStyles((theme) => ({
   },
   imageTitle: {
     position: "relative",
-    padding: `${theme.spacing(2)}px ${theme.spacing(4)}px ${theme.spacing(1) + 6
-      }px`,
+    padding: `${theme.spacing(2)}px ${theme.spacing(4)}px ${
+      theme.spacing(1) + 6
+    }px`,
   },
   imageMarked: {
     height: 3,
@@ -78,28 +79,27 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
 export default function CategoryList({ data, onClick, selectedCategories }) {
   const classes = useStyles();
-  const categories = data.map((image, index) => {
-    const selected = selectedCategories.find((item) => item.id === index)
+  const categories = data.map((obj, index) => {
+    const selected = selectedCategories.find((item) => item.id === index);
     // console.log("The selected category", selected ? selected.id : null, index);
-    return (// remove map from the return statement
+    return (
+      // remove map from the return statement
       <ButtonBase
         focusRipple
-        key={image.title}
+        key={obj.title}
         className={classes.image}
         focusVisibleClassName={classes.focusVisible}
         style={{
-          width: image.width,
+          width: "33%",
         }}
       >
-        <div onClick={() => onClick(image)}
-          style={{ border: selected && selected.id === index ? "3px solid red" : "3px solid blue" }} >
+        <div onClick={() => onClick(obj)} style={{}}>
           <span
             className={classes.imageSrc}
             style={{
-              backgroundImage: `url(${image.url})`,
+              backgroundImage: `url(${obj.url})`,
             }}
           />
           <span className={classes.imageBackdrop} />
@@ -110,18 +110,14 @@ export default function CategoryList({ data, onClick, selectedCategories }) {
               color="inherit"
               className={classes.imageTitle}
             >
-              {image.title}
+              {obj.title}
               <span className={classes.imageMarked} />
             </Typography>
           </span>
         </div>
       </ButtonBase>
-    )
-  })
+    );
+  });
 
-  return (
-    <div className={classes.root}>
-      {categories}
-    </div>
-  );
+  return <div className={classes.root}>{categories}</div>;
 }
