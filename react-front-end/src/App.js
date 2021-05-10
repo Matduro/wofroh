@@ -72,7 +72,6 @@ const App = (props) => {
     const params = {
       muscleGroups: selectedMuscleGroups.map((group) => group.id),
     }; 
-    debugger
     axios
       .get("/api/exercises", { params })
       //.then((res) => console.log({ res }));
