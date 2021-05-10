@@ -83,8 +83,8 @@ const App = (props) => {
 
     //redirects to exercises page
     history.push("/exercises");
+    console.log({ generatedExercises });
   };
-  //console.log({ generatedExercises });
 
   return (
     <>
