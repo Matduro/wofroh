@@ -71,7 +71,8 @@ const App = (props) => {
     // access endpoint/query with the state value
     const params = {
       muscleGroups: selectedMuscleGroups.map((group) => group.id),
-    };
+    }; 
+    debugger
     axios
       .get("/api/exercises", { params })
       //.then((res) => console.log({ res }));

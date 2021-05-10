@@ -9,14 +9,13 @@ module.exports = (db) => {
     // response.send("it worked!");
     //ids = [1,3,4];
     //var q = client.query('SELECT Id FROM MyTable WHERE Id = ANY($1::int[])',[ids]);
-
+    console.log(request.query);
     db.query(
       `
-      SELECT * FROM exercises
-      WHERE muscle_group_id = ANY($1::int[])
-      ;`,
-      [request.query.muscleGroups.map(Number)]
+      SELECT * FROM exercises WHERE muscle_group_id = ANY($1::int[]);`,
+      [request.query.muscleGroups.map(number => parseInt(number, 10))]
     )
+
       .then((data) => {
         const exercises = data.rows;
         response.json({ exercises });

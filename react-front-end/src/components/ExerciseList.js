@@ -19,6 +19,7 @@ import Checkbox from "@material-ui/core/Checkbox";
 import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
 import CreateWorkoutButton from "./CreateWorkoutButton";
+import GenerateExercise from "./GenerateExercise";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -110,6 +111,8 @@ export default function TransferList({ exercises }) {
       });
   };
 
+  const exerciseTitles = exercises.map(exercise => exercise.exercise_name);
+
   const customList = (title, exerciseNames) => (
     <Card>
       <CardHeader
@@ -176,7 +179,7 @@ export default function TransferList({ exercises }) {
         alignItems="center"
         className={classes.root}
       >
-        <Grid item>{customList("Choices", left)}</Grid>
+        <Grid item>{customList("Choices", exerciseTitles)}</Grid>
         <Grid item>
           <Grid container direction="column" alignItems="center">
             <Button
