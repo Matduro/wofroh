@@ -12,6 +12,7 @@ import NavBar from "./components/NavBar";
 import CategoryList from "./components/CategoryList";
 import GenerateExercise from "./components/GenerateExercise";
 import ExerciseList from "./components/ExerciseList";
+import Workout from "./components/Workout";
 // import categoryData from "./components/testData/categoryData";
 
 const withRouter = (WrappedComponent) => (props) => {
@@ -27,6 +28,7 @@ const App = (props) => {
   // console.log({ props });
   const [selectedMuscleGroups, setSelectedMuscleGroups] = useState([]); // for muscle group selection
   const [muscleGroups, setMuscleGroups] = useState([]); // for initial rendering of the muscle groups
+  const [generatedExercises, setExercises] = useState([]); // for rendering a list of generated exercises
 
   // const fetchData = () => {
   //   axios
@@ -54,7 +56,7 @@ const App = (props) => {
     }
     setSelectedMuscleGroups(newState);
   };
-  console.log({ selectedMuscleGroups });
+  // console.log({ selectedMuscleGroups });
 
   // muscle groups for front page
   useEffect(() => {
@@ -68,15 +70,21 @@ const App = (props) => {
   const handleGenerateExercise = () => {
     // access endpoint/query with the state value
     const params = {
-      muscleGroups: selectedMuscleGroups.map((cat) => cat.id),
+      muscleGroups: selectedMuscleGroups.map((group) => group.id),
     };
-    axios.get("/api/exercises", { params }).then((res) => console.log({ res }));
+    axios
+      .get("/api/exercises", { params })
+      //.then((res) => console.log({ res }));
+      .then((res) => {
+        setExercises(res.data.exercises);
+      });
     // request from server
     // add responce to state
 
     //redirects to exercises page
     history.push("/exercises");
   };
+  //console.log({ generatedExercises });
 
   return (
     <>
@@ -92,8 +100,10 @@ const App = (props) => {
 
           <GenerateExercise onClick={handleGenerateExercise} />
         </Route>
-        <Route path="/exercises" component={ExerciseList} />
-        <Route path="/workout" component={ExerciseList} />
+        <Route path="/exercises">
+          <ExerciseList exercises={generatedExercises} />
+        </Route>
+        <Route path="/workout" component={Workout} />
       </Switch>
     </>
   );
