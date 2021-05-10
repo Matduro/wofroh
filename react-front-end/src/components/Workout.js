@@ -7,6 +7,8 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
+import axios from "axios";
+import { useLocation } from 'react-router-dom';
 
 const useStyles = makeStyles({
   table: {
@@ -14,43 +16,57 @@ const useStyles = makeStyles({
   },
 });
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
 
-const rows = [
-  createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-  createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-  createData("Eclair", 262, 16.0, 24, 6.0),
-  createData("Cupcake", 305, 3.7, 67, 4.3),
-  createData("Gingerbread", 356, 16.0, 49, 3.9),
-];
 
-export default function DenseTable() {
+
+export default function Workout() {
   const classes = useStyles();
+  const [data, setData] = React.useState([])
+  const { state } = useLocation();
+  // const [selectedExercise, setSelectedExercise] = useState("")
 
-  return (
+  React.useEffect(() => {
+    console.log("state=", state);
+    const params = {
+      checked: state.checked
+    };
+      axios
+      .get("/api/workout", { params })
+      .then((res) => {
+        console.log("response=res", res);
+        setData(res.data.exercises);
+      })
+      .catch((err) => {
+        console.log({ err });
+      });
+
+    },[])
+    
+  let my_rows = data.map((item)=> ({ name: item.exercise_name, video: item.exercise_video_url}))
+  console.log("my rows=", my_rows, data)
+
+  return data.length > 0 && (
     <TableContainer component={Paper}>
       <Table className={classes.table} size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell align="right">Calories</TableCell>
-            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-            <TableCell align="right">Protein&nbsp;(g)</TableCell>
+            <TableCell>Exercise Name</TableCell>
+            <TableCell align="right">Time</TableCell>
+            <TableCell align="right">Sets</TableCell>
+            <TableCell align="right">Reps</TableCell>
+            <TableCell align="right">Muscle Group</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.name}>
+          {data.map(({exercise_name, exercise_video_url}) => (
+            <TableRow key={exercise_name} > 
               <TableCell component="th" scope="row">
-                {row.name}
+                {exercise_name}
               </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
+              {/* <TableCell align="right">{row.video}</TableCell>
               <TableCell align="right">{row.fat}</TableCell>
               <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
+              <TableCell align="right">{row.protein}</TableCell> */}
             </TableRow>
           ))}
         </TableBody>

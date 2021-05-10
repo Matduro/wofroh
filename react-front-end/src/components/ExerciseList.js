@@ -25,25 +25,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// const handleGenerateExercise = () => {
-//   // access endpoint/query with the state value
-//   const params = {
-//     muscleGroups: selectedMuscleGroups.map((group) => group.id),
-//   };
-//   axios
-//     .get("/api/exercises", { params })
-//     //.then((res) => console.log({ res }));
-//     .then((res) => {
-//       setExercises(res.data.exercises);
-//     });
-//   // request from server
-//   // add responce to state
-
-//   //redirects to exercises page
-//   history.push("/exercises");
-//   console.log({ generatedExercises });
-// };
-
 export default function CheckboxListSecondary({ exercises }) {
   const history = useHistory();
   const classes = useStyles();
@@ -67,19 +48,7 @@ export default function CheckboxListSecondary({ exercises }) {
   };
 
   const handleCreateWorkout = () => {
-    const params = {
-      checked,
-    };
-    axios
-      .get("/api/workout", { params })
-      .then((res) => {
-        // console.log(res);
-        setWorkout(res.data.workout);
-      })
-      .catch((err) => {
-        console.log({ err });
-      });
-    history.push("/workout");
+    history.push("/workout", { checked });
   };
 
   return (
@@ -110,3 +79,42 @@ export default function CheckboxListSecondary({ exercises }) {
     </List>
   );
 }
+
+// const handleGenerateExercise = () => {
+//   // access endpoint/query with the state value
+//   const params = {
+//     muscleGroups: selectedMuscleGroups.map((group) => group.id),
+//   };
+//   axios
+//     .get("/api/exercises", { params })
+//     //.then((res) => console.log({ res }));
+//     .then((res) => {
+//       setExercises(res.data.exercises);
+//     });
+//   // request from server
+//   // add responce to state
+
+//   //redirects to exercises page
+//   history.push("/exercises");
+//   console.log({ generatedExercises });
+// };
+
+// const handleCreateWorkout = () => {
+
+//   const params = {
+//     checked,
+//   };
+//   axios
+//     .get("/api/workout", { params })
+//     .then((res) => {
+//       // console.log(res);
+//       setWorkout(res.data.workout);
+//     })
+//     .catch((err) => {
+//       console.log({ err });
+//     });
+//   history.push("/workout");
+
+//   history.push("/workout", { checked })
+
+// };

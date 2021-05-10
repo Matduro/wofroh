@@ -18,10 +18,12 @@ const pool = new Pool(dbParams);
 // require the routes for each resources
 const exercisesApiRoutes = require("./routes/exercises");
 const muscleGroupsApiRoutes = require("./routes/musclegroups");
+const workoutApiRoutes = require("./routes/workout");
 
 // mount all resources routes
 App.use("/api/exercises", exercisesApiRoutes(pool));
 App.use("/api/musclegroups", muscleGroupsApiRoutes(pool));
+App.use("/api/workout", workoutApiRoutes(pool));
 
 // Sample GET route
 // App.get("/api/data", (req, res) =>
