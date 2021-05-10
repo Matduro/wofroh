@@ -76,6 +76,7 @@ const App = (props) => {
       .get("/api/exercises", { params })
       //.then((res) => console.log({ res }));
       .then((res) => {
+        console.log(res.data.exercises)
         setExercises(res.data.exercises);
       });
     // request from server
@@ -98,7 +99,7 @@ const App = (props) => {
             selectedMuscleGroups={selectedMuscleGroups}
           />
 
-          <GenerateExercise onClick={handleGenerateExercise} />
+          <GenerateExercise  onClick={handleGenerateExercise} />
         </Route>
         <Route path="/exercises">
           <ExerciseList exercises={generatedExercises} />

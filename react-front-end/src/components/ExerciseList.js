@@ -68,19 +68,7 @@ export default function CheckboxListSecondary({ exercises }) {
   };
 
   const handleCreateWorkout = () => {
-    const params = {
-      checked
-    };
-    axios
-      .get("/api/workout", { params })
-      .then((res) => {
-        // console.log(res);
-        setWorkout(res.data.workout);
-      })
-      .catch((err) => {
-        console.log({ err });
-      });
-    history.push("/workout")
+    history.push("/workout", { checked })
   };
 
   return (
