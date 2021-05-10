@@ -80,7 +80,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function CategoryList({ data, onClick, selectedMuscleGroups }) {
-  console.log({ data });
+  // console.log({ data });
   const classes = useStyles();
   const muscleGroups = data.map((obj, index) => {
     // const selected = selectedMuscleGroups.find((item) => item.id === index);

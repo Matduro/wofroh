@@ -27,6 +27,7 @@ const App = (props) => {
   // console.log({ props });
   const [selectedMuscleGroups, setSelectedMuscleGroups] = useState([]); // for muscle group selection
   const [muscleGroups, setMuscleGroups] = useState([]); // for initial rendering of the muscle groups
+  const [generatedExercises, setExercises] = useState([]); // for rendering a list of generated exercises
 
   // const fetchData = () => {
   //   axios
@@ -54,7 +55,7 @@ const App = (props) => {
     }
     setSelectedMuscleGroups(newState);
   };
-  console.log({ selectedMuscleGroups });
+  // console.log({ selectedMuscleGroups });
 
   // muscle groups for front page
   useEffect(() => {
@@ -68,15 +69,21 @@ const App = (props) => {
   const handleGenerateExercise = () => {
     // access endpoint/query with the state value
     const params = {
-      muscleGroups: selectedMuscleGroups.map((cat) => cat.id),
+      muscleGroups: selectedMuscleGroups.map((group) => group.id),
     };
-    axios.get("/api/exercises", { params }).then((res) => console.log({ res }));
+    axios
+      .get("/api/exercises", { params })
+      //.then((res) => console.log({ res }));
+      .then((res) => {
+        setExercises(res.data.exercises);
+      });
     // request from server
     // add responce to state
 
     //redirects to exercises page
     history.push("/exercises");
   };
+  //console.log({ generatedExercises });
 
   return (
     <>
@@ -90,7 +97,10 @@ const App = (props) => {
             selectedMuscleGroups={selectedMuscleGroups}
           />
 
-          <GenerateExercise onClick={handleGenerateExercise} />
+          <GenerateExercise
+            onClick={handleGenerateExercise}
+            data={generatedExercises}
+          />
         </Route>
         <Route path="/exercises" component={ExerciseList} />
         <Route path="/workout" component={ExerciseList} />
