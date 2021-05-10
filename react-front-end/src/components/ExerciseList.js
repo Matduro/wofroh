@@ -1,5 +1,11 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link, useHistory } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useHistory,
+} from "react-router-dom";
 import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -33,33 +39,35 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function not(a, b) {
-  return a.filter((value) => b.indexOf(value) === -1);
+  return a.filter((name) => b.indexOf(name) === -1);
 }
 
 function intersection(a, b) {
-  return a.filter((value) => b.indexOf(value) !== -1);
+  return a.filter((name) => b.indexOf(name) !== -1);
 }
 
 function union(a, b) {
   return [...a, ...not(b, a)];
 }
 
-export default function TransferList() {
+export default function TransferList({ exercises }) {
   const classes = useStyles();
   const [checked, setChecked] = React.useState([]);
-  const [left, setLeft] = React.useState([0, 1, 2, 3]);
-  const [right, setRight] = React.useState([4, 5, 6, 7]);
-  const history = useHistory()
+  const exerciseNames = exercises.map((ex) => ex.exercise_name);
+  console.log({ exerciseNames });
+  const [left, setLeft] = React.useState([exerciseNames]);
+  const [right, setRight] = React.useState([]);
+  const history = useHistory();
 
   const leftChecked = intersection(checked, left);
   const rightChecked = intersection(checked, right);
 
-  const handleToggle = (value) => () => {
-    const currentIndex = checked.indexOf(value);
+  const handleToggle = (name) => () => {
+    const currentIndex = checked.indexOf(name);
     const newChecked = [...checked];
 
     if (currentIndex === -1) {
-      newChecked.push(value);
+      newChecked.push(name);
     } else {
       newChecked.splice(currentIndex, 1);
     }
@@ -67,13 +75,14 @@ export default function TransferList() {
     setChecked(newChecked);
   };
 
-  const numberOfChecked = (items) => intersection(checked, items).length;
+  const numberOfChecked = (exerciseNames) =>
+    intersection(checked, exerciseNames).length;
 
-  const handleToggleAll = (items) => () => {
-    if (numberOfChecked(items) === items.length) {
-      setChecked(not(checked, items));
+  const handleToggleAll = (exerciseNames) => () => {
+    if (numberOfChecked(exerciseNames) === exerciseNames.length) {
+      setChecked(not(checked, exerciseNames));
     } else {
-      setChecked(union(checked, items));
+      setChecked(union(checked, exerciseNames));
     }
   };
 
@@ -91,48 +100,55 @@ export default function TransferList() {
 
   const handleCreateWorkout = () => {
     // history.push("/workout")
-    axios.get("/api/workout")
+    axios
+      .get("/api/workout")
       .then((data) => {
-        console.log(data)
-      }).catch((err) => { console.log(err) })
-  }
+        console.log(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
-  const customList = (title, items) => (
+  const customList = (title, exerciseNames) => (
     <Card>
       <CardHeader
         className={classes.cardHeader}
         avatar={
           <Checkbox
-            onClick={handleToggleAll(items)}
+            onClick={handleToggleAll(exerciseNames)}
             checked={
-              numberOfChecked(items) === items.length && items.length !== 0
+              numberOfChecked(exerciseNames) === exerciseNames.length &&
+              exerciseNames.length !== 0
             }
             indeterminate={
-              numberOfChecked(items) !== items.length &&
-              numberOfChecked(items) !== 0
+              numberOfChecked(exerciseNames) !== exerciseNames.length &&
+              numberOfChecked(exerciseNames) !== 0
             }
-            disabled={items.length === 0}
-            inputProps={{ "aria-label": "all items selected" }}
+            disabled={exerciseNames.length === 0}
+            inputProps={{ "aria-label": "all exerciseNames selected" }}
           />
         }
         title={title}
-        subheader={`${numberOfChecked(items)}/${items.length} selected`}
+        subheader={`${numberOfChecked(exerciseNames)}/${
+          exerciseNames.length
+        } selected`}
       />
       <Divider />
       <List className={classes.list} dense component="div" role="list">
-        {items.map((value) => {
-          const labelId = `transfer-list-all-item-${value}-label`;
+        {exerciseNames.map((name) => {
+          const labelId = `transfer-list-all-item-${name}-label`;
 
           return (
             <ListItem
-              key={value}
+              key={name}
               role="listitem"
               button
-              onClick={handleToggle(value)}
+              onClick={handleToggle(name)}
             >
               <ListItemIcon>
                 <Checkbox
-                  checked={checked.indexOf(value) !== -1}
+                  checked={checked.indexOf(name) !== -1}
                   tabIndex={-1}
                   disableRipple
                   inputProps={{ "aria-labelledby": labelId }}
@@ -140,7 +156,8 @@ export default function TransferList() {
               </ListItemIcon>
               <ListItemText
                 id={labelId}
-                primary={`Exercise: ID ${value + 1}`}
+                // primary={`Exercise: ID ${value + 1}`}
+                primary={name}
               />
             </ListItem>
           );
@@ -171,7 +188,7 @@ export default function TransferList() {
               aria-label="move selected right"
             >
               &gt;
-          </Button>
+            </Button>
             <Button
               variant="outlined"
               size="small"
@@ -181,14 +198,13 @@ export default function TransferList() {
               aria-label="move selected left"
             >
               &lt;
-          </Button>
+            </Button>
           </Grid>
         </Grid>
         <Grid item>{customList("Chosen", right)}</Grid>
       </Grid>
 
       <CreateWorkoutButton onClick={handleCreateWorkout} />
-
     </>
   );
 }
