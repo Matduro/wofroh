@@ -16,11 +16,13 @@ const pool = new Pool(dbParams);
 
 // TODO complete the below resources routes
 // require the routes for each resources
+const loginRoutes = require("./routes/login");
 const exercisesApiRoutes = require("./routes/exercises");
 const muscleGroupsApiRoutes = require("./routes/musclegroups");
 const workoutApiRoutes = require("./routes/workout");
 
 // mount all resources routes
+App.use("/login", loginRoutes(pool));
 App.use("/api/exercises", exercisesApiRoutes(pool));
 App.use("/api/musclegroups", muscleGroupsApiRoutes(pool));
 App.use("/api/workout", workoutApiRoutes(pool));

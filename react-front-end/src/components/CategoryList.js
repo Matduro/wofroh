@@ -80,6 +80,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function CategoryList({ data, onClick, selectedMuscleGroups }) {
+  const [select, setSelect] = React.useState([]);
   // console.log({ data });
   const classes = useStyles();
   const muscleGroups = data.map((obj, index) => {

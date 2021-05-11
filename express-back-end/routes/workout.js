@@ -15,7 +15,7 @@ module.exports = (db) => {
       [request.query.checked]
     )
       .then((data) => {
-        console.log("data:", {data})
+        console.log("data:", { data });
         const exercises = data.rows;
         response.json({ exercises });
       })

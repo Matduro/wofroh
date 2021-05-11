@@ -13,8 +13,7 @@ import CategoryList from "./components/CategoryList";
 import GenerateExercise from "./components/GenerateExercise";
 import ExerciseList from "./components/ExerciseList";
 import Workout from "./components/Workout";
-// import Video from "./components/Video"
-// import categoryData from "./components/testData/categoryData";
+import Home from "./components/pages/Home";
 
 const withRouter = (WrappedComponent) => (props) => {
   return (
@@ -77,7 +76,7 @@ const App = (props) => {
       .get("/api/exercises", { params })
       //.then((res) => console.log({ res }));
       .then((res) => {
-        console.log(res.data.exercises)
+        console.log(res.data.exercises);
         setExercises(res.data.exercises);
       });
     // request from server
@@ -85,7 +84,7 @@ const App = (props) => {
 
     //redirects to exercises page
     history.push("/exercises");
-    console.log({ generatedExercises });
+    // console.log({ generatedExercises });
   };
 
   return (
@@ -93,7 +92,8 @@ const App = (props) => {
       <NavBar />
 
       <Switch>
-        <Route exact={true} path="/">
+        <Route path="/" exact={true} component={Home} />
+        <Route path="/musclegroups">
           <CategoryList
             data={muscleGroups} //categoryData
             onClick={handleSelectMuscleGroup}
