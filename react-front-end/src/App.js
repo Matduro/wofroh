@@ -13,6 +13,7 @@ import CategoryList from "./components/CategoryList";
 import GenerateExercise from "./components/GenerateExercise";
 import ExerciseList from "./components/ExerciseList";
 import Workout from "./components/Workout";
+// import Video from "./components/Video"
 // import categoryData from "./components/testData/categoryData";
 
 const withRouter = (WrappedComponent) => (props) => {
@@ -99,12 +100,13 @@ const App = (props) => {
             selectedMuscleGroups={selectedMuscleGroups}
           />
 
-          <GenerateExercise  onClick={handleGenerateExercise} />
+          <GenerateExercise onClick={handleGenerateExercise} />
         </Route>
         <Route path="/exercises">
           <ExerciseList exercises={generatedExercises} />
         </Route>
         <Route path="/workout" component={Workout} />
+        {/* <Route path="/video" component={Video} /> */}
       </Switch>
     </>
   );
