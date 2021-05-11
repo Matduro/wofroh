@@ -54,6 +54,7 @@ export default function CheckboxListSecondary({ exercises }) {
   const exerciseImages = exercises.map((ex) => ex.exercise_picture_url);
   console.log({ exerciseNames });
   console.log({ checked });
+
   const handleToggle = (value) => () => {
     const currentIndex = checked.indexOf(value);
     const newChecked = [...checked];
