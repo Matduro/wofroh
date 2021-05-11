@@ -1,116 +1,82 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
-import AccountCircle from "@material-ui/icons/AccountCircle";
-import Switch from "@material-ui/core/Switch";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormGroup from "@material-ui/core/FormGroup";
-import MenuItem from "@material-ui/core/MenuItem";
-import Menu from "@material-ui/core/Menu";
-import HomeIcon from "@material-ui/icons/Home";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { Button } from "./Button";
+import "./NavBar.css";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  HomeIcon: {
-    marginLeft: theme.spacing(2),
-    marginRight: theme.spacing(2),
-    fill: "#fff",
-  },
-  title: {
-    flexGrow: 1,
-  },
-}));
+function NavBar() {
+  const [click, setClick] = useState(false);
+  const [button, setButton] = useState(true);
 
-export default function NavBar() {
-  const classes = useStyles();
-  const [auth, setAuth] = React.useState(true);
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
+  const handleClick = () => setClick(!click);
+  const closeMobileMenu = () => setClick(false);
 
-  const handleChange = (event) => {
-    setAuth(event.target.checked);
+  const showButton = () => {
+    if (window.innerWidth <= 960) {
+      setButton(false);
+    } else {
+      setButton(true);
+    }
   };
 
-  const handleMenu = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+  useEffect(() => {
+    showButton();
+  }, []);
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  window.addEventListener("resize", showButton);
 
   return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="menu"
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            WoFroH
-            <a href="/">
-              <HomeIcon className={classes.HomeIcon} />
-            </a>
-          </Typography>
-          <FormGroup>
-            <FormControlLabel
-              control={
-                <Switch
-                  checked={auth}
-                  onChange={handleChange}
-                  aria-label="login switch"
-                />
-              }
-              label={auth ? "Logout" : "Login"}
-            />
-          </FormGroup>
-          {auth && (
-            <div>
-              <IconButton
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleMenu}
-                color="inherit"
+    <>
+      <nav className="navbar">
+        <div className="navbar-container">
+          <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
+            WoFroH <i className="fab fa-typo3"></i>
+          </Link>
+          <div className="menu-icon" onClick={handleClick}>
+            <i className={click ? "fas fa-times" : "fas fa-bars"} />
+          </div>
+          <ul className={click ? "nav-menu active" : "nav-menu"}>
+            <li className="nav-item">
+              <Link to="/" className="nav-links" onClick={closeMobileMenu}>
+                Home
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                to="/savedworkouts"
+                className="nav-links"
+                onClick={closeMobileMenu}
               >
-                <AccountCircle />
-              </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorEl}
-                anchorOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                open={open}
-                onClose={handleClose}
+                Workouts
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                to="/products"
+                className="nav-links"
+                onClick={closeMobileMenu}
               >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
-              </Menu>
-            </div>
+                Products
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                to="/sign-up"
+                className="nav-links-mobile"
+                onClick={closeMobileMenu}
+              >
+                Sign Up
+              </Link>
+            </li>
+          </ul>
+          {button && (
+            <Button to="/sign-up" buttonStyle="btn-outline">
+              SIGN UP
+            </Button>
           )}
-        </Toolbar>
-      </AppBar>
-    </div>
+        </div>
+      </nav>
+    </>
   );
 }
+
+export default NavBar;
