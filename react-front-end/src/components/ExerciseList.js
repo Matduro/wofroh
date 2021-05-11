@@ -16,6 +16,7 @@ import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Checkbox from "@material-ui/core/Checkbox";
 import Avatar from "@material-ui/core/Avatar";
 import CreateWorkoutButton from "./CreateWorkoutButton";
+import Timer from "./Timer";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,8 +32,9 @@ export default function CheckboxListSecondary({ exercises }) {
   const [generatedWorkout, setWorkout] = React.useState([]); // for rendering workout
   const [checked, setChecked] = React.useState([]);
   const exerciseNames = exercises.map((ex) => ex.exercise_name);
+  const exerciseTimes = exercises.map((ex) => ex.total_time);
   const exerciseImages = exercises.map((ex) => ex.exercise_picture_url);
-  console.log({ exerciseNames });
+  // console.log({ exercises });
   console.log({ checked });
 
   const handleToggle = (value) => () => {
@@ -49,22 +51,25 @@ export default function CheckboxListSecondary({ exercises }) {
   };
 
   const handleCreateWorkout = () => {
-    history.push("/workout", { checked });
+    history.push("/workout", {
+      checked: checked.map((obj) => obj.exercise_name),
+    });
   };
 
   return (
     <List dense className={classes.root}>
-      {exerciseNames.map((value) => {
-        const labelId = `checkbox-list-secondary-label-${value}`;
+      {exercises.map((value) => {
+        const labelId = `checkbox-list-secondary-label-${value.exercise_name}`;
         return (
-          <ListItem key={value} button>
+          <ListItem key={value.exercises_name} button>
             <ListItemAvatar>
               <Avatar
-                alt={`Avatar n°${value + 1}`}
-                src={`/static/images/avatar/${value + 1}.jpg`}
+                alt={`Avatar n°${value.exercises_name}`}
+                src={value.exercise_picture_url}
               />
             </ListItemAvatar>
-            <ListItemText id={labelId} primary={`${value}`} />
+            <ListItemText id={labelId} primary={`${value.exercise_name}`} />
+            <ListItemText>{`Exercise Time: ${value.total_time}`}</ListItemText>
             <ListItemSecondaryAction>
               <Checkbox
                 edge="end"
@@ -76,6 +81,7 @@ export default function CheckboxListSecondary({ exercises }) {
           </ListItem>
         );
       })}
+      <Timer exerciseTimes={checked.map((ex) => ex.total_time)} />
       <CreateWorkoutButton onClick={handleCreateWorkout} />
     </List>
   );

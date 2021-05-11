@@ -7,6 +7,7 @@ const useStyles = makeStyles((theme) => ({
     "& > *": {
       margin: theme.spacing(1),
     },
+    
   },
 }));
 
@@ -15,7 +16,8 @@ export default function GenerateExercise({ onClick }) {
 
   return (
     <div className={classes.root}>
-      <Button variant="outlined" color="primary" onClick={onClick}>
+      
+      <Button style={{margin: '0 auto', display: "flex"}} variant="outlined" color="primary" onClick={onClick}>
         Generate Exercises!
       </Button>
     </div>

@@ -41,4 +41,16 @@ export default [
     title: "Chest",
     width: "33%",
   },
+  {
+    url:
+      "https://images.pexels.com/photos/4720326/pexels-photo-4720326.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    title: "Chest",
+    width: "33%",
+  },
+  {
+    url:
+      "https://images.pexels.com/photos/4720326/pexels-photo-4720326.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    title: "Chest",
+    width: "33%",
+  },
 ].map((item, id) => Object.assign(item, { id }));
