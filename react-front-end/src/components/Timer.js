@@ -6,7 +6,7 @@ function Timer({ exerciseTimes }) {
       {`Your total workout time is: ${exerciseTimes.reduce(
         (total, num) => total + num,
         0
-      )}`}
+      )} min`}
     </div>
   );
 }
