@@ -26,6 +26,10 @@ export default function Workout() {
   const [selectedExercise, setSelectedExercise] = React.useState([]);
   const [videoURL, setVideoURL] = React.useState(null);
 
+  const handleVideoURL = (video) => {
+    setVideoURL(video);
+  }
+
   React.useEffect(() => {
     // console.log("state=", state);
     const params = {
@@ -69,7 +73,9 @@ export default function Workout() {
             {data.map(({ exercise_name, total_time, num_of_sets, num_of_reps, muscle_group_id, intensity, rating, exercise_video_url, exercise_picture_url, exercise_info }) => (
               <TableRow key={exercise_name} >
                 <IconButton
-                  edge="start">
+                  edge="start"
+                  onClick={() => handleVideoURL(exercise_video_url)}
+                >
                   <TableCell component="th" scope="row">
                     {exercise_name}
                   </TableCell>
