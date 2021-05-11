@@ -67,6 +67,17 @@ INSERT INTO muscle_groups (
   VALUES (
     'https://images.pexels.com/photos/4720326/pexels-photo-4720326.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
     'Chest');
+INSERT INTO muscle_groups (
+  muscle_url, title)
+  VALUES (
+    'https://images.pexels.com/photos/2294361/pexels-photo-2294361.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
+    'Full Body');
+INSERT INTO muscle_groups (
+  muscle_url, title)
+  VALUES (
+    'https://images.pexels.com/photos/3764396/pexels-photo-3764396.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
+    'Stretching');
+
 
 INSERT INTO exercises (
 muscle_group_id, exercise_picture_url, exercise_name, exercise_video_url, exercise_info, total_time, num_of_reps, num_of_sets, intensity, rating) 
@@ -96,6 +107,14 @@ INSERT INTO exercises (
 muscle_group_id, exercise_picture_url, exercise_name, exercise_video_url, exercise_info, total_time, num_of_reps, num_of_sets, intensity, rating)
 VALUES (
 5, 'https://cdn.abmachinesguide.com/wp-content/uploads/2019/01/Hyperextension-Exercise-Without-Bench.jpg', 'Lower Back Extension', 'https://www.youtube.com/watch?v=Ikq3OCFoP7c', 'info should be here', 8, 100, 3, 4, 3);
+INSERT INTO exercises (
+muscle_group_id, exercise_picture_url, exercise_name, exercise_video_url, exercise_info, total_time, num_of_reps, num_of_sets, intensity, rating)
+VALUES (
+8, 'https://images.pexels.com/photos/2294361/pexels-photo-2294361.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500', 'Burpies', 'https://www.youtube.com/watch?v=Ikq3OCFoP7c', 'info should be here', 8, 100, 3, 4, 3);
+INSERT INTO exercises (
+muscle_group_id, exercise_picture_url, exercise_name, exercise_video_url, exercise_info, total_time, num_of_reps, num_of_sets, intensity, rating)
+VALUES (
+9, 'https://images.pexels.com/photos/4056724/pexels-photo-4056724.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940', 'Sitting Hip Stretch', 'https://www.youtube.com/watch?v=4UoITjubrgE&t=2s', 'info should be here', 5, 5, 3, 4, 1);
 
 
 INSERT INTO workout_exercises (
