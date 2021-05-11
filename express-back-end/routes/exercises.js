@@ -10,9 +10,16 @@ module.exports = (db) => {
     //ids = [1,3,4];
     //var q = client.query('SELECT Id FROM MyTable WHERE Id = ANY($1::int[])',[ids]);
 
+    // `
+    // SELECT *, muscle_groups.title as muscle_group_name
+    // FROM exercises
+    // JOIN muscle_groups ON exercises.id = muscle_group_id
+    // WHERE muscle_group_id = ANY($1::int[])
+    // ;`
     db.query(
       `
-      SELECT * FROM exercises
+      SELECT *
+      FROM exercises
       WHERE muscle_group_id = ANY($1::int[])
       ;`,
       [request.query.muscleGroups.map(Number)]

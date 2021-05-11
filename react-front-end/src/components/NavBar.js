@@ -36,7 +36,11 @@ function NavBar() {
           </div>
           <ul className={click ? "nav-menu active" : "nav-menu"}>
             <li className="nav-item">
-              <Link to="/musclegroups" className="nav-links" onClick={closeMobileMenu}>
+              <Link
+                to="/musclegroups"
+                className="nav-links"
+                onClick={closeMobileMenu}
+              >
                 Build a Workout
               </Link>
             </li>
@@ -46,15 +50,11 @@ function NavBar() {
                 className="nav-links"
                 onClick={closeMobileMenu}
               >
-                Workouts
+                My Workouts
               </Link>
             </li>
             <li className="nav-item">
-              <Link
-                to="/"
-                className="nav-links"
-                onClick={closeMobileMenu}
-              >
+              <Link to="/" className="nav-links" onClick={closeMobileMenu}>
                 Home
               </Link>
             </li>

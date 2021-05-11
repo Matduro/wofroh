@@ -11,6 +11,8 @@ import Paper from "@material-ui/core/Paper";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 import Video from "./Video";
+import Timer from "./Timer";
+import { Button } from "./Button";
 
 const useStyles = makeStyles({
   table: {
@@ -24,9 +26,32 @@ export default function Workout() {
   const [data, setData] = React.useState([]);
   const [selectedExercise, setSelectedExercise] = React.useState([]);
   const [videoURL, setVideoURL] = React.useState(null);
+  // const [workoutName, setWorkoutName] = React.useState("");
 
+  console.log({ data });
   const handleVideoURL = (video) => {
     setVideoURL(video);
+  };
+
+  // const handleWorkoutName = () => {};
+
+  const handleSaveWorkout = () => {
+    const params = {
+      exerciseIDs: data.map((ex) => ex.id),
+      workoutName: "The Nally Express",
+      workoutTime: data
+        .map((obj) => obj.total_time)
+        .reduce((total, num) => total + num, 0),
+    };
+    console.log({ params });
+    axios
+      .post("/api/workout", params)
+      .then((res) => {
+        console.log({ res });
+      })
+      .catch((err) => {
+        console.log({ err });
+      });
   };
 
   React.useEffect(() => {
@@ -85,6 +110,7 @@ export default function Workout() {
                   intensity,
                   rating,
                   exercise_video_url,
+                  title,
                   exercise_picture_url,
                   exercise_info,
                 }) => (
@@ -100,7 +126,7 @@ export default function Workout() {
                     <TableCell align="right">{total_time}</TableCell>
                     <TableCell align="right">{num_of_sets}</TableCell>
                     <TableCell align="right">{num_of_reps}</TableCell>
-                    <TableCell align="right">{muscle_group_id}</TableCell>
+                    <TableCell align="right">{title}</TableCell>
                     <TableCell align="right">{intensity}</TableCell>
                     <TableCell align="right">{rating}</TableCell>
                   </TableRow>
@@ -109,6 +135,16 @@ export default function Workout() {
             </TableBody>
           </Table>
         </TableContainer>
+        <Timer exerciseTimes={data.map((obj) => obj.total_time)} />
+        <Button
+          className="btns"
+          buttonStyle="btn--primary"
+          buttonSyze="btn--large"
+          href="/savedworkouts"
+          onClick={handleSaveWorkout}
+        >
+          Save Workout
+        </Button>
         <Video videoURL={videoURL} />
       </>
     )

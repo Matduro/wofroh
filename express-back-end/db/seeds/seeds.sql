@@ -110,7 +110,7 @@ VALUES (
 INSERT INTO exercises (
 muscle_group_id, exercise_picture_url, exercise_name, exercise_video_url, exercise_info, total_time, num_of_reps, num_of_sets, intensity, rating)
 VALUES (
-8, 'https://images.pexels.com/photos/2294361/pexels-photo-2294361.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500', 'Burpies', 'https://www.youtube.com/watch?v=Ikq3OCFoP7c', 'info should be here', 8, 100, 3, 4, 3);
+8, 'https://images.pexels.com/photos/2294361/pexels-photo-2294361.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500', 'Burpies', 'https://www.youtube.com/watch?v=qLBImHhCXSw', 'info should be here', 8, 100, 3, 4, 3);
 INSERT INTO exercises (
 muscle_group_id, exercise_picture_url, exercise_name, exercise_video_url, exercise_info, total_time, num_of_reps, num_of_sets, intensity, rating)
 VALUES (
@@ -120,15 +120,15 @@ VALUES (
 INSERT INTO workout_exercises (
 excercise_id, workout_id)
 VALUES (
-1, 1);
+'{1, 2}', 1);
 INSERT INTO workout_exercises (
 excercise_id, workout_id)
 VALUES (
-3, 3);
+'{3, 4}', 2);
 INSERT INTO workout_exercises (
 excercise_id, workout_id)
 VALUES (
-2, 1);
+'{5, 6}', 3);
 
 
 

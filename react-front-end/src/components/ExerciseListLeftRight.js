@@ -54,7 +54,7 @@ export default function TransferList({ exercises }) {
   const classes = useStyles();
   const [checked, setChecked] = React.useState([]);
   const exerciseNames = exercises.map((ex) => ex.exercise_name);
-  console.log({ exerciseNames });
+  // console.log({ exerciseNames });
   const [left, setLeft] = React.useState([exerciseNames]);
   const [right, setRight] = React.useState([]);
   const history = useHistory();
@@ -103,10 +103,10 @@ export default function TransferList({ exercises }) {
     axios
       .get("/api/workout")
       .then((data) => {
-        console.log(data);
+        // console.log(data);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       });
   };
 
