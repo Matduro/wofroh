@@ -71,10 +71,10 @@ export default function Workout() {
           </TableHead>
           <TableBody>
             {data.map(({ exercise_name, total_time, num_of_sets, num_of_reps, muscle_group_id, intensity, rating, exercise_video_url, exercise_picture_url, exercise_info }) => (
-              <TableRow key={exercise_name} >
+              <TableRow key={exercise_name} onClick={() => handleVideoURL(exercise_video_url)}>
                 <IconButton
                   edge="start"
-                  onClick={() => handleVideoURL(exercise_video_url)}
+
                 >
                   <TableCell component="th" scope="row">
                     {exercise_name}
