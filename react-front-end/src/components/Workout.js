@@ -74,13 +74,12 @@ export default function Workout() {
               <TableRow key={exercise_name} onClick={() => handleVideoURL(exercise_video_url)}>
                 <IconButton
                   edge="start"
-
                 >
                   <TableCell component="th" scope="row">
                     {exercise_name}
                   </TableCell>
                 </IconButton>
-                <TableCell align="right">{total_time / 60}</TableCell>
+                <TableCell align="right">{total_time}</TableCell>
                 <TableCell align="right">{num_of_sets}</TableCell>
                 <TableCell align="right">{num_of_reps}</TableCell>
                 <TableCell align="right">{muscle_group_id}</TableCell>
