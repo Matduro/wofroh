@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     height: 200,
     [theme.breakpoints.down("xs")]: {
       width: "100% !important", // Overrides inline-style
-      height: 100,
+      height: 100
     },
     "&:hover, &$focusVisible": {
       zIndex: 1,
@@ -26,9 +26,9 @@ const useStyles = makeStyles((theme) => ({
       "& $imageMarked": {
         opacity: 0,
       },
-      // "& $imageTitle": {
-      //   border: "4px solid currentColor",
-      // },
+      "& $imageTitle": {
+        border: "4px solid currentColor",
+      },
     },
   },
   focusVisible: {},
@@ -64,9 +64,8 @@ const useStyles = makeStyles((theme) => ({
   },
   imageTitle: {
     position: "relative",
-    padding: `${theme.spacing(2)}px ${theme.spacing(4)}px ${
-      theme.spacing(1) + 6
-    }px`,
+    padding: `${theme.spacing(2)}px ${theme.spacing(4)}px ${theme.spacing(1) + 6
+      }px`,
   },
   imageMarked: {
     height: 3,
@@ -87,7 +86,6 @@ export default function CategoryList({ data, onClick, selectedMuscleGroups }) {
     // const selected = selectedMuscleGroups.find((item) => item.id === index);
     // console.log("The selected category", selected ? selected.id : null, index);
     return (
-      // remove map from the return statement
       <ButtonBase
         focusRipple
         key={obj.title}
