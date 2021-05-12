@@ -61,24 +61,28 @@ export default function CheckboxListSecondary({ exercises }) {
       {exercises.map((value) => {
         const labelId = `checkbox-list-secondary-label-${value.exercise_name}`;
         return (
-          <ListItem key={value.exercises_name} button>
-            <ListItemAvatar>
-              <Avatar
-                alt={`Avatar n°${value.exercises_name}`}
-                src={value.exercise_picture_url}
-              />
-            </ListItemAvatar>
-            <ListItemText id={labelId} primary={`${value.exercise_name}`} />
-            <ListItemText>{`Exercise Time: ${value.total_time}`}</ListItemText>
-            <ListItemSecondaryAction>
-              <Checkbox
-                edge="end"
-                onChange={handleToggle(value)}
-                checked={checked.indexOf(value) !== -1}
-                inputProps={{ "aria-labelledby": labelId }}
-              />
-            </ListItemSecondaryAction>
-          </ListItem>
+          <table>
+            <ListItem key={value.exercises_name} button>
+              <ListItemAvatar>
+                <Avatar
+                  alt={`Avatar n°${value.exercises_name}`}
+                  src={value.exercise_picture_url}
+                />
+              </ListItemAvatar>
+              <ListItemText id={labelId} primary={`${value.exercise_name}`} />
+              <tr>
+                <ListItemText>{`Exercise Time: ${value.total_time}`}</ListItemText>
+              </tr>
+              <ListItemSecondaryAction>
+                <Checkbox
+                  edge="end"
+                  onChange={handleToggle(value)}
+                  checked={checked.indexOf(value) !== -1}
+                  inputProps={{ "aria-labelledby": labelId }}
+                />
+              </ListItemSecondaryAction>
+            </ListItem>
+          </table>
         );
       })}
       <Timer exerciseTimes={checked.map((ex) => ex.total_time)} />

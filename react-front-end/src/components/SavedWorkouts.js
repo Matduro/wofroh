@@ -1,6 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Button } from "./Button";
 import "../App.css";
+import "./HeroSection.css";
+import "./Button.css";
 
 function SavedWorkouts() {
   const [savedWorkouts, setSavedWorkouts] = useState([]);
@@ -26,7 +29,21 @@ function SavedWorkouts() {
       <h1>Your Saved Workouts</h1>
       <div>
         {savedWorkouts.map((workout) => {
-          return <p>{workout.name}</p>;
+          return (
+            <>
+              <p>{workout.name}</p>
+              <div className="hero-btns">
+                <Button
+                  className="btns"
+                  buttonStyle="btn--go"
+                  buttonSyze="btn--large"
+                  href={`/workout/saved/${workout.id}`}
+                >
+                  GO
+                </Button>
+              </div>
+            </>
+          );
         })}
       </div>
     </div>

@@ -81,6 +81,10 @@ const useStyles = makeStyles((theme) => ({
 
 export default function CategoryList({ data, onClick, selectedMuscleGroups }) {
   const [select, setSelect] = React.useState([]);
+  const [flag, setFlag] = React.useState(true);
+  const handleClick = () => {
+    setFlag(!flag);
+  };
   // console.log({ data });
   const classes = useStyles();
   const muscleGroups = data.map((obj, index) => {
@@ -108,7 +112,11 @@ export default function CategoryList({ data, onClick, selectedMuscleGroups }) {
             }}
           />
           <span className={classes.imageBackdrop} />
-          <span className={classes.imageButton}>
+          <span
+            className={classes.imageButton}
+            onClick={handleClick}
+            border={flag ? "5px solid white !important" : "none"}
+          >
             <Typography
               component="span"
               variant="subtitle1"
