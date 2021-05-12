@@ -87,7 +87,6 @@ export default function CategoryList({ data, onClick, selectedMuscleGroups }) {
     // const selected = selectedMuscleGroups.find((item) => item.id === index);
     // console.log("The selected category", selected ? selected.id : null, index);
     return (
-      // remove map from the return statement
       <ButtonBase
         focusRipple
         key={obj.title}

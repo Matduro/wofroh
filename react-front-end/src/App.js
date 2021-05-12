@@ -13,6 +13,7 @@ import CategoryList from "./components/CategoryList";
 import GenerateExercise from "./components/GenerateExercise";
 import ExerciseList from "./components/ExerciseList";
 import Workout from "./components/Workout";
+import SavedWorkouts from "./components/SavedWorkouts";
 import Home from "./components/pages/Home";
 
 const withRouter = (WrappedComponent) => (props) => {
@@ -61,7 +62,6 @@ const App = (props) => {
   // muscle groups for front page
   useEffect(() => {
     axios.get("/api/musclegroups").then((res) => {
-      console.log({ res });
       setMuscleGroups(res.data.muscleGroups);
     });
   }, []);
@@ -106,6 +106,7 @@ const App = (props) => {
           <ExerciseList exercises={generatedExercises} />
         </Route>
         <Route path="/workout" component={Workout} />
+        <Route path="/savedworkouts" component={SavedWorkouts} />
         {/* <Route path="/video" component={Video} /> */}
       </Switch>
     </>

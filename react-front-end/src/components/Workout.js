@@ -28,7 +28,7 @@ export default function Workout() {
   const [videoURL, setVideoURL] = React.useState(null);
   // const [workoutName, setWorkoutName] = React.useState("");
 
-  console.log({ data });
+  // console.log({ data });
   const handleVideoURL = (video) => {
     setVideoURL(video);
   };
@@ -139,7 +139,12 @@ export default function Workout() {
         <Timer exerciseTimes={data.map((obj) => obj.total_time)} />
         <form>
           <label htmlFor="workoutname">Name your new workout</label>
-          <input id="workoutname" name="workoutname" type="text" />
+          <input
+            id="workoutname"
+            name="workoutname"
+            type="text"
+            placeholder="workout name"
+          />
           <Button
             className="btns"
             buttonStyle="btn--primary"
