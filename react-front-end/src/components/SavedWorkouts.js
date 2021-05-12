@@ -1,9 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Button } from "./Button";
+import Footer from "./pages/Footer";
 import "../App.css";
-import "./HeroSection.css";
-import "./Button.css";
+import "./SavedWorkouts.css";
 
 function SavedWorkouts() {
   const [savedWorkouts, setSavedWorkouts] = useState([]);
@@ -25,18 +25,21 @@ function SavedWorkouts() {
   }, []);
 
   return (
-    <div>
-      <h1>Your Saved Workouts</h1>
-      <div>
-        {savedWorkouts.map((workout) => {
+    <body className="saved--container">
+      <h1 className="saved-title">Your Saved Workouts</h1>
+      <>
+        {savedWorkouts.map((workout, index) => {
           return (
             <>
-              <p>{workout.name}</p>
-              <div className="hero-btns">
+              <div className="hero-btns saved-workouts">
+                <label className="saved-list">
+                  {index > 8 ? index + 1 : "0" + (index + 1).toString()}
+                </label>
+                <p>{workout.name}</p>
                 <Button
                   className="btns"
                   buttonStyle="btn--go"
-                  buttonSyze="btn--large"
+                  buttonSize="btn--saved"
                   href={`/workout/saved/${workout.id}`}
                 >
                   GO
@@ -45,8 +48,9 @@ function SavedWorkouts() {
             </>
           );
         })}
-      </div>
-    </div>
+      </>
+      <Footer />
+    </body>
   );
 }
 

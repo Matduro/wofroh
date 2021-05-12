@@ -65,7 +65,7 @@ function Footer() {
           <div class="footer-logo">
             <Link to="/" className="social-logo">
               WoFroH
-              <i class="fab fa-typo3" />
+              <i class="fas fa-fire" />
             </Link>
           </div>
           <small class="website-rights">WoFroH © 2021</small>
