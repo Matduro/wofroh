@@ -20,12 +20,14 @@ const loginRoutes = require("./routes/login");
 const exercisesApiRoutes = require("./routes/exercises");
 const muscleGroupsApiRoutes = require("./routes/musclegroups");
 const workoutApiRoutes = require("./routes/workout");
+// const saveWorkoutApiRoutes = require("./routes/saveWorkout");
 
 // mount all resources routes
 App.use("/login", loginRoutes(pool));
 App.use("/api/exercises", exercisesApiRoutes(pool));
 App.use("/api/musclegroups", muscleGroupsApiRoutes(pool));
 App.use("/api/workout", workoutApiRoutes(pool));
+//App.use("/api/workout", saveWorkoutApiRoutes(pool));
 
 // Sample GET route
 // App.get("/api/data", (req, res) =>

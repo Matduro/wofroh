@@ -26,14 +26,14 @@ export default function Workout() {
   const [data, setData] = React.useState([]);
   const [selectedExercise, setSelectedExercise] = React.useState([]);
   const [videoURL, setVideoURL] = React.useState(null);
-  // const [workoutName, setWorkoutName] = React.useState("");
+  const [workoutName, setWorkoutName] = React.useState("");
 
   console.log({ data });
   const handleVideoURL = (video) => {
     setVideoURL(video);
   };
 
-  // const handleWorkoutName = () => {};
+  const handleWorkoutName = () => {};
 
   const handleSaveWorkout = () => {
     const params = {
@@ -136,6 +136,18 @@ export default function Workout() {
           </Table>
         </TableContainer>
         <Timer exerciseTimes={data.map((obj) => obj.total_time)} />
+        <form>
+          <label>
+            Add a Workout Name:
+            <input
+              type="text"
+              name="workoutname"
+              value={workoutName}
+              onChange={() => setWorkoutName(workoutName)}
+            />
+          </label>
+          <input type="submit" value="Create" />
+        </form>
         <Button
           className="btns"
           buttonStyle="btn--primary"
