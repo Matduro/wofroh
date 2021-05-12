@@ -30,6 +30,14 @@ module.exports = (db) => {
       });
   });
 
+  router.get("/saved", (request, response) => {
+    db.query(`SELECT * FROM workouts;`)
+      .then((res) => response.json(res.rows))
+      .catch((error) => {
+        response.status(500).json({ error: error.message });
+      });
+  });
+
   router.post("/", (request, response) => {
     const exerciseIDs = request.body.exerciseIDs;
     const workoutName = request.body.workoutName;
@@ -77,7 +85,7 @@ module.exports = (db) => {
         response.json({ savedWorkout });
       })
       .catch((error) => {
-        console.log({ error });
+        // console.log({ error });
         response.status(500).json({ error: error.message });
       });
   });
