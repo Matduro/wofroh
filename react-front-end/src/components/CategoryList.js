@@ -2,12 +2,13 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import Typography from "@material-ui/core/Typography";
+import classNames from "classnames";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     flexWrap: "wrap",
-    padding: "10px 5px",
+    padding: "5px 5px 10px 5px",
     minWidth: 300,
     width: "100%",
   },
@@ -31,6 +32,7 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
+
   focusVisible: {},
   imageButton: {
     position: "absolute",
@@ -76,18 +78,24 @@ const useStyles = makeStyles((theme) => ({
     left: "calc(50% - 9px)",
     transition: theme.transitions.create("opacity"),
   },
+  whiteBorder: {
+    border: "3px solid white"
+  },
+  selectedMuscle: {
+    border: "4px solid currentColor",
+  }
 }));
 
 export default function CategoryList({ data, onClick, selectedMuscleGroups }) {
   const [select, setSelect] = React.useState([]);
-  // const [flag, setFlag] = React.useState(true);
-  // const handleClick = () => {
-  //   setFlag(!flag);
-  // };
+  const [flag, setFlag] = React.useState(true);
+  const handleClick = () => {
+    setFlag(!flag);
+  };
   // console.log({ data });
   const classes = useStyles();
   const muscleGroups = data.map((obj, index) => {
-    // const selected = selectedMuscleGroups.find((item) => item.id === index);
+    const selected = selectedMuscleGroups.some((item) => item.id === obj.id);
     // console.log("The selected category", selected ? selected.id : null, index);
     return (
       <ButtonBase
@@ -102,7 +110,7 @@ export default function CategoryList({ data, onClick, selectedMuscleGroups }) {
         <div
           onClick={() =>
             onClick(obj)
-          } /* style={{}} TODO Set Style for clicked categories*/
+          } style={{}} //TODO Set Style for clicked categories
         >
           <span
             className={classes.imageSrc}
@@ -112,15 +120,20 @@ export default function CategoryList({ data, onClick, selectedMuscleGroups }) {
           />
           <span className={classes.imageBackdrop} />
           <span
-            className={classes.imageButton}
-            // onClick={handleClick}
-            // border={flag ? "5px solid white !important" : "none"}
+            className={classNames(classes.imageButton, classes.whiteBorder)}
+            onClick={handleClick}
+
+          // style={{ border: "5px solid white" }}
+          // border={flag ? "5px solid white !important" : "none"}
           >
             <Typography
               component="span"
               variant="subtitle1"
               color="inherit"
-              className={classes.imageTitle}
+              className={classNames(
+                classes.imageTitle,
+                selected ? classes.selectedMuscle : ""
+              )}
             >
               {obj.title}
               <span className={classes.imageMarked} />
