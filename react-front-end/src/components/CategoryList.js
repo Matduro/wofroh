@@ -65,9 +65,8 @@ const useStyles = makeStyles((theme) => ({
   },
   imageTitle: {
     position: "relative",
-    padding: `${theme.spacing(2)}px ${theme.spacing(4)}px ${
-      theme.spacing(1) + 6
-    }px`,
+    padding: `${theme.spacing(2)}px ${theme.spacing(4)}px ${theme.spacing(1) + 6
+      }px`,
   },
   imageMarked: {
     height: 3,
@@ -119,8 +118,8 @@ export default function CategoryList({ data, onClick, selectedMuscleGroups }) {
             className={classNames(classes.imageButton, classes.whiteBorder)}
             onClick={handleClick}
 
-            // style={{ border: "5px solid white" }}
-            // border={flag ? "5px solid white !important" : "none"}
+          // style={{ border: "5px solid white" }}
+          // border={flag ? "5px solid white !important" : "none"}
           >
             <Typography
               component="span"

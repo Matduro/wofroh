@@ -7,7 +7,9 @@ import {
   Link,
   useHistory,
 } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, styled } from "@material-ui/core/styles";
+import { Grid } from "@material-ui/core";
+import Button from "@material-ui/core/Button";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
@@ -17,12 +19,24 @@ import Checkbox from "@material-ui/core/Checkbox";
 import Avatar from "@material-ui/core/Avatar";
 import CreateWorkoutButton from "./CreateWorkoutButton";
 import Timer from "./Timer";
+import Typography from "@material-ui/core/Typography";
+import classNames from "classnames";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
     maxWidth: 360,
     backgroundColor: theme.palette.background.paper,
+  },
+  imageBackdrop: {
+    position: "absolute",
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    backgroundColor: theme.palette.common.black,
+    opacity: 0.4,
+    transition: theme.transitions.create("opacity"),
   },
 }));
 
@@ -85,8 +99,23 @@ export default function CheckboxListSecondary({ exercises }) {
           </table>
         );
       })}
+      {/* <Grid
+        container
+        spacing={0}
+        alignItems="center"
+        justify="center"
+        style={{ minHeight: "20vh" }}
+      > */}
       <Timer exerciseTimes={checked.map((ex) => ex.total_time)} />
-      <CreateWorkoutButton onClick={handleCreateWorkout} />
+      <Typography
+        component="span"
+        variant="subtitle1"
+        color="inherit"
+        className={classNames(classes.imageTitle)}
+      >
+        <CreateWorkoutButton onClick={handleCreateWorkout} />
+      </Typography>
+      {/* </Grid> */}
     </List>
   );
 }
