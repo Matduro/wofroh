@@ -10,29 +10,29 @@ function Cards() {
         <div className="cards__wrapper">
           <ul className="cards__items">
             <CardItem
-              src="images/img-9.jpg"
-              text="Explore the hidden waterfall deep inside the Amazon Jungle"
-              label="Adventure"
+              src="images/core-crusher.jpg"
+              text="Boost the abilities of your abdominal and back muscles without leaving your home"
+              label="Core Crusher"
               path="/services"
             />
             <CardItem
-              src="images/img-2.jpg"
-              text="Travel through the Islands of Bali in a Private Cruise"
-              label="Luxury"
+              src="images/nally-express.jpg"
+              text="Enjoy fitness in the comfort of your boat sailing around Vancouver Island"
+              label="Nally Express"
               path="/services"
             />
           </ul>
           <ul className="cards__items">
             <CardItem
-              src="images/img-3.jpg"
-              text="Set Sail in the Atlantic Ocean visiting Uncharted Waters"
-              label="Mystery"
+              src="images/ball-exercise.jpg"
+              text="Build your stamina without professional workout equipment"
+              label="Adventurer"
               path="/services"
             />
             <CardItem
-              src="images/img-4.jpg"
-              text="Experience Football on Top of the Himilayan Mountains"
-              label="Adventure"
+              src="images/andys-cardio.jpg"
+              text="Experience crazy heart rate next to your computer without coffee"
+              label="Andy's Cardio"
               path="/products"
             />
             <CardItem
