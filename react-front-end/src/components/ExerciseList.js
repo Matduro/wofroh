@@ -46,8 +46,6 @@ const useStyles = makeStyles((theme) => ({
   },
   exercise: {
     minWidth: "60px",
-    marginLeft: "100px",
-    marginRight: "100px",
   },
 }));
 
