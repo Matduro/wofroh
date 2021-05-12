@@ -31,6 +31,9 @@ const useStyles = makeStyles((theme) => ({
       // },
     },
   },
+  selectedMuscle: {
+    border: "4px solid currentColor",
+  },
   focusVisible: {},
   imageButton: {
     position: "absolute",
@@ -88,7 +91,7 @@ export default function CategoryList({ data, onClick, selectedMuscleGroups }) {
   // console.log({ data });
   const classes = useStyles();
   const muscleGroups = data.map((obj, index) => {
-    // const selected = selectedMuscleGroups.find((item) => item.id === index);
+    const selected = selectedMuscleGroups.some((item) => item.id === obj.id);
     // console.log("The selected category", selected ? selected.id : null, index);
     return (
       <ButtonBase
@@ -121,7 +124,10 @@ export default function CategoryList({ data, onClick, selectedMuscleGroups }) {
               component="span"
               variant="subtitle1"
               color="inherit"
-              className={classes.imageTitle}
+              className={classNames(
+                classes.imageTitle,
+                selected ? classes.selectedMuscle : ""
+              )}
             >
               {obj.title}
               <span className={classes.imageMarked} />
