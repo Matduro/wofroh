@@ -35,7 +35,7 @@ export default function CheckboxListSecondary({ exercises }) {
   const exerciseTimes = exercises.map((ex) => ex.total_time);
   const exerciseImages = exercises.map((ex) => ex.exercise_picture_url);
   // console.log({ exercises });
-  console.log({ checked });
+  // console.log({ checked });
 
   const handleToggle = (value) => () => {
     const currentIndex = checked.indexOf(value);
