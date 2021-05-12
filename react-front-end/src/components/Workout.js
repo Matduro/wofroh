@@ -38,16 +38,17 @@ export default function Workout() {
   const handleSaveWorkout = () => {
     const params = {
       exerciseIDs: data.map((ex) => ex.id),
-      workoutName: "The Nally Express",
+      workoutName: document.getElementById("workoutname").value,
       workoutTime: data
         .map((obj) => obj.total_time)
         .reduce((total, num) => total + num, 0),
     };
-    console.log({ params });
+    // console.log({ params });
     axios
       .post("/api/workout", params)
-      .then((res) => {
-        console.log({ res });
+      .then(() => {
+        console.log("Successfully saved your workout!");
+        return true;
       })
       .catch((err) => {
         console.log({ err });
@@ -62,7 +63,7 @@ export default function Workout() {
     axios
       .get("/api/workout", { params })
       .then((res) => {
-        console.log("response=res", res);
+        // console.log("response=res", res);
         setData(res.data.exercises);
         setSelectedExercise(res.data.exercises);
         setVideoURL(res.data.exercises[0].exercise_video_url);
@@ -71,13 +72,13 @@ export default function Workout() {
         console.log({ err });
       });
   }, []);
-  console.log({ videoURL });
+  // console.log({ videoURL });
 
   let my_rows = data.map((item) => ({
     name: item.exercise_name,
     video: item.exercise_video_url,
   }));
-  console.log("my rows=", my_rows, data);
+  // console.log("my rows=", my_rows, data);
 
   return (
     data.length > 0 && (
@@ -136,15 +137,19 @@ export default function Workout() {
           </Table>
         </TableContainer>
         <Timer exerciseTimes={data.map((obj) => obj.total_time)} />
-        <Button
-          className="btns"
-          buttonStyle="btn--primary"
-          buttonSyze="btn--large"
-          href="/savedworkouts"
-          onClick={handleSaveWorkout}
-        >
-          Save Workout
-        </Button>
+        <form>
+          <label htmlFor="workoutname">Name your new workout</label>
+          <input id="workoutname" name="workoutname" type="text" />
+          <Button
+            className="btns"
+            buttonStyle="btn--primary"
+            buttonSyze="btn--large"
+            href="/savedworkouts"
+            onClick={handleSaveWorkout}
+          >
+            Save Workout
+          </Button>
+        </form>
         <Video videoURL={videoURL} />
       </>
     )

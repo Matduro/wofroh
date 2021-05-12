@@ -21,7 +21,7 @@ module.exports = (db) => {
       [request.query.checked]
     )
       .then((data) => {
-        console.log("data:", { data });
+        // console.log("data:", { data });
         const exercises = data.rows;
         response.json({ exercises });
       })
@@ -48,20 +48,33 @@ module.exports = (db) => {
     )
       .then((res) => {
         // console.log("res from first query: ", res);
-        db.query(
+
+        /////////////////////
+        /// TODO STRETCH: for what we're trying to achieve,
+        /// inserting an array into postgreSQL is not good practice.
+        /// We should map over the array and create a query string,
+        /// then concatenate it with the INSERT INTO statement, and db.query it.
+        /////////////////////
+        // ALTERNATE SOLUTION:
+        //   pg.query(
+        //     "INSERT INTO testtable (id, name) SELECT * FROM UNNEST ($1::int[], $2::text[])",
+        //     [
+        //         [1, 2, 3],
+        //         ["Jack", "John", "Jill"],
+        //     ]
+        // )
+        /////////////////////
+        return db.query(
           `
      INSERT INTO workout_exercises (
      excercise_id, workout_id)
-     VALUES (
-     $1, $2)
-      RETURNING id;`,
+     VALUES ($1, $2) RETURNING *;`,
           [exerciseIDs, res.rows[0].id]
         );
       })
       .then((res) => {
-        console.log("*********Saved******Workout: ", res);
-        // const savedWorkout = res.rows[0].id;
-        // response.json({ savedWorkout });
+        const savedWorkout = res.rows[0].id;
+        response.json({ savedWorkout });
       })
       .catch((error) => {
         console.log({ error });
