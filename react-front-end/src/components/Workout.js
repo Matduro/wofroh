@@ -13,6 +13,8 @@ import { useLocation } from "react-router-dom";
 import Video from "./Video";
 import Timer from "./Timer";
 import { Button } from "./Button";
+import Footer from "./pages/Footer";
+import "./Workout.css";
 
 const useStyles = makeStyles({
   table: {
@@ -56,7 +58,6 @@ export default function Workout() {
   };
 
   React.useEffect(() => {
-    // console.log("state=", state);
     const params = {
       checked: state.checked,
     };
@@ -67,6 +68,7 @@ export default function Workout() {
         setData(res.data.exercises);
         setSelectedExercise(res.data.exercises);
         setVideoURL(res.data.exercises[0].exercise_video_url);
+        console.log(res.data);
       })
       .catch((err) => {
         console.log({ err });
@@ -78,7 +80,6 @@ export default function Workout() {
     name: item.exercise_name,
     video: item.exercise_video_url,
   }));
-  // console.log("my rows=", my_rows, data);
 
   return (
     data.length > 0 && (
@@ -137,18 +138,19 @@ export default function Workout() {
           </Table>
         </TableContainer>
         <Timer exerciseTimes={data.map((obj) => obj.total_time)} />
-        <form>
-          <label htmlFor="workoutname">Name your new workout</label>
+        <form className="save--workout">
+          <label htmlFor="workoutname">Name your new workout: </label>
           <input
             id="workoutname"
             name="workoutname"
             type="text"
             placeholder="workout name"
           />
+
           <Button
             className="btns"
-            buttonStyle="btn--primary"
-            buttonSyze="btn--large"
+            buttonStyle="btn--go"
+            buttonSize="btn--saved"
             href="/savedworkouts"
             onClick={handleSaveWorkout}
           >
@@ -156,6 +158,7 @@ export default function Workout() {
           </Button>
         </form>
         <Video videoURL={videoURL} />
+        <Footer />
       </>
     )
   );

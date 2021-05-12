@@ -1,0 +1,18 @@
+.save--workout {
+  display: flex;
+  margin: 15px 0px 15px 15px;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 500px;
+  opacity: 0.5;
+  border-radius: 5px;
+  box-shadow: 0 6px 20px rgba(56, 125, 255, 0.17);
+}
+
+#workoutname {
+  height: 36px;
+}
+
+.save--workout:hover {
+  opacity: 1;
+}

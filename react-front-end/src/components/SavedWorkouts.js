@@ -40,7 +40,7 @@ function SavedWorkouts() {
                   className="btns"
                   buttonStyle="btn--go"
                   buttonSize="btn--saved"
-                  href={`/workout/saved/${workout.id}`}
+                  path={`/workout/saved/${workout.id}`}
                 >
                   GO
                 </Button>
