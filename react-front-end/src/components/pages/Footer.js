@@ -8,7 +8,8 @@ function Footer() {
     <div className="footer-container">
       <section className="footer-subscription">
         <p className="footer-subscription-heading">
-          Join the <strong>WoFroH</strong> newsletter to receive our latest workout secrets
+          Join the <strong>WoFroH</strong> newsletter to receive our latest
+          workout secrets
         </p>
         <p className="footer-subscription-text">
           You can unsubscribe at any time.
@@ -65,7 +66,7 @@ function Footer() {
           <div class="footer-logo">
             <Link to="/" className="social-logo">
               WoFroH
-              <i className="fas fa-fire"></i>
+              <i class="fas fa-fire" />
             </Link>
           </div>
           <small class="website-rights">WoFroH © 2021</small>

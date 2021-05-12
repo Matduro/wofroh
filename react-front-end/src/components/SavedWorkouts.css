@@ -1,0 +1,33 @@
+.hero-btns.saved-workouts {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 350px;
+  width: 30%;
+  margin: 15px auto;
+  padding: 8px 20px;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(56, 125, 255, 0.17);
+  opacity: 0.5;
+}
+
+.hero-btns.saved-workouts:hover {
+  opacity: 1;
+}
+
+.saved-list {
+  border: solid;
+  border-width: thin medium;
+  border-radius: 100px;
+  padding: 5px;
+}
+
+.saved-title {
+  margin-bottom: 50px;
+  opacity: 0.7;
+}
+
+.saved--container {
+  padding-top: 50px;
+}

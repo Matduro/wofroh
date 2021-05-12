@@ -156,3 +156,7 @@
     transition: 250ms;
   }
 }
+
+.fa-fire {
+  padding-left: 7px;
+}

@@ -5,41 +5,41 @@ import CardItem from "./CardItem";
 function Cards() {
   return (
     <div className="cards">
-      <h1>Check out these EPIC Workouts!</h1>
+      <h1>The latest and greatest from WoFroH</h1>
       <div className="cards__container">
         <div className="cards__wrapper">
           <ul className="cards__items">
             <CardItem
-              src="images/core-crusher.jpg"
-              text="Boost the abilities of your abdominal and back muscles without leaving your home"
-              label="Core Crusher"
-              path="/services"
+              src="images/hulkin-andy.jpg"
+              text="Unleash your inner Hulk with Andy's summer bootcamp"
+              label="Strength"
+              path="/strength"
             />
             <CardItem
-              src="images/nally-express.jpg"
-              text="Enjoy fitness in the comfort of your boat sailing around Vancouver Island"
-              label="Nally Express"
-              path="/services"
+              src="images/nally-gary-baywatch.jpg"
+              text="Christian and Gary share their beach-body secrets"
+              label="Fitness"
+              path="/fitness"
             />
           </ul>
           <ul className="cards__items">
             <CardItem
-              src="images/ball-exercise.jpg"
-              text="Build your stamina without professional workout equipment"
-              label="Adventurer"
-              path="/services"
+              src="images/img-3.jpg"
+              text="Feel the fire in your quads"
+              label="Legs"
+              path="/legs"
             />
             <CardItem
-              src="images/andys-cardio.jpg"
-              text="Experience crazy heart rate next to your computer without coffee"
-              label="Andy's Cardio"
-              path="/products"
+              src="images/img-4.jpg"
+              text="One simple solution for great pectorals"
+              label="Chest"
+              path="/chest"
             />
             <CardItem
               src="images/img-8.jpg"
-              text="Ride through the Sahara Desert on a guided camel tour"
-              label="Adrenaline"
-              path="/sign-up"
+              text="Give your body the mobility it deserves"
+              label="Yoga"
+              path="/yoga"
             />
           </ul>
         </div>

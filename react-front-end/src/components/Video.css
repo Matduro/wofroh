@@ -1,0 +1,13 @@
+.video {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 350px;
+  width: 50%;
+  margin: 15px auto;
+  padding: 35px 20px;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(56, 125, 255, 0.17);
+  /* opacity: 0.5; */
+}
