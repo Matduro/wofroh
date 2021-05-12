@@ -1,12 +1,34 @@
 import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    // "& > *": {
+    //   margin: theme.spacing(1),
+    // },
+    // background: 'linear-gradient(45deg, #514e4e 30%, #1e120d 90%)',
+    background: "rgb(81 78 78);",
+    border: 1,
+    borderRadius: 3,
+    boxShadow: "",
+    color: "white",
+    height: 30,
+    width: "100%",
+    justifyContent: "center",
+  },
+}));
 
 function Timer({ exerciseTimes }) {
+  const classes = useStyles();
+
   return (
-    <div>
-      {`Your total workout time is: ${exerciseTimes.reduce(
-        (total, num) => total + num,
-        0
-      )} min`}
+    <div className={classes.root}>
+      <h4>
+        {`Your total workout time is:  ${exerciseTimes.reduce(
+          (total, num) => total + num,
+          0
+        )} min`}
+      </h4>
     </div>
   );
 }
