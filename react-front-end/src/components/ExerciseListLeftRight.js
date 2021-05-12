@@ -26,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
   },
   cardHeader: {
     padding: theme.spacing(1, 2),
+    justifyContent: "center",
   },
   list: {
     width: 200,
