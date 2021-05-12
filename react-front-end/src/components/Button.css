@@ -1,5 +1,6 @@
 :root {
   --primary: #fff;
+  --night: rgb(53, 42, 42);
 }
 
 .btn {
@@ -21,6 +22,14 @@
   color: #fff;
   padding: 8px 20px;
   border: 1px solid var(--primary);
+  transition: all 0.3s ease-out;
+}
+
+.btn--go {
+  background-color: rgb(136, 196, 136);
+  color: #242424;
+  padding: 8px 20px;
+  border: 1px solid var(--night);
   transition: all 0.3s ease-out;
 }
 

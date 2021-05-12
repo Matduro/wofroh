@@ -14,7 +14,6 @@ App.use(Express.static("public"));
 
 const pool = new Pool(dbParams);
 
-// TODO complete the below resources routes
 // require the routes for each resources
 const loginRoutes = require("./routes/login");
 const exercisesApiRoutes = require("./routes/exercises");
