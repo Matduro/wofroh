@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     height: 200,
     [theme.breakpoints.down("xs")]: {
       width: "100% !important", // Overrides inline-style
-      height: 100
+      height: 100,
     },
     "&:hover, &$focusVisible": {
       zIndex: 1,
@@ -32,7 +32,6 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
-
   focusVisible: {},
   imageButton: {
     position: "absolute",
@@ -79,11 +78,11 @@ const useStyles = makeStyles((theme) => ({
     transition: theme.transitions.create("opacity"),
   },
   whiteBorder: {
-    border: "3px solid white"
+    border: "3px solid white",
   },
   selectedMuscle: {
     border: "4px solid currentColor",
-  }
+  },
 }));
 
 export default function CategoryList({ data, onClick, selectedMuscleGroups }) {
@@ -107,11 +106,7 @@ export default function CategoryList({ data, onClick, selectedMuscleGroups }) {
           width: "33%",
         }}
       >
-        <div
-          onClick={() =>
-            onClick(obj)
-          } style={{}} //TODO Set Style for clicked categories
-        >
+        <div onClick={() => onClick(obj)} style={{}}>
           <span
             className={classes.imageSrc}
             style={{
@@ -122,6 +117,9 @@ export default function CategoryList({ data, onClick, selectedMuscleGroups }) {
           <span
             className={classNames(classes.imageButton, classes.whiteBorder)}
             onClick={handleClick}
+
+          // style={{ border: "5px solid white" }}
+          // border={flag ? "5px solid white !important" : "none"}
           >
             <Typography
               component="span"
