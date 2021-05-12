@@ -122,9 +122,6 @@ export default function CategoryList({ data, onClick, selectedMuscleGroups }) {
           <span
             className={classNames(classes.imageButton, classes.whiteBorder)}
             onClick={handleClick}
-
-          // style={{ border: "5px solid white" }}
-          // border={flag ? "5px solid white !important" : "none"}
           >
             <Typography
               component="span"
