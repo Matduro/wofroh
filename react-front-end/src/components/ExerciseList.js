@@ -7,7 +7,9 @@ import {
   Link,
   useHistory,
 } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, styled } from "@material-ui/core/styles";
+import { Grid } from "@material-ui/core";
+import Button from "@material-ui/core/Button";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
@@ -23,6 +25,14 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     maxWidth: 360,
     backgroundColor: theme.palette.background.paper,
+    justifyContent: "center",
+  },
+  alignItemsAndJustifyContent: {
+    width: 500,
+    height: 80,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
 }));
 
@@ -56,37 +66,54 @@ export default function CheckboxListSecondary({ exercises }) {
     });
   };
 
+  const MyButton = styled(Button)({
+    background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
+    border: 0,
+    borderRadius: 3,
+    boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
+    color: "white",
+    height: 48,
+    padding: "0 30px",
+  });
+
   return (
     <List dense className={classes.root}>
+      <h1>Exercise List:</h1>
       {exercises.map((value) => {
         const labelId = `checkbox-list-secondary-label-${value.exercise_name}`;
         return (
-          <table>
-            <ListItem key={value.exercises_name} button>
-              <ListItemAvatar>
-                <Avatar
-                  alt={`Avatar n°${value.exercises_name}`}
-                  src={value.exercise_picture_url}
-                />
-              </ListItemAvatar>
-              <ListItemText id={labelId} primary={`${value.exercise_name}`} />
-              <tr>
-                <ListItemText>{`Exercise Time: ${value.total_time}`}</ListItemText>
-              </tr>
-              <ListItemSecondaryAction>
-                <Checkbox
-                  edge="end"
-                  onChange={handleToggle(value)}
-                  checked={checked.indexOf(value) !== -1}
-                  inputProps={{ "aria-labelledby": labelId }}
-                />
-              </ListItemSecondaryAction>
-            </ListItem>
-          </table>
+          <ListItem key={value.exercises_name} button>
+            <ListItemAvatar>
+              <Avatar
+                alt={`Avatar n°${value.exercises_name}`}
+                src={value.exercise_picture_url}
+              />
+            </ListItemAvatar>
+            <ListItemText id={labelId} primary={`${value.exercise_name}`} />
+
+            <ListItemText>{`Exercise Time: ${value.total_time}`}</ListItemText>
+
+            <ListItemSecondaryAction>
+              <Checkbox
+                edge="end"
+                onChange={handleToggle(value)}
+                checked={checked.indexOf(value) !== -1}
+                inputProps={{ "aria-labelledby": labelId }}
+              />
+            </ListItemSecondaryAction>
+          </ListItem>
         );
       })}
-      <Timer exerciseTimes={checked.map((ex) => ex.total_time)} />
-      <CreateWorkoutButton onClick={handleCreateWorkout} />
+      <Grid
+        container
+        spacing={0}
+        alignItems="center"
+        justify="center"
+        style={{ minHeight: "20vh" }}
+      >
+        <Timer exerciseTimes={checked.map((ex) => ex.total_time)} />
+        <CreateWorkoutButton onClick={handleCreateWorkout} />
+      </Grid>
     </List>
   );
 }
