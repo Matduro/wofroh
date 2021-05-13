@@ -21,6 +21,7 @@ import CreateWorkoutButton from "./CreateWorkoutButton";
 import Timer from "./Timer";
 import Typography from "@material-ui/core/Typography";
 import classNames from "classnames";
+import Footer from "./pages/Footer";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -88,55 +89,59 @@ export default function CheckboxListSecondary({ exercises }) {
   };
 
   return (
-    <List dense className={classes.root}>
-      <table className={classes.table}>
-        <tbody className={classes.spacingElements}>
-          {exercises.map((value) => {
-            const labelId = `checkbox-list-secondary-label-${value.exercise_name}`;
-            return (
-              <tr>
-                <ListItem
-                  className={classes.exercise}
-                  key={value.exercises_name}
-                  button
-                >
-                  <td className={classes.tdName}>
-                    <ListItemAvatar>
-                      <Avatar
-                        alt={`Avatar n°${value.exercises_name}`}
-                        src={value.exercise_picture_url}
+    <>
+      <List dense className={classes.root}>
+        <table className={classes.table}>
+          <tbody className={classes.spacingElements}>
+            {exercises.map((value) => {
+              const labelId = `checkbox-list-secondary-label-${value.exercise_name}`;
+              return (
+                <tr>
+
+                  <ListItem
+                    className={classes.exercise}
+                    key={value.exercises_name}
+                    button
+                  >
+                    <td className={classes.tdName}>
+                      <ListItemAvatar>
+                        <Avatar
+                          alt={`Avatar n°${value.exercises_name}`}
+                          src={value.exercise_picture_url}
+                        />
+                      </ListItemAvatar>
+                    </td>
+                    <td className={classes.tdName}>
+                      <ListItemText
+                        id={labelId}
+                        primary={`${value.exercise_name}`}
                       />
-                    </ListItemAvatar>
-                  </td>
-                  <td className={classes.tdName}>
-                    <ListItemText
-                      id={labelId}
-                      primary={`${value.exercise_name}`}
-                    />
-                  </td>
-                  <td className={classes.tdTime}>
-                    <ListItemText
-                      className={classes.listItemText}
-                    >{`Minutes: ${value.total_time}`}</ListItemText>
-                  </td>
-                  {/* <td className={classes.td}> */}
-                  <ListItemSecondaryAction>
-                    <Checkbox
-                      edge="end"
-                      onChange={handleToggle(value)}
-                      checked={checked.indexOf(value) !== -1}
-                      inputProps={{ "aria-labelledby": labelId }}
-                    />
-                  </ListItemSecondaryAction>
-                  {/* </td> */}
-                </ListItem>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-      <Timer exerciseTimes={checked.map((ex) => ex.total_time)} />
-      <CreateWorkoutButton onClick={handleCreateWorkout} />
-    </List>
+                    </td>
+                    <td className={classes.tdTime}>
+                      <ListItemText
+                        className={classes.listItemText}
+                      >{`Minutes: ${value.total_time}`}</ListItemText>
+                    </td>
+                    {/* <td className={classes.td}> */}
+                    <ListItemSecondaryAction>
+                      <Checkbox
+                        edge="end"
+                        onChange={handleToggle(value)}
+                        checked={checked.indexOf(value) !== -1}
+                        inputProps={{ "aria-labelledby": labelId }}
+                      />
+                    </ListItemSecondaryAction>
+                    {/* </td> */}
+                  </ListItem>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+        <Timer exerciseTimes={checked.map((ex) => ex.total_time)} />
+        <CreateWorkoutButton onClick={handleCreateWorkout} />
+      </List>
+
+    </>
   );
 }

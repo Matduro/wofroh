@@ -4,6 +4,7 @@ import ButtonBase from "@material-ui/core/ButtonBase";
 import Typography from "@material-ui/core/Typography";
 import classNames from "classnames";
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -65,9 +66,8 @@ const useStyles = makeStyles((theme) => ({
   },
   imageTitle: {
     position: "relative",
-    padding: `${theme.spacing(2)}px ${theme.spacing(4)}px ${
-      theme.spacing(1) + 6
-    }px`,
+    padding: `${theme.spacing(2)}px ${theme.spacing(4)}px ${theme.spacing(1) + 6
+      }px`,
   },
   imageMarked: {
     height: 3,
@@ -94,41 +94,44 @@ export default function CategoryList({ data, onClick, selectedMuscleGroups }) {
     const selected = selectedMuscleGroups.some((item) => item.id === obj.id);
     // console.log("The selected category", selected ? selected.id : null, index);
     return (
-      <ButtonBase
-        focusRipple
-        key={obj.title}
-        className={classes.image}
-        focusVisibleClassName={classes.focusVisible}
-        style={{
-          width: "33%",
-        }}
-      >
-        <div onClick={() => onClick(obj)} style={{}}>
-          <span
-            className={classes.imageSrc}
-            style={{
-              backgroundImage: `url(${obj.muscle_url})`,
-            }}
-          />
-          <span className={classes.imageBackdrop} />
-          <span
-            className={classNames(classes.imageButton, classes.whiteBorder)}
-          >
-            <Typography
-              component="span"
-              variant="subtitle1"
-              color="inherit"
-              className={classNames(
-                classes.imageTitle,
-                selected ? classes.selectedMuscle : ""
-              )}
+      <>
+        <ButtonBase
+          focusRipple
+          key={obj.title}
+          className={classes.image}
+          focusVisibleClassName={classes.focusVisible}
+          style={{
+            width: "33%",
+          }}
+        >
+          <div onClick={() => onClick(obj)} style={{}}>
+            <span
+              className={classes.imageSrc}
+              style={{
+                backgroundImage: `url(${obj.muscle_url})`,
+              }}
+            />
+            <span className={classes.imageBackdrop} />
+            <span
+              className={classNames(classes.imageButton, classes.whiteBorder)}
             >
-              <h2>{obj.title}</h2>
-              <span className={selected ? "" : classes.imageMarked} />
-            </Typography>
-          </span>
-        </div>
-      </ButtonBase>
+              <Typography
+                component="span"
+                variant="subtitle1"
+                color="inherit"
+                className={classNames(
+                  classes.imageTitle,
+                  selected ? classes.selectedMuscle : ""
+                )}
+              >
+                <h2>{obj.title}</h2>
+                <span className={selected ? "" : classes.imageMarked} />
+              </Typography>
+            </span>
+          </div>
+        </ButtonBase>
+
+      </>
     );
   });
 

@@ -176,7 +176,7 @@ export default function Workout() {
 
           <Video videoURL={videoURL} />
         </div>
-        <Footer />
+        {/* <Footer /> */}
       </>
     )
   );
