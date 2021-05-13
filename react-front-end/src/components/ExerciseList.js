@@ -39,13 +39,12 @@ const useStyles = makeStyles((theme) => ({
     opacity: 0.4,
     transition: theme.transitions.create("opacity"),
   },
-  listItemText: {
-    marginLeft: "100px",
-    marginRight: "100px",
-    minWidth: "60px",
-  },
+  listItemText: {},
   exercise: {
     minWidth: "60px",
+  },
+  td: {
+    width: "25%",
   },
 }));
 
@@ -79,39 +78,52 @@ export default function CheckboxListSecondary({ exercises }) {
 
   return (
     <List dense className={classes.root}>
-      {exercises.map((value) => {
-        const labelId = `checkbox-list-secondary-label-${value.exercise_name}`;
-        return (
-          <table>
-            <ListItem
-              className={classes.exercise}
-              key={value.exercises_name}
-              button
-            >
-              <ListItemAvatar>
-                <Avatar
-                  alt={`Avatar n°${value.exercises_name}`}
-                  src={value.exercise_picture_url}
-                />
-              </ListItemAvatar>
-              <ListItemText id={labelId} primary={`${value.exercise_name}`} />
+      <table>
+        <tbody>
+          {exercises.map((value) => {
+            const labelId = `checkbox-list-secondary-label-${value.exercise_name}`;
+            return (
               <tr>
-                <ListItemText
-                  className={classes.listItemText}
-                >{`Exercise Time: ${value.total_time}`}</ListItemText>
+                <ListItem
+                  className={classes.exercise}
+                  key={value.exercises_name}
+                  button
+                >
+                  <td className={classes.td}>
+                    <ListItemAvatar>
+                      <Avatar
+                        alt={`Avatar n°${value.exercises_name}`}
+                        src={value.exercise_picture_url}
+                      />
+                    </ListItemAvatar>
+                  </td>
+                  <td className={classes.td}>
+                    <ListItemText
+                      id={labelId}
+                      primary={`${value.exercise_name}`}
+                    />
+                  </td>
+                  <td className={classes.td}>
+                    <ListItemText
+                      className={classes.listItemText}
+                    >{`Exercise Time: ${value.total_time}`}</ListItemText>
+                  </td>
+                  <td className={classes.td}>
+                    <ListItemSecondaryAction>
+                      <Checkbox
+                        edge="end"
+                        onChange={handleToggle(value)}
+                        checked={checked.indexOf(value) !== -1}
+                        inputProps={{ "aria-labelledby": labelId }}
+                      />
+                    </ListItemSecondaryAction>
+                  </td>
+                </ListItem>
               </tr>
-              <ListItemSecondaryAction>
-                <Checkbox
-                  edge="end"
-                  onChange={handleToggle(value)}
-                  checked={checked.indexOf(value) !== -1}
-                  inputProps={{ "aria-labelledby": labelId }}
-                />
-              </ListItemSecondaryAction>
-            </ListItem>
-          </table>
-        );
-      })}
+            );
+          })}
+        </tbody>
+      </table>
       {/* <Grid
         container
         spacing={0}
