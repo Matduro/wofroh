@@ -139,7 +139,7 @@ export default function Workout() {
                       num_of_sets,
                       num_of_reps,
                       muscle_group_id,
-                      igtintensity,
+                      intensity,
                       rating,
                       exercise_video_url,
                       title,
