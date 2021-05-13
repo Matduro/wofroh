@@ -46,6 +46,9 @@ const useStyles = makeStyles((theme) => ({
   td: {
     width: "25%",
   },
+  table: {
+    width: "100%",
+  },
 }));
 
 export default function CheckboxListSecondary({ exercises }) {
@@ -78,7 +81,7 @@ export default function CheckboxListSecondary({ exercises }) {
 
   return (
     <List dense className={classes.root}>
-      <table>
+      <table className={classes.table}>
         <tbody>
           {exercises.map((value) => {
             const labelId = `checkbox-list-secondary-label-${value.exercise_name}`;
