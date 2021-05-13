@@ -8,16 +8,19 @@ const useStyles = makeStyles((theme) => ({
     //   margin: theme.spacing(1),
     // },
     // background: 'linear-gradient(45deg, #514e4e 30%, #1e120d 90%)',
-    background:
-      "linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%)",
+    background: "rgb(163, 219, 163)",
+    // "linear-gradient(90deg, rgb(163, 219, 163) 0%, rgb(95, 182, 95) 100%)",
     border: 0,
     borderRadius: 3,
     boxShadow: "0 3px 5px 2px rgb(18 13 14 / 30%)",
     color: "white",
     height: 65,
-    width: "100%",
-    margin: 'auto',
-    width: '55%'
+    margin: "auto",
+    width: "55vw",
+    "&:hover": {
+      background: "rgb(95, 182, 95)",
+      transition: "all 0.3s ease-out",
+    },
   },
 }));
 
@@ -39,7 +42,7 @@ export default function GenerateExercise({ onClick }) {
         color="primary"
         onClick={onClick}
       >
-        <h1>Generate Exercises</h1>
+        <h3>Generate Exercises</h3>
       </Button>
     </div>
   );
