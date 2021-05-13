@@ -28,14 +28,10 @@ export default function Workout() {
   const [data, setData] = React.useState([]);
   const [selectedExercise, setSelectedExercise] = React.useState([]);
   const [videoURL, setVideoURL] = React.useState(null);
-  // const [workoutName, setWorkoutName] = React.useState("");
 
-  // console.log({ data });
   const handleVideoURL = (video) => {
     setVideoURL(video);
   };
-
-  // const handleWorkoutName = () => {};
 
   const handleSaveWorkout = () => {
     const params = {
@@ -45,7 +41,6 @@ export default function Workout() {
         .map((obj) => obj.total_time)
         .reduce((total, num) => total + num, 0),
     };
-    // console.log({ params });
     axios
       .post("/api/workout", params)
       .then(() => {
@@ -64,7 +59,6 @@ export default function Workout() {
     axios
       .get("/api/workout", { params })
       .then((res) => {
-        // console.log("response=res", res);
         setData(res.data.exercises);
         setSelectedExercise(res.data.exercises);
         setVideoURL(res.data.exercises[0].exercise_video_url);
@@ -74,12 +68,6 @@ export default function Workout() {
         console.log({ err });
       });
   }, []);
-  // console.log({ videoURL });
-
-  let my_rows = data.map((item) => ({
-    name: item.exercise_name,
-    video: item.exercise_video_url,
-  }));
 
   return (
     data.length > 0 && (

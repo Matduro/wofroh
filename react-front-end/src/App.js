@@ -46,7 +46,6 @@ const App = (props) => {
   // };
 
   const handleSelectMuscleGroup = (item) => {
-    // console.log({ item });
     let newState = [...selectedMuscleGroups];
     if (newState.includes(item)) {
       const index = newState.indexOf(item);
@@ -57,7 +56,6 @@ const App = (props) => {
     }
     setSelectedMuscleGroups(newState);
   };
-  // console.log({ selectedMuscleGroups });
 
   // muscle groups for front page
   useEffect(() => {
@@ -65,26 +63,19 @@ const App = (props) => {
       setMuscleGroups(res.data.muscleGroups);
     });
   }, []);
-  // console.log({ muscleGroups });
 
   const handleGenerateExercise = () => {
     // access endpoint/query with the state value
     const params = {
       muscleGroups: selectedMuscleGroups.map((group) => group.id),
     };
-    axios
-      .get("/api/exercises", { params })
-      //.then((res) => console.log({ res }));
-      .then((res) => {
-        console.log(res.data.exercises);
-        setExercises(res.data.exercises);
-      });
-    // request from server
-    // add responce to state
+    console.log("PARAMS", params);
+    axios.get("/api/exercises", { params }).then((res) => {
+      setExercises(res.data.exercises);
+    });
 
-    //redirects to exercises page
+    //redirects to exercises list page
     history.push("/exercises");
-    // console.log({ generatedExercises });
   };
 
   return (

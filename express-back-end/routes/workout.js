@@ -2,26 +2,23 @@ const router = require("express").Router();
 
 module.exports = (db) => {
   router.get("/", (request, response) => {
-    // console.log("request.query.checked", request.query.checked);
-    // response.send("it worked!");
+    // Query examples:
     //ids = [1,3,4];
     //var q = client.query('SELECT Id FROM MyTable WHERE Id = ANY($1::int[])',[ids]);
     // `
-    // SELECT *, muscle_groups.title as muscle_group_name
+    // SELECT *
     // FROM exercises
-    // JOIN muscle_groups ON exercises.id = muscle_group_id
-    // WHERE muscle_group_id = ANY($1::int[])
+    // WHERE exercise_name = ANY($1::text[])
     // ;`
     db.query(
-      `
-      SELECT *
-      FROM exercises
-      WHERE exercise_name = ANY($1::text[])
-      ;`,
-      [request.query.checked]
+      `SELECT *, muscle_groups.title as muscle_group_name
+    FROM exercises
+    JOIN muscle_groups ON muscle_groups.id = muscle_group_id
+    WHERE muscle_group_id = ANY($1::int[])
+    ;`,
+      [request.query.checked.map(Number)]
     )
       .then((data) => {
-        // console.log("data:", { data });
         const exercises = data.rows;
         response.json({ exercises });
       })
@@ -55,8 +52,6 @@ module.exports = (db) => {
       [workoutName, workoutTime]
     )
       .then((res) => {
-        // console.log("res from first query: ", res);
-
         /////////////////////
         /// TODO STRETCH: for what we're trying to achieve,
         /// inserting an array into postgreSQL is not good practice.

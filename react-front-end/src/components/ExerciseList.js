@@ -48,8 +48,6 @@ export default function CheckboxListSecondary({ exercises }) {
   const exerciseNames = exercises.map((ex) => ex.exercise_name);
   const exerciseTimes = exercises.map((ex) => ex.total_time);
   const exerciseImages = exercises.map((ex) => ex.exercise_picture_url);
-  // console.log({ exercises });
-  // console.log({ checked });
 
   const handleToggle = (value) => () => {
     const currentIndex = checked.indexOf(value);
@@ -66,7 +64,7 @@ export default function CheckboxListSecondary({ exercises }) {
 
   const handleCreateWorkout = () => {
     history.push("/workout", {
-      checked: checked.map((obj) => obj.exercise_name),
+      checked: checked.map((obj) => obj.muscle_group_id),
     });
   };
 
