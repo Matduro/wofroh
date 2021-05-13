@@ -263,7 +263,7 @@ VALUES (
 INSERT INTO exercises (
 muscle_group_id, exercise_picture_url, exercise_name, exercise_video_url, exercise_info, total_time, num_of_reps, num_of_sets, intensity, rating)
 VALUES (
-9, 'https://images.unsplash.com/photo-1599447332412-6bc6830c815a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzJ8fHN0cmV0Y2hpbmd8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60', 'Lower Back Stretch', 'https://www.youtube.com/watch?v=Xm8iSSdU3I0', 'info should be here', 3, 3, 3, 4, 1);
+9, 'https://images.unsplash.com/photo-1593811167565-4672e6c8ce4c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8eW9nYSUyMHN0cmV0Y2h8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60', 'Lower Back Stretch', 'https://www.youtube.com/watch?v=Xm8iSSdU3I0', 'info should be here', 3, 3, 3, 4, 1);
 INSERT INTO exercises (
 muscle_group_id, exercise_picture_url, exercise_name, exercise_video_url, exercise_info, total_time, num_of_reps, num_of_sets, intensity, rating)
 VALUES (
