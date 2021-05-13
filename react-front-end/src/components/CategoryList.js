@@ -27,9 +27,9 @@ const useStyles = makeStyles((theme) => ({
       "& $imageMarked": {
         opacity: 0,
       },
-      "& $imageTitle": {
-        border: "4px solid currentColor",
-      },
+      // "& $imageTitle": {
+      //   border: "4px solid currentColor",
+      // },
     },
   },
   focusVisible: {},
@@ -65,8 +65,9 @@ const useStyles = makeStyles((theme) => ({
   },
   imageTitle: {
     position: "relative",
-    padding: `${theme.spacing(2)}px ${theme.spacing(4)}px ${theme.spacing(1) + 6
-      }px`,
+    padding: `${theme.spacing(2)}px ${theme.spacing(4)}px ${
+      theme.spacing(1) + 6
+    }px`,
   },
   imageMarked: {
     height: 3,
@@ -123,11 +124,11 @@ export default function CategoryList({ data, onClick, selectedMuscleGroups }) {
               )}
             >
               <h2>{obj.title}</h2>
-              <span className={classes.imageMarked} />
+              <span className={selected ? "" : classes.imageMarked} />
             </Typography>
           </span>
         </div>
-      </ButtonBase >
+      </ButtonBase>
     );
   });
 
