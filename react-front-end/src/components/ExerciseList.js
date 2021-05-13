@@ -25,7 +25,8 @@ import classNames from "classnames";
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
-    maxWidth: 360,
+    maxWidth: "80%",
+    margin: "auto",
     backgroundColor: theme.palette.background.paper,
   },
   imageBackdrop: {
@@ -37,6 +38,14 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.common.black,
     opacity: 0.4,
     transition: theme.transitions.create("opacity"),
+  },
+  listItemText: {
+    marginLeft: "100px",
+    marginRight: "100px",
+    minWidth: "60px",
+  },
+  exercise: {
+    minWidth: "60px",
   },
 }));
 
@@ -74,7 +83,11 @@ export default function CheckboxListSecondary({ exercises }) {
         const labelId = `checkbox-list-secondary-label-${value.exercise_name}`;
         return (
           <table>
-            <ListItem key={value.exercises_name} button>
+            <ListItem
+              className={classes.exercise}
+              key={value.exercises_name}
+              button
+            >
               <ListItemAvatar>
                 <Avatar
                   alt={`Avatar n°${value.exercises_name}`}
@@ -83,7 +96,9 @@ export default function CheckboxListSecondary({ exercises }) {
               </ListItemAvatar>
               <ListItemText id={labelId} primary={`${value.exercise_name}`} />
               <tr>
-                <ListItemText>{`Exercise Time: ${value.total_time}`}</ListItemText>
+                <ListItemText
+                  className={classes.listItemText}
+                >{`Exercise Time: ${value.total_time}`}</ListItemText>
               </tr>
               <ListItemSecondaryAction>
                 <Checkbox

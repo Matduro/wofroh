@@ -14,7 +14,11 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
     height: 30,
     width: "100%",
-    justifyContent: "center",
+    verticalAlign: "middle",
+  },
+  header: {
+    textAlign: "center",
+    paddingTop: "4px",
   },
 }));
 
@@ -23,7 +27,7 @@ function Timer({ exerciseTimes }) {
 
   return (
     <div className={classes.root}>
-      <h4>
+      <h4 className={classes.header}>
         {`Your total workout time is:  ${exerciseTimes.reduce(
           (total, num) => total + num,
           0

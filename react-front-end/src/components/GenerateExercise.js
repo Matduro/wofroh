@@ -16,6 +16,8 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
     height: 65,
     width: "100%",
+    margin: 'auto',
+    width: '55%'
   },
 }));
 
@@ -37,7 +39,7 @@ export default function GenerateExercise({ onClick }) {
         color="primary"
         onClick={onClick}
       >
-        Generate Exercises!
+        <h1>Generate Exercises</h1>
       </Button>
     </div>
   );

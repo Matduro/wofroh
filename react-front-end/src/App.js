@@ -31,20 +31,6 @@ const App = (props) => {
   const [muscleGroups, setMuscleGroups] = useState([]); // for initial rendering of the muscle groups
   const [generatedExercises, setExercises] = useState([]); // for rendering a list of generated exercises
 
-  // const fetchData = () => {
-  //   axios
-  //     .get("/api/data") // You can simply make your requests to "/api/whatever you want"
-  //     .then((response) => {
-  //       // handle success
-  //       console.log(response.data); // The entire response from the Rails API
-
-  //       console.log(response.data.message); // Just the message
-  //       this.setState({
-  //         message: response.data.message,
-  //       });
-  //     });
-  // };
-
   const handleSelectMuscleGroup = (item) => {
     let newState = [...selectedMuscleGroups];
     if (newState.includes(item)) {
