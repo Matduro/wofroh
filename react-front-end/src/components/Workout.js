@@ -74,7 +74,7 @@ export default function Workout() {
 
   React.useEffect(() => {
     const params = {
-      checked: state.checked,
+      exerciseIDs: state.exerciseIDs,
     };
     axios
       .get("/api/workout", { params })
@@ -139,7 +139,7 @@ export default function Workout() {
                       num_of_sets,
                       num_of_reps,
                       muscle_group_id,
-                      intensity,
+                      igtintensity,
                       rating,
                       exercise_video_url,
                       title,

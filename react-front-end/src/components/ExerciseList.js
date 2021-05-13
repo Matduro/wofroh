@@ -21,6 +21,7 @@ import Timer from "./Timer";
 import Typography from "@material-ui/core/Typography";
 import classNames from "classnames";
 import GenerateExercise from "./GenerateExercise";
+import "./Workout.css";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -47,12 +48,14 @@ const useStyles = makeStyles((theme) => ({
   exercise: {
     minWidth: "60px",
     justifyContent: "space-around",
+    "border-bottom": "1px solid",
   },
   tdName: {
     width: "20%",
   },
   table: {
     width: "100%",
+    border: "solid",
   },
   tdTime: {
     width: "30%",
@@ -83,7 +86,7 @@ export default function CheckboxListSecondary({ exercises }) {
 
   const handleCreateWorkout = () => {
     history.push("/workout", {
-      checked: checked.map((obj) => obj.muscle_group_id),
+      exerciseIDs: checked.map((obj) => obj.id),
     });
   };
 
