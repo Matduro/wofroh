@@ -11,12 +11,12 @@ module.exports = (db) => {
     // WHERE exercise_name = ANY($1::text[])
     // ;`
     db.query(
-      `SELECT *, muscle_groups.title as muscle_group_name
+      `SELECT *, muscle_groups.title
     FROM exercises
     JOIN muscle_groups ON muscle_groups.id = muscle_group_id
-    WHERE muscle_group_id = ANY($1::int[])
+    WHERE exercises.id = ANY($1::int[])
     ;`,
-      [request.query.checked.map(Number)]
+      [request.query.exerciseIDs.map(Number)]
     )
       .then((data) => {
         const exercises = data.rows;
