@@ -178,7 +178,7 @@ VALUES (
 INSERT INTO exercises (
 muscle_group_id, exercise_picture_url, exercise_name, exercise_video_url, exercise_info, total_time, num_of_reps, num_of_sets, intensity, rating)
 VALUES (
-4, 'https://www.verywellfit.com/thmb/HUHzpgHArFEVTas_LlWfcNdUUuM=/4500x2531/smart/filters:no_upscale()/About-A52-CleanAndPress-703copy-570574d75f9b581408c96262.jpg', 'Shoulder Press', 'https://www.youtube.com/watch?v=M2rwvNhTOu0', 'info should be here', 4, 36, 3, 4, 2;
+4, 'https://www.verywellfit.com/thmb/HUHzpgHArFEVTas_LlWfcNdUUuM=/4500x2531/smart/filters:no_upscale()/About-A52-CleanAndPress-703copy-570574d75f9b581408c96262.jpg', 'Shoulder Press', 'https://www.youtube.com/watch?v=M2rwvNhTOu0', 'info should be here', 4, 36, 3, 4, 2);
 INSERT INTO exercises (
 muscle_group_id, exercise_picture_url, exercise_name, exercise_video_url, exercise_info, total_time, num_of_reps, num_of_sets, intensity, rating)
 VALUES (
