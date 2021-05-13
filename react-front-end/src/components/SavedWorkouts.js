@@ -49,7 +49,6 @@ function SavedWorkouts() {
           );
         })}
       </>
-      <Footer />
     </body>
   );
 }

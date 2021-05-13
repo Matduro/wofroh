@@ -15,6 +15,7 @@ import ExerciseList from "./components/ExerciseList";
 import Workout from "./components/Workout";
 import SavedWorkouts from "./components/SavedWorkouts";
 import Home from "./components/pages/Home";
+import Footer from "./components/pages/Footer";
 
 const withRouter = (WrappedComponent) => (props) => {
   return (
@@ -77,7 +78,10 @@ const App = (props) => {
             selectedMuscleGroups={selectedMuscleGroups}
           />
 
-          <GenerateExercise onClick={handleGenerateExercise} />
+          <GenerateExercise
+            onClick={handleGenerateExercise}
+            children={"Generate Exercises"}
+          />
         </Route>
         <Route path="/exercises">
           <ExerciseList exercises={generatedExercises} />
@@ -86,6 +90,7 @@ const App = (props) => {
         <Route path="/savedworkouts" component={SavedWorkouts} />
         {/* <Route path="/video" component={Video} /> */}
       </Switch>
+      <Footer />
     </>
   );
 };

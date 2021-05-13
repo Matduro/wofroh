@@ -21,13 +21,13 @@ const useStyles = makeStyles({
     minWidth: 650,
   },
   tableRow: {
-    hover: { "background-color": 'blue' }
-  }
+    hover: { "background-color": "blue" },
+  },
 });
 
 const StyledTableRow = withStyles((theme) => ({
   root: {
-    '&:hover': {
+    "&:hover": {
       backgroundColor: theme.palette.action.hover,
     },
 
@@ -38,7 +38,7 @@ const StyledTableRow = withStyles((theme) => ({
 const StyledTableContainer = withStyles((theme) => ({
   root: {
     width: "940px",
-    margin: "32px auto 0px"
+    margin: "32px auto 0px",
   },
 }))(TableContainer);
 
@@ -109,7 +109,7 @@ export default function Workout() {
                 onClick={handleSaveWorkout}
               >
                 Save Workout
-          </Button>
+              </Button>
             </div>
           </form>
           <h3>Get help from the coach by clicking on any exercise</h3>
@@ -121,7 +121,6 @@ export default function Workout() {
                 aria-label="a dense table"
               >
                 <TableHead>
-
                   <TableRow classes={classes.tableRow}>
                     <TableCell>Exercise Name</TableCell>
                     <TableCell align="right">Time(m)</TableCell>
@@ -131,7 +130,6 @@ export default function Workout() {
                     <TableCell align="right">Intensity</TableCell>
                     <TableCell align="right">Rating</TableCell>
                   </TableRow>
-
                 </TableHead>
                 <TableBody>
                   {data.map(
@@ -152,7 +150,6 @@ export default function Workout() {
                         key={exercise_name}
                         onClick={() => handleVideoURL(exercise_video_url)}
                       >
-
                         <TableCell component="th" scope="row">
                           {exercise_name}
                         </TableCell>
@@ -173,10 +170,8 @@ export default function Workout() {
               <Timer exerciseTimes={data.map((obj) => obj.total_time)} />
             </div>
           </div>
-
           <Video videoURL={videoURL} />
         </div>
-        <Footer />
       </>
     )
   );

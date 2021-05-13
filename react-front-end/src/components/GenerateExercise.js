@@ -15,8 +15,9 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: "0 3px 5px 2px rgb(18 13 14 / 30%)",
     color: "white",
     height: 65,
-    margin: "auto",
-    width: "55vw",
+    marginTop: "15px",
+    marginBottom: "150px",
+    // width: "55vw",
     "&:hover": {
       background: "rgb(95, 182, 95)",
       transition: "all 0.3s ease-out",
@@ -24,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function GenerateExercise({ onClick }) {
+export default function GenerateExercise({ onClick, children }) {
   const classes = useStyles();
 
   return (
@@ -42,7 +43,7 @@ export default function GenerateExercise({ onClick }) {
         color="primary"
         onClick={onClick}
       >
-        <h3>Generate Exercises</h3>
+        <h3>{children}</h3>
       </Button>
     </div>
   );

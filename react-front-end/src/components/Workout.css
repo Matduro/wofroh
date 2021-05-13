@@ -18,7 +18,7 @@
 
 .page--container {
   max-width: 940px;
-  margin: auto;
+  margin: auto auto;
 }
 
 .table-row:hover {
