@@ -1,5 +1,5 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -20,7 +20,27 @@ const useStyles = makeStyles({
   table: {
     minWidth: 650,
   },
+  tableRow: {
+    hover: { "background-color": 'blue' }
+  }
 });
+
+const StyledTableRow = withStyles((theme) => ({
+  root: {
+    '&:hover': {
+      backgroundColor: theme.palette.action.hover,
+    },
+
+    height: "65px",
+  },
+}))(TableRow);
+
+const StyledTableContainer = withStyles((theme) => ({
+  root: {
+    width: "940px",
+    margin: "32px auto 0px"
+  },
+}))(TableContainer);
 
 export default function Workout() {
   const { state } = useLocation();
@@ -71,80 +91,91 @@ export default function Workout() {
   return (
     data.length > 0 && (
       <>
-        <TableContainer component={Paper}>
-          <Table
-            className={classes.table}
-            size="small"
-            aria-label="a dense table"
-          >
-            <TableHead>
-              <TableRow>
-                <TableCell>Exercise Name</TableCell>
-                <TableCell align="right">Time(m)</TableCell>
-                <TableCell align="right">Sets</TableCell>
-                <TableCell align="right">Reps</TableCell>
-                <TableCell align="right">Muscle Group</TableCell>
-                <TableCell align="right">Intensity</TableCell>
-                <TableCell align="right">Rating</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {data.map(
-                ({
-                  exercise_name,
-                  total_time,
-                  num_of_sets,
-                  num_of_reps,
-                  muscle_group_id,
-                  intensity,
-                  rating,
-                  exercise_video_url,
-                  title,
-                  exercise_picture_url,
-                  exercise_info,
-                }) => (
-                  <TableRow
-                    key={exercise_name}
-                    onClick={() => handleVideoURL(exercise_video_url)}
-                  >
-                    <IconButton edge="start">
-                      <TableCell component="th" scope="row">
-                        {exercise_name}
-                      </TableCell>
-                    </IconButton>
-                    <TableCell align="right">{total_time}</TableCell>
-                    <TableCell align="right">{num_of_sets}</TableCell>
-                    <TableCell align="right">{num_of_reps}</TableCell>
-                    <TableCell align="right">{title}</TableCell>
-                    <TableCell align="right">{intensity}</TableCell>
-                    <TableCell align="right">{rating}</TableCell>
-                  </TableRow>
-                )
-              )}
-            </TableBody>
-          </Table>
-        </TableContainer>
-        <Timer exerciseTimes={data.map((obj) => obj.total_time)} />
-        <form className="save--workout">
-          <label htmlFor="workoutname">Name your new workout: </label>
-          <input
-            id="workoutname"
-            name="workoutname"
-            type="text"
-            placeholder="workout name"
-          />
+        <div className="page--container workout--page">
+          <form className="save--workout">
+            <div>
+              <input
+                id="workoutname"
+                name="workoutname"
+                type="text"
+                placeholder="Name your workout  "
+              />
 
-          <Button
-            className="btns"
-            buttonStyle="btn--go"
-            buttonSize="btn--saved"
-            href="/savedworkouts"
-            onClick={handleSaveWorkout}
-          >
-            Save Workout
+              <Button
+                className="btns"
+                buttonStyle="btn--go"
+                buttonSize="btn--saved"
+                href="/savedworkouts"
+                onClick={handleSaveWorkout}
+              >
+                Save Workout
           </Button>
-        </form>
-        <Video videoURL={videoURL} />
+            </div>
+          </form>
+          <h3>Get help from the coach by clicking on any exercise</h3>
+          <div className="exercises--section">
+            <StyledTableContainer>
+              <Table
+                className={classes.table}
+                size="small"
+                aria-label="a dense table"
+              >
+                <TableHead>
+
+                  <TableRow classes={classes.tableRow}>
+                    <TableCell>Exercise Name</TableCell>
+                    <TableCell align="right">Time(m)</TableCell>
+                    <TableCell align="right">Sets</TableCell>
+                    <TableCell align="right">Reps</TableCell>
+                    <TableCell align="right">Muscle Group</TableCell>
+                    <TableCell align="right">Intensity</TableCell>
+                    <TableCell align="right">Rating</TableCell>
+                  </TableRow>
+
+                </TableHead>
+                <TableBody>
+                  {data.map(
+                    ({
+                      exercise_name,
+                      total_time,
+                      num_of_sets,
+                      num_of_reps,
+                      muscle_group_id,
+                      intensity,
+                      rating,
+                      exercise_video_url,
+                      title,
+                      exercise_picture_url,
+                      exercise_info,
+                    }) => (
+                      <StyledTableRow
+                        key={exercise_name}
+                        onClick={() => handleVideoURL(exercise_video_url)}
+                      >
+
+                        <TableCell component="th" scope="row">
+                          {exercise_name}
+                        </TableCell>
+
+                        <TableCell align="right">{total_time}</TableCell>
+                        <TableCell align="right">{num_of_sets}</TableCell>
+                        <TableCell align="right">{num_of_reps}</TableCell>
+                        <TableCell align="right">{title}</TableCell>
+                        <TableCell align="right">{intensity}</TableCell>
+                        <TableCell align="right">{rating}</TableCell>
+                      </StyledTableRow>
+                    )
+                  )}
+                </TableBody>
+              </Table>
+            </StyledTableContainer>
+            <div className="timer--container">
+              <Timer exerciseTimes={data.map((obj) => obj.total_time)} />
+            </div>
+          </div>
+
+          <Video videoURL={videoURL} />
+        </div>
         <Footer />
       </>
     )

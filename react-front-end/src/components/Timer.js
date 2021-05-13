@@ -9,7 +9,6 @@ const useStyles = makeStyles((theme) => ({
     // background: 'linear-gradient(45deg, #514e4e 30%, #1e120d 90%)',
     background: "rgb(81 78 78);",
     border: 1,
-    borderRadius: 3,
     boxShadow: "",
     color: "white",
     height: 30,

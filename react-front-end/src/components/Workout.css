@@ -1,18 +1,41 @@
 .save--workout {
-  display: flex;
-  margin: 15px 0px 15px 15px;
-  justify-content: space-around;
+  margin: 15px auto 15px auto;
   align-items: center;
-  max-width: 500px;
+  max-width: 940px;
   opacity: 0.5;
-  border-radius: 5px;
-  box-shadow: 0 6px 20px rgba(56, 125, 255, 0.17);
+  display: flex;
+  justify-content: center;
 }
 
 #workoutname {
   height: 36px;
+  padding-left: 8px;
 }
 
 .save--workout:hover {
   opacity: 1;
+}
+
+.page--container {
+  max-width: 940px;
+  margin: auto;
+}
+
+.table-row:hover {
+  background-color: rgba(224, 224, 224, 1);
+}
+
+.timer--container {
+  margin: auto;
+  width: 940px;
+}
+
+.workout--page h3 {
+  text-align: center;
+}
+
+.exercises--section {
+  box-shadow: 2px 1px 5px grey;
+  width: 940px;
+  margin: 32px auto;
 }

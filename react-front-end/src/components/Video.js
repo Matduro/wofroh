@@ -5,7 +5,6 @@ import "./Video.css";
 function Video({ videoURL }) {
   return (
     <div className="video--container">
-      <h3>Get help from the coach by clicking on any exercise</h3>
       <div className="video">
         <div></div>
         <ReactPlayer url={videoURL} />
