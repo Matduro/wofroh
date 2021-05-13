@@ -62,7 +62,6 @@ export default function Workout() {
         setData(res.data.exercises);
         setSelectedExercise(res.data.exercises);
         setVideoURL(res.data.exercises[0].exercise_video_url);
-        console.log(res.data);
       })
       .catch((err) => {
         console.log({ err });
