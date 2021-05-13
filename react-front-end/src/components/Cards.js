@@ -24,19 +24,19 @@ function Cards() {
           </ul>
           <ul className="cards__items">
             <CardItem
-              src="images/img-3.jpg"
+              src="images/female-squat.jpeg"
               text="Feel the fire in your quads"
               label="Legs"
               path="/legs"
             />
             <CardItem
-              src="images/img-4.jpg"
+              src="images/malepushup.jpeg"
               text="One simple solution for great pectorals"
               label="Chest"
               path="/chest"
             />
             <CardItem
-              src="images/img-8.jpg"
+              src="images/yoga-home.jpeg"
               text="Give your body the mobility it deserves"
               label="Yoga"
               path="/yoga"
