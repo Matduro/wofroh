@@ -7,7 +7,7 @@ function Video({ videoURL }) {
     <div className="video--container">
       <div className="video">
         <div></div>
-        <ReactPlayer url={videoURL} />
+        <ReactPlayer controls url={videoURL} />
         {/* <ReactPlayer url='https://www.youtube.com/watch?v=ysz5S6PUM-U' /> */}
       </div>
     </div>
