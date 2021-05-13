@@ -109,7 +109,7 @@ export default function CheckboxListSecondary({ exercises }) {
                   <td className={classes.td}>
                     <ListItemText
                       className={classes.listItemText}
-                    >{`Exercise Time: ${value.total_time}`}</ListItemText>
+                    >{`Minutes: ${value.total_time}`}</ListItemText>
                   </td>
                   <td className={classes.td}>
                     <ListItemSecondaryAction>
