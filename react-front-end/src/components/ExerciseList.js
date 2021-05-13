@@ -24,10 +24,14 @@ import classNames from "classnames";
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    justifyContent: "space-evenly",
     width: "100%",
     maxWidth: "80%",
     margin: "auto",
     backgroundColor: theme.palette.background.paper,
+  },
+  spacingElements: {
+    justifyContent: "space-between",
   },
   imageBackdrop: {
     position: "absolute",
@@ -42,12 +46,16 @@ const useStyles = makeStyles((theme) => ({
   listItemText: {},
   exercise: {
     minWidth: "60px",
+    justifyContent: "space-around",
   },
-  td: {
-    width: "25%",
+  tdName: {
+    width: "20%",
   },
   table: {
     width: "100%",
+  },
+  tdTime: {
+    width: "30%",
   },
 }));
 
@@ -82,7 +90,7 @@ export default function CheckboxListSecondary({ exercises }) {
   return (
     <List dense className={classes.root}>
       <table className={classes.table}>
-        <tbody>
+        <tbody className={classes.spacingElements}>
           {exercises.map((value) => {
             const labelId = `checkbox-list-secondary-label-${value.exercise_name}`;
             return (
@@ -92,7 +100,7 @@ export default function CheckboxListSecondary({ exercises }) {
                   key={value.exercises_name}
                   button
                 >
-                  <td className={classes.td}>
+                  <td className={classes.tdName}>
                     <ListItemAvatar>
                       <Avatar
                         alt={`Avatar n°${value.exercises_name}`}
@@ -100,89 +108,35 @@ export default function CheckboxListSecondary({ exercises }) {
                       />
                     </ListItemAvatar>
                   </td>
-                  <td className={classes.td}>
+                  <td className={classes.tdName}>
                     <ListItemText
                       id={labelId}
                       primary={`${value.exercise_name}`}
                     />
                   </td>
-                  <td className={classes.td}>
+                  <td className={classes.tdTime}>
                     <ListItemText
                       className={classes.listItemText}
                     >{`Minutes: ${value.total_time}`}</ListItemText>
                   </td>
-                  <td className={classes.td}>
-                    <ListItemSecondaryAction>
-                      <Checkbox
-                        edge="end"
-                        onChange={handleToggle(value)}
-                        checked={checked.indexOf(value) !== -1}
-                        inputProps={{ "aria-labelledby": labelId }}
-                      />
-                    </ListItemSecondaryAction>
-                  </td>
+                  {/* <td className={classes.td}> */}
+                  <ListItemSecondaryAction>
+                    <Checkbox
+                      edge="end"
+                      onChange={handleToggle(value)}
+                      checked={checked.indexOf(value) !== -1}
+                      inputProps={{ "aria-labelledby": labelId }}
+                    />
+                  </ListItemSecondaryAction>
+                  {/* </td> */}
                 </ListItem>
               </tr>
             );
           })}
         </tbody>
       </table>
-      {/* <Grid
-        container
-        spacing={0}
-        alignItems="center"
-        justify="center"
-        style={{ minHeight: "20vh" }}
-      > */}
       <Timer exerciseTimes={checked.map((ex) => ex.total_time)} />
-      <Typography
-        component="span"
-        variant="subtitle1"
-        color="inherit"
-        className={classNames(classes.imageTitle)}
-      >
-        <CreateWorkoutButton onClick={handleCreateWorkout} />
-      </Typography>
-      {/* </Grid> */}
+      <CreateWorkoutButton onClick={handleCreateWorkout} />
     </List>
   );
 }
-
-// const handleGenerateExercise = () => {
-//   // access endpoint/query with the state value
-//   const params = {
-//     muscleGroups: selectedMuscleGroups.map((group) => group.id),
-//   };
-//   axios
-//     .get("/api/exercises", { params })
-//     //.then((res) => console.log({ res }));
-//     .then((res) => {
-//       setExercises(res.data.exercises);
-//     });
-//   // request from server
-//   // add responce to state
-
-//   //redirects to exercises page
-//   history.push("/exercises");
-//   console.log({ generatedExercises });
-// };
-
-// const handleCreateWorkout = () => {
-
-//   const params = {
-//     checked,
-//   };
-//   axios
-//     .get("/api/workout", { params })
-//     .then((res) => {
-//       // console.log(res);
-//       setWorkout(res.data.workout);
-//     })
-//     .catch((err) => {
-//       console.log({ err });
-//     });
-//   history.push("/workout");
-
-//   history.push("/workout", { checked })
-
-// };
