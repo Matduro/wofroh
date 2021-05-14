@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Button } from "./Button";
-import Footer from "./pages/Footer";
 import "../App.css";
 import "./SavedWorkouts.css";
 

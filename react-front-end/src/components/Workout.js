@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -13,7 +13,6 @@ import { useLocation } from "react-router-dom";
 import Video from "./Video";
 import Timer from "./Timer";
 import { Button } from "./Button";
-import Footer from "./pages/Footer";
 import "./Workout.css";
 
 const useStyles = makeStyles({
@@ -30,7 +29,6 @@ const StyledTableRow = withStyles((theme) => ({
     "&:hover": {
       backgroundColor: theme.palette.action.hover,
     },
-
     height: "65px",
   },
 }))(TableRow);
@@ -45,9 +43,9 @@ const StyledTableContainer = withStyles((theme) => ({
 export default function Workout() {
   const { state } = useLocation();
   const classes = useStyles();
-  const [data, setData] = React.useState([]);
-  const [selectedExercise, setSelectedExercise] = React.useState([]);
-  const [videoURL, setVideoURL] = React.useState(null);
+  const [data, setData] = useState([]);
+  // const [selectedExercise, setSelectedExercise] = useState([]);
+  const [videoURL, setVideoURL] = useState(null);
 
   const handleVideoURL = (video) => {
     setVideoURL(video);
@@ -80,7 +78,7 @@ export default function Workout() {
       .get("/api/workout", { params })
       .then((res) => {
         setData(res.data.exercises);
-        setSelectedExercise(res.data.exercises);
+        // setSelectedExercise(res.data.exercises);
         setVideoURL(res.data.exercises[0].exercise_video_url);
       })
       .catch((err) => {
@@ -107,6 +105,8 @@ export default function Workout() {
                 buttonSize="btn--saved"
                 href="/savedworkouts"
                 onClick={handleSaveWorkout}
+                type="reset"
+                defaultValue="Reset"
               >
                 Save Workout
               </Button>
