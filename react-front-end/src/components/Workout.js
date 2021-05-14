@@ -14,13 +14,11 @@ import Video from "./show/Video";
 import Timer from "./show/Timer";
 import { Button } from "./show/Button";
 import "./Workout.css";
+import classNames from "classnames";
 
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
-  },
-  tableRow: {
-    hover: { "background-color": "blue" },
   },
 });
 
@@ -43,14 +41,17 @@ const StyledTableContainer = withStyles((theme) => ({
 export default function Workout() {
   const { state } = useLocation();
   const classes = useStyles();
+  // State holding exercises objects returned from da
   const [data, setData] = useState([]);
-  const [savedWorkout, setSavedWorkout] = React.useState("");
+  const [savedWorkout, setSavedWorkout] = useState("");
   const [videoURL, setVideoURL] = useState(null);
+  const [formClass, setFormClass] = useState("save--workout");
 
   const handleVideoURL = (video) => {
     setVideoURL(video);
   };
 
+  // TODO implement functionality that only allows one save.
   const handleSaveWorkout = () => {
     const params = {
       exerciseIDs: data.map((ex) => ex.id),
@@ -64,7 +65,7 @@ export default function Workout() {
       .then(() => {
         console.log("Successfully saved your workout!");
         setSavedWorkout("");
-        return true;
+        setFormClass("save--workout__display--none");
       })
       .catch((err) => {
         console.log({ err });
@@ -79,7 +80,6 @@ export default function Workout() {
       .get("/api/workout", { params })
       .then((res) => {
         setData(res.data.exercises);
-        // setSelectedExercise(res.data.exercises);
         setVideoURL(res.data.exercises[0].exercise_video_url);
       })
       .catch((err) => {
@@ -91,7 +91,7 @@ export default function Workout() {
     data.length > 0 && (
       <>
         <div className="page--container workout--page">
-          <form className="save--workout">
+          <form className={formClass}>
             <div>
               <input
                 id="workoutname"
