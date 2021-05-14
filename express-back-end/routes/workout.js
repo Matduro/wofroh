@@ -10,6 +10,7 @@ module.exports = (db) => {
     // FROM exercises
     // WHERE exercise_name = ANY($1::text[])
     // ;`
+    console.log("QUERY", request.query.exerciseIDs.map(Number));
     db.query(
       `SELECT *, muscle_groups.title
     FROM exercises
@@ -20,6 +21,7 @@ module.exports = (db) => {
     )
       .then((data) => {
         const exercises = data.rows;
+        console.log({ data });
         response.json({ exercises });
       })
       .catch((error) => {

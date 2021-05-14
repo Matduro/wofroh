@@ -44,25 +44,35 @@ const useStyles = makeStyles((theme) => ({
     opacity: 0.4,
     transition: theme.transitions.create("opacity"),
   },
-  listItemText: {},
+  // listItemText: {
+  //   "border-bottom": "1px solid",
+  // },
+  tablCategories: {
+    // "border-bottom": "1px solid",
+    width: "30%",
+    display: "flex",
+    justifyContent: "space-between",
+    // background: "black",
+    // color: "white",
+  },
   exercise: {
     minWidth: "60px",
     justifyContent: "space-around",
-    "border-bottom": "1px solid",
+    // "box-shadow": "1px 1px 0px 1px",
   },
   tdName: {
     width: "20%",
   },
   table: {
     width: "100%",
-    border: "solid",
+    // border: "solid",
   },
   tdTime: {
     width: "30%",
   },
 }));
 
-export default function CheckboxListSecondary({ exercises }) {
+export default function CheckboxListSecondary({ exercises, muscleGroups }) {
   const history = useHistory();
   const classes = useStyles();
   const [generatedWorkout, setWorkout] = React.useState([]); // for rendering workout
@@ -82,12 +92,18 @@ export default function CheckboxListSecondary({ exercises }) {
     }
 
     setChecked(newChecked);
+    // console.log({ checked });
   };
 
   const handleCreateWorkout = () => {
+    //console.log("THESE ARE OUR IDS", checked);
     history.push("/workout", {
       exerciseIDs: checked.map((obj) => obj.id),
     });
+  };
+
+  const muscleGroupName = (id) => {
+    return muscleGroups.filter((group) => group.id === id)[0].title;
   };
 
   return (
@@ -95,7 +111,25 @@ export default function CheckboxListSecondary({ exercises }) {
       <List dense className={classes.root}>
         <table className={classes.table}>
           <tbody className={classes.spacingElements}>
+            {/* <tr>
+              <ListItem>
+                <th className={classes.tablCategories}>
+                  <ListItemText>{"HELLO WORLD"}</ListItemText>
+                </th>
+                <th className={classes.tablCategories}>
+                  <ListItemText>{"HELLO WORLD"}</ListItemText>
+                </th>
+                <th className={classes.tablCategories}>
+                  <ListItemText>{"HELLO WORLD"}</ListItemText>
+                </th>
+                <th className={classes.tablCategories}>
+                  <ListItemText>{"HELLO WORLD"}</ListItemText>
+                </th>
+              </ListItem>
+            </tr> */}
+
             {exercises.map((value) => {
+              //console.log({ value });
               const labelId = `checkbox-list-secondary-label-${value.exercise_name}`;
               return (
                 <tr>
@@ -119,9 +153,12 @@ export default function CheckboxListSecondary({ exercises }) {
                       />
                     </td>
                     <td className={classes.tdTime}>
-                      <ListItemText
-                        className={classes.listItemText}
-                      >{`Minutes: ${value.total_time}`}</ListItemText>
+                      <ListItemText>{`Minutes: ${value.total_time}`}</ListItemText>
+                    </td>
+                    <td className={classes.tdName}>
+                      <ListItemText>{`Muscle Group: ${muscleGroupName(
+                        value.muscle_group_id
+                      )}`}</ListItemText>
                     </td>
                     {/* <td className={classes.td}> */}
                     <ListItemSecondaryAction>

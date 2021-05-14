@@ -16,6 +16,12 @@ module.exports = (db) => {
     // JOIN muscle_groups ON exercises.id = muscle_group_id
     // WHERE muscle_group_id = ANY($1::int[])
     // ;`
+
+    // TODO FIX THE BELOW QUERY FOR MUSCLE GROUP ID
+    // `SELECT *, muscle_groups.title
+    // FROM exercises
+    // JOIN muscle_groups ON muscle_groups.id = muscle_group_id
+    // console.log("MUSCLE GROUPS", request.query.muscleGroups.map(Number));
     db.query(
       `
       SELECT *
@@ -25,6 +31,7 @@ module.exports = (db) => {
       [request.query.muscleGroups.map(Number)]
     )
       .then((data) => {
+        // console.log("DATA && MUSCLE GROUPS", data.rows);
         const exercises = data.rows;
         response.json({ exercises });
       })
