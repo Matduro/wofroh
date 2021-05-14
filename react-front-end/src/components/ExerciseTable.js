@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import axios from "axios";
 import {
   BrowserRouter as Router,
   Switch,
@@ -7,32 +6,30 @@ import {
   Link,
   useHistory,
 } from "react-router-dom";
-import Timer from "./Timer";
+import Timer from "./show/Timer";
 import classNames from "classnames";
-import GenerateExercise from "./GenerateExercise";
+import GenerateExercise from "./show/GenerateExercise";
 import "./Workout.css";
-import "./Table.css";
+import "./ExerciseTable.css";
 
-function Table({ exercises, muscleGroups }) {
+function ExerciseTable({ exercises, muscleGroups }) {
   const history = useHistory();
-  // const [generatedWorkout, setWorkout] = useState([]); // for rendering workout
-  const [random, setRandom] = useState([]);
+  const [toggle, setToggle] = useState([]);
 
-  const exIDs = random.map((ex) => ex.id);
+  const exIDs = toggle.map((ex) => ex.id);
   const handleToggle = (exerciseObj) => {
-    console.log({ exerciseObj });
-    let newState = [...random];
+    let newState = [...toggle];
     if (newState.some((exercise) => exercise.id === exerciseObj.id)) {
       newState = newState.filter((element) => element.id !== exerciseObj.id);
     } else {
       newState = [...newState, exerciseObj];
     }
-    setRandom(newState);
+    setToggle(newState);
   };
 
   const handleCreateWorkout = () => {
     history.push("/workout", {
-      exerciseIDs: random.map((obj) => obj.id),
+      exerciseIDs: toggle.map((obj) => obj.id),
     });
   };
 
@@ -71,7 +68,7 @@ function Table({ exercises, muscleGroups }) {
           );
         })}
       </table>
-      <Timer exerciseTimes={random.map((ex) => ex.total_time)} />
+      <Timer exerciseTimes={toggle.map((ex) => ex.total_time)} />
       <GenerateExercise
         onClick={handleCreateWorkout}
         children={"Create Workout"}
@@ -80,4 +77,4 @@ function Table({ exercises, muscleGroups }) {
   );
 }
 
-export default Table;
+export default ExerciseTable;

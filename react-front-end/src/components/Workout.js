@@ -10,9 +10,9 @@ import IconButton from "@material-ui/core/IconButton";
 import Paper from "@material-ui/core/Paper";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
-import Video from "./Video";
-import Timer from "./Timer";
-import { Button } from "./Button";
+import Video from "./show/Video";
+import Timer from "./show/Timer";
+import { Button } from "./show/Button";
 import "./Workout.css";
 
 const useStyles = makeStyles({

@@ -17,10 +17,10 @@ import ListItemText from "@material-ui/core/ListItemText";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Checkbox from "@material-ui/core/Checkbox";
 import Avatar from "@material-ui/core/Avatar";
-import Timer from "./Timer";
+import Timer from "../show/Timer";
 import Typography from "@material-ui/core/Typography";
 import classNames from "classnames";
-import GenerateExercise from "./GenerateExercise";
+import GenerateExercise from "../show/GenerateExercise";
 import "./Workout.css";
 
 const useStyles = makeStyles((theme) => ({

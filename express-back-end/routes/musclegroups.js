@@ -1,12 +1,8 @@
 const router = require("express").Router();
 
 module.exports = (db) => {
+  // Query the muscle groups data to populate musclegroups selection page
   router.get("/", (request, response) => {
-    // console.log(request.query.muscleGroups.map(Number));
-    // response.send("it worked!");
-    //ids = [1,3,4];
-    //var q = client.query('SELECT Id FROM MyTable WHERE Id = ANY($1::int[])',[ids]);
-
     db.query(
       `
       SELECT * FROM muscle_groups
