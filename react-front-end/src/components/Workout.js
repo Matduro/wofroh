@@ -48,6 +48,7 @@ export default function Workout() {
   const [data, setData] = React.useState([]);
   const [selectedExercise, setSelectedExercise] = React.useState([]);
   const [videoURL, setVideoURL] = React.useState(null);
+  const [savedWorkout, setSavedWorkout] = React.useState("");
 
   const handleVideoURL = (video) => {
     setVideoURL(video);
@@ -56,7 +57,7 @@ export default function Workout() {
   const handleSaveWorkout = () => {
     const params = {
       exerciseIDs: data.map((ex) => ex.id),
-      workoutName: document.getElementById("workoutname").value,
+      workoutName: savedWorkout,
       workoutTime: data
         .map((obj) => obj.total_time)
         .reduce((total, num) => total + num, 0),
@@ -65,6 +66,7 @@ export default function Workout() {
       .post("/api/workout", params)
       .then(() => {
         console.log("Successfully saved your workout!");
+        setSavedWorkout("");
         return true;
       })
       .catch((err) => {
@@ -98,11 +100,13 @@ export default function Workout() {
                 id="workoutname"
                 name="workoutname"
                 type="text"
-                placeholder="Name your workout  "
+                placeholder="Name your workout"
+                value={savedWorkout}
+                onChange={(e) => setSavedWorkout(e.target.value)}
               />
-
               <Button
                 className="btns"
+                btnClass="mm-popup__btn"
                 buttonStyle="btn--go"
                 buttonSize="btn--saved"
                 href="/savedworkouts"
