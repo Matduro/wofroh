@@ -72,8 +72,9 @@ module.exports = (db) => {
       })
       .then((res) => {
         // TODO USE THIS RESPONSE DATA FOR SOME FEATURE
-        const savedWorkout = res.rows[0].id;
-        response.json({ savedWorkout });
+        // const savedWorkout = res.rows[0].id;
+        // response.json({ savedWorkout });
+        response.json("workout saved");
       })
       .catch((error) => {
         response.status(500).json({ error: error.message });
