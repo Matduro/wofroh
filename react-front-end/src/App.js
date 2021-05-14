@@ -11,11 +11,12 @@ import "./App.css";
 import NavBar from "./components/NavBar";
 import CategoryList from "./components/CategoryList";
 import GenerateExercise from "./components/GenerateExercise";
-import ExerciseList from "./components/ExerciseList";
+// import ExerciseList from "./components/ExerciseList";
 import Workout from "./components/Workout";
 import SavedWorkouts from "./components/SavedWorkouts";
 import Home from "./components/pages/Home";
 import Footer from "./components/pages/Footer";
+import Table from "./components/Table";
 
 const withRouter = (WrappedComponent) => (props) => {
   return (
@@ -56,8 +57,8 @@ const App = (props) => {
     const params = {
       muscleGroups: selectedMuscleGroups.map((group) => group.id),
     };
-    console.log("PARAMS", params);
     axios.get("/api/exercises", { params }).then((res) => {
+      console.log("res.data.exercises:  ", res.data.exercises);
       setExercises(res.data.exercises);
     });
 
@@ -84,7 +85,7 @@ const App = (props) => {
           />
         </Route>
         <Route path="/exercises">
-          <ExerciseList exercises={generatedExercises} />
+          <Table exercises={generatedExercises} muscleGroups={muscleGroups} />
         </Route>
         <Route path="/workout" component={Workout} />
         <Route path="/savedworkouts" component={SavedWorkouts} />
