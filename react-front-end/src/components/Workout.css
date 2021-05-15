@@ -55,3 +55,7 @@
   top: 75%;
   left: 50%;
 }
+
+.raw--selected {
+  background-color: rgb(163, 219, 163) !important;
+}

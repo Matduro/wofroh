@@ -195,6 +195,7 @@ export default function Workout() {
                       <StyledTableRow
                         key={exercise_name}
                         onClick={() => handleVideoURL(exercise_video_url)}
+                        className={videoURL === exercise_video_url ? "raw--selected" : ""}
                       >
                         <TableCell component="th" scope="row">
                           {exercise_name}
