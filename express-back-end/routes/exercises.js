@@ -1,7 +1,7 @@
 const router = require("express").Router();
 
 module.exports = (db) => {
-  // Query the excercises that match the muscle group id selected by user on musclegroups selection page
+  // Query the exercises that match the muscle group id selected by user on musclegroups selection page
   router.get("/", (request, response) => {
     db.query(
       `
