@@ -34,14 +34,20 @@
 }
 
 .nav-menu {
-  display: grid;
+  /* display: grid; */
+  margin-right: -1rem;
+  /* display: grid; */
+  display: flex;
+  justify-content: flex-end;
+  /*  */
   grid-template-columns: repeat(4, auto);
   grid-gap: 10px;
   list-style: none;
   text-align: center;
   width: 60vw;
-  justify-content: end;
-  margin-right: 2rem;
+  /* justify-content: end; */
+  /* margin-right: 2rem; */
+  margin-right: -1rem
 }
 
 .nav-item {
@@ -158,4 +164,17 @@
 
 .fa-fire {
   padding-left: 7px;
+}
+
+.hello-user {
+  color: tomato;
+  margin-right: 15px;
+  margin-top: 1px;
+  font-size: 18px;
+  font-style: italic;
+}
+
+.hello-user:hover {
+  transition: none;
+  border-bottom: none
 }
