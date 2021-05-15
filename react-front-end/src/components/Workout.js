@@ -129,9 +129,8 @@ export default function Workout() {
                 className="btns"
                 buttonStyle="btn--go"
                 buttonSize="btn--saved"
-                href="/savedworkouts"
-                onClick={handleSaveWorkout}
                 type="reset"
+                onClick={handleSaveWorkout}
                 defaultValue="Reset"
               >
                 Save Workout
@@ -139,6 +138,7 @@ export default function Workout() {
             </div>
           </form>
           <Snackbar
+            className="snackbar"
             open={open}
             autoHideDuration={6000}
             onClose={handleClose}

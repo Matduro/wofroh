@@ -55,3 +55,7 @@
   top: 75%;
   left: 50%;
 }
+
+.snackbar {
+  margin-top: 10vh;
+}

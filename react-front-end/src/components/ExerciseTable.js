@@ -37,6 +37,17 @@ function ExerciseTable({ exercises, muscleGroups }) {
     return muscleGroups.filter((group) => group.id === id)[0].title;
   };
 
+  let sortedExercises = [...exercises];
+  sortedExercises.sort((a, b) => {
+    if (a.name < b.name) {
+      return -1;
+    }
+    if (a.name > b.name) {
+      return 1;
+    }
+    return 0;
+  });
+
   return (
     <body className="page--container">
       <table id="list">
@@ -49,6 +60,7 @@ function ExerciseTable({ exercises, muscleGroups }) {
         {exercises.map((exercise) => {
           return (
             <tr
+              key={exercise.id}
               onClick={() => {
                 handleToggle(exercise);
               }}
