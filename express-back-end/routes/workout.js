@@ -4,7 +4,7 @@ module.exports = (db) => {
   router.get("/", (request, response) => {
     //query the db for all exercises and join muscle_groups table to get muscle group names to render on workouts page
     db.query(
-      `SELECT *, muscle_groups.title
+      `SELECT *, muscle_groups.title, exercises.id as id
     FROM exercises
     JOIN muscle_groups ON muscle_groups.id = muscle_group_id
     WHERE exercises.id = ANY($1::int[])
@@ -12,6 +12,7 @@ module.exports = (db) => {
       [request.query.exerciseIDs.map(Number)] // <= shorthand for .map(num => Number(num))
     )
       .then((data) => {
+        // console.log("JOINED", data.rows);
         const exercises = data.rows;
         response.json({ exercises });
       })
@@ -31,7 +32,7 @@ module.exports = (db) => {
   });
 
   router.get("/saved/exercises", (request, response) => {
-    console.log("MY REQUEST", { request });
+    // console.log("MY REQUEST", { request });
     // pulls exercises matching given workout
     db.query(`SELECT * FROM workout_exercises WHERE workout_id = $1;`, [request.query.id])
       .then((res) => response.json(res.rows))
@@ -46,7 +47,7 @@ module.exports = (db) => {
     const exerciseIDs = request.body.exerciseIDs;
     const workoutName = request.body.workoutName;
     const workoutTime = request.body.workoutTime;
-
+    // console.log({ exerciseIDs });
     db.query(
       `
      INSERT INTO workouts (
@@ -76,7 +77,7 @@ module.exports = (db) => {
         return db.query(
           `
      INSERT INTO workout_exercises (
-     excercise_id, workout_id)
+     exercise_id, workout_id)
      VALUES ($1, $2) RETURNING *;`,
           [exerciseIDs, res.rows[0].id]
         );
