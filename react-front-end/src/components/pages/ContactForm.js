@@ -1,9 +1,12 @@
 import React from "react";
 import emailjs from "emailjs-com";
+import { useState } from "react";
 
 import "./ContactForm.css";
 
 export default function ContactUs() {
+  const [email, setEmail] = useState("");
+
   function sendEmail(e) {
     e.preventDefault();
 
@@ -17,6 +20,7 @@ export default function ContactUs() {
       .then(
         (result) => {
           console.log(result.text);
+          setEmail("");
         },
         (error) => {
           console.log(error.text);
@@ -32,6 +36,8 @@ export default function ContactUs() {
           name="email"
           type="email"
           placeholder="Your Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <input
           value="Subscribe"
