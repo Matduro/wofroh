@@ -14,7 +14,7 @@ input[type="submit"]:hover {
   padding: 8px 20px;
   font-size: 18px;
   background: tomato;
-  color: white;
+  color: #242424;
   border-radius: 2px;
   border-color: white;
   cursor: pointer;
