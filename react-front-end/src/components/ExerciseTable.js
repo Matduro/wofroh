@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -11,10 +11,12 @@ import classNames from "classnames";
 import GenerateExercise from "./show/GenerateExercise";
 import "./Workout.css";
 import "./ExerciseTable.css";
+import { useSortableData, SORT_CONFIG } from "../hooks/useSortableData";
 
 function ExerciseTable({ exercises, muscleGroups }) {
   const history = useHistory();
   const [toggle, setToggle] = useState([]);
+  const { exerciseList, requestSort, sortConfig } = useSortableData(exercises);
 
   const exIDs = toggle.map((ex) => ex.id);
   const handleToggle = (exerciseObj) => {
@@ -37,18 +39,50 @@ function ExerciseTable({ exercises, muscleGroups }) {
     return muscleGroups.filter((group) => group.id === id)[0].title;
   };
 
+  const getClassNamesFor = (name) => {
+    if (!sortConfig) {
+      return;
+    }
+    return sortConfig.key === name ? sortConfig.direction : undefined;
+  };
+
   return (
     <body className="page--container">
       <table id="list">
         <tr className="table-head-row">
           <th></th>
-          <th>Exercise Name</th>
-          <th>Muscle Group</th>
-          <th>Total Time</th>
+          <th>
+            <button
+              type="button"
+              onClick={() => requestSort(SORT_CONFIG.EXERCISE_NAME)}
+              className={getClassNamesFor(SORT_CONFIG.EXERCISE_NAME)}
+            >
+              Excercise Name
+            </button>
+          </th>
+          <th>
+            <button
+              type="button"
+              onClick={() => requestSort(SORT_CONFIG.MUSCLE_GROUP_ID)}
+              className={getClassNamesFor(SORT_CONFIG.MUSCLE_GROUP_ID)}
+            >
+              Muscle Group
+            </button>
+          </th>
+          <th>
+            <button
+              type="button"
+              onClick={() => requestSort(SORT_CONFIG.TOTAL_TIME)}
+              className={getClassNamesFor(SORT_CONFIG.TOTAL_TIME)}
+            >
+              Total Time
+            </button>
+          </th>
         </tr>
-        {exercises.map((exercise) => {
+        {exerciseList.map((exercise) => {
           return (
             <tr
+              key={exercise.id}
               onClick={() => {
                 handleToggle(exercise);
               }}
@@ -58,7 +92,7 @@ function ExerciseTable({ exercises, muscleGroups }) {
                 <img
                   className="table--avatar"
                   src={exercise.exercise_picture_url}
-                  alt={exercise.name}
+                  alt={exercise.exercise_name}
                 />
               </td>
               <td>{exercise.exercise_name}</td>
