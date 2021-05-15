@@ -1,27 +1,8 @@
 const router = require("express").Router();
 
 module.exports = (db) => {
+  // Query the excercises that match the muscle group id selected by user on musclegroups selection page
   router.get("/", (request, response) => {
-    // console.log(
-    //   "should be our muscleGroups",
-    //   request.query.muscleGroups.map(Number)
-    // );
-    // response.send("it worked!");
-    //ids = [1,3,4];
-    //var q = client.query('SELECT Id FROM MyTable WHERE Id = ANY($1::int[])',[ids]);
-
-    // `
-    // SELECT *, muscle_groups.title as muscle_group_name
-    // FROM exercises
-    // JOIN muscle_groups ON exercises.id = muscle_group_id
-    // WHERE muscle_group_id = ANY($1::int[])
-    // ;`
-
-    // TODO FIX THE BELOW QUERY FOR MUSCLE GROUP ID
-    // `SELECT *, muscle_groups.title
-    // FROM exercises
-    // JOIN muscle_groups ON muscle_groups.id = muscle_group_id
-    // console.log("MUSCLE GROUPS", request.query.muscleGroups.map(Number));
     db.query(
       `
       SELECT *
@@ -31,7 +12,6 @@ module.exports = (db) => {
       [request.query.muscleGroups.map(Number)]
     )
       .then((data) => {
-        // console.log("DATA && MUSCLE GROUPS", data.rows);
         const exercises = data.rows;
         response.json({ exercises });
       })
@@ -43,16 +23,19 @@ module.exports = (db) => {
   return router;
 };
 
-// CREATE TABLE exercise (
-//   id SERIAL PRIMARY KEY NOT NLL,
-//   muscle_group_id INTEGER REFERENCES muscle_group(id) ON DELETE CASCADE,
-//   exercise_picture_url VARCHAR(255) NOT NULL,
-//   exercise_name VARCHAR(255) NOT NULL,
-//   exercise_info VARCHAR(900) NOT NULL,
-//   exercise_video_url VARCHAR(255) NOT NULL,
-//   total_time INTEGER NOT NULL,
-//   num_of_reps INTEGER NOT NULL,
-//   num_of_sets INTEGER NOT NULL,
-//   intensity INTEGER NOT NULL,
-//   rating INTEGER
-// );
+/// FOR REFERENCE AND FUTURE IMPLEMENTATION
+
+// Query examples:
+//ids = [1,3,4];
+//var q = client.query('SELECT Id FROM MyTable WHERE Id = ANY($1::int[])',[ids]);
+
+// `
+// SELECT *
+// FROM exercises
+// WHERE exercise_name = ANY($1::text[])
+
+// TODO FIX THE ABOVE QUERY FOR MUSCLE GROUP ID SO THAT WE CAN GET THE MUSCLE GROUP NAMES IN OUR RESPONCE
+// `SELECT *, muscle_groups.title
+// FROM exercises
+// JOIN muscle_groups ON muscle_groups.id = muscle_group_id
+// console.log("MUSCLE GROUPS", request.query.muscleGroups.map(Number));

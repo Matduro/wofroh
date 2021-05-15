@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -14,7 +14,6 @@ import "./ExerciseTable.css";
 
 function ExerciseTable({ exercises, muscleGroups }) {
   const history = useHistory();
-  // const [generatedWorkout, setWorkout] = useState([]); // for rendering workout
   const [toggle, setToggle] = useState([]);
 
   const exIDs = toggle.map((ex) => ex.id);

@@ -12,6 +12,7 @@ App.use(BodyParser.urlencoded({ extended: false }));
 App.use(BodyParser.json());
 App.use(Express.static("public"));
 
+// connection to the postgre databate, with our .env parameters
 const pool = new Pool(dbParams);
 
 // require the routes for each resources

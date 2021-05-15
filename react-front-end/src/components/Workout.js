@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -6,21 +7,19 @@ import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
-import IconButton from "@material-ui/core/IconButton";
-import Paper from "@material-ui/core/Paper";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
-import Video from "./Video";
-import Timer from "./Timer";
-import { Button } from "./Button";
+import Video from "./show/Video";
+import Timer from "./show/Timer";
+import { Button } from "./show/Button";
 import "./Workout.css";
+import classNames from "classnames";
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
 
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
-  },
-  tableRow: {
-    hover: { "background-color": "blue" },
   },
 });
 
@@ -49,16 +48,36 @@ const StyledTableHead = withStyles((theme) => ({
 }))(TableHead);
 
 export default function Workout() {
+  const history = useHistory();
   const { state } = useLocation();
   const classes = useStyles();
+  // State holding exercises objects returned from database
   const [data, setData] = useState([]);
-  const [savedWorkout, setSavedWorkout] = React.useState("");
+  // State for input field value
+  const [savedWorkout, setSavedWorkout] = useState("");
+  // Holds which video URL to show in React Player
   const [videoURL, setVideoURL] = useState(null);
+  // Holds the css classes for form element
+  const [formClass, setFormClass] = useState("save--workout");
+  const [open, setOpen] = React.useState(false);
 
+  // Sets the video URL depending on selected exercise
   const handleVideoURL = (video) => {
     setVideoURL(video);
   };
 
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpen(false);
+  };
+
+  function Alert(props) {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
+  }
+
+  // TODO implement functionality that only allows one save.
   const handleSaveWorkout = () => {
     const params = {
       exerciseIDs: data.map((ex) => ex.id),
@@ -72,7 +91,8 @@ export default function Workout() {
       .then(() => {
         console.log("Successfully saved your workout!");
         setSavedWorkout("");
-        return true;
+        setFormClass("save--workout__display--none");
+        setOpen(true);
       })
       .catch((err) => {
         console.log({ err });
@@ -80,6 +100,10 @@ export default function Workout() {
   };
 
   React.useEffect(() => {
+    if (!state) {
+      history.push("/");
+      return;
+    }
     const params = {
       exerciseIDs: state.exerciseIDs,
     };
@@ -87,7 +111,6 @@ export default function Workout() {
       .get("/api/workout", { params })
       .then((res) => {
         setData(res.data.exercises);
-        // setSelectedExercise(res.data.exercises);
         setVideoURL(res.data.exercises[0].exercise_video_url);
       })
       .catch((err) => {
@@ -99,7 +122,7 @@ export default function Workout() {
     data.length > 0 && (
       <>
         <div className="page--container workout--page">
-          <form className="save--workout">
+          <form className={formClass}>
             <div>
               <input
                 id="workoutname"
@@ -123,6 +146,16 @@ export default function Workout() {
               </Button>
             </div>
           </form>
+          <Snackbar
+            open={open}
+            autoHideDuration={6000}
+            onClose={handleClose}
+            anchorOrigin={{ vertical: "top", horizontal: "center" }}
+          >
+            <Alert onClose={handleClose} severity="success">
+              Your workout has been saved!
+            </Alert>
+          </Snackbar>
           <h3>Get help from the coach by clicking on any exercise</h3>
           <div className="exercises--section">
             <StyledTableContainer>
@@ -144,6 +177,8 @@ export default function Workout() {
                 </StyledTableHead>
                 <TableBody>
                   {data.map(
+                    // Map through exercises array returned from Axios call
+
                     ({
                       exercise_name,
                       total_time,

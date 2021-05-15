@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Button } from "./Button";
+import { Button } from "./show/Button";
 import "./NavBar.css";
 
 function NavBar() {
@@ -64,13 +64,13 @@ function NavBar() {
                 className="nav-links-mobile"
                 onClick={closeMobileMenu}
               >
-                Sign Up
+                Log Out
               </Link>
             </li>
           </ul>
           {button && (
             <Button to="/sign-up" buttonStyle="btn-outline">
-              SIGN UP
+              LOG OUT
             </Button>
           )}
         </div>

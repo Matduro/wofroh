@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
     padding: "5px 5px 10px 5px",
     minWidth: 300,
     width: "100%",
+    boxSizing: "unset",
   },
   image: {
     position: "relative",
@@ -28,9 +29,6 @@ const useStyles = makeStyles((theme) => ({
       "& $imageMarked": {
         opacity: 0,
       },
-      // "& $imageTitle": {
-      //   border: "4px solid currentColor",
-      // },
     },
   },
   focusVisible: {},
@@ -87,13 +85,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function CategoryList({ data, onClick, selectedMuscleGroups }) {
-  const [select, setSelect] = React.useState([]);
-  // console.log({ data });
+export default function MuscleGroupList({
+  data,
+  onClick,
+  selectedMuscleGroups,
+}) {
   const classes = useStyles();
+  // map through muscleGroups to render buttons for each muscle group
   const muscleGroups = data.map((obj, index) => {
     const selected = selectedMuscleGroups.some((item) => item.id === obj.id);
-    // console.log("The selected category", selected ? selected.id : null, index);
+
     return (
       <ButtonBase
         focusRipple
@@ -101,7 +102,7 @@ export default function CategoryList({ data, onClick, selectedMuscleGroups }) {
         className={classes.image}
         focusVisibleClassName={classes.focusVisible}
         style={{
-          width: "33%",
+          width: "33.125%",
         }}
       >
         <div onClick={() => onClick(obj)} style={{}}>

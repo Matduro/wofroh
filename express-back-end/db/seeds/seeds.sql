@@ -229,7 +229,7 @@ VALUES (
 INSERT INTO exercises (
 muscle_group_id, exercise_picture_url, exercise_name, exercise_video_url, exercise_info, total_time, num_of_reps, num_of_sets, intensity, rating)
 VALUES (
-5, 'https://lh3.googleusercontent.com/proxy/dqHy8KWce1ZnbwFfhZC3u4QA-pP7cia4od12kfLvnfTN4vM_AxXUXEYHxeWq_ZX0kloSvV0huQxi5S78fQm7Ey_I35-49_w2FuLWISvBAUF1d2T8cf_BD7KDYdm_09SAyyA', 'Lat Pulldown with Resistance Band', 'https://www.youtube.com/watch?v=8zv8Pray4-w', 'info should be here', 4, 15, 2, 4, 4);
+5, 'https://lh3.googleusercontent.com/proxy/HHMlY3YWZKdpd-75vEjPNhD8Luja7zEwbHkg9UdQNITDHm_taGEnxGSk2kp9y-WksWX4jZ2gzMEFczchBx0smLq6EfVrI5szKKw5j5tK2lgewr0clvSg6Bt2QBnj5dYtRAI', 'Lat Pulldown with Resistance Band', 'https://www.youtube.com/watch?v=8zv8Pray4-w', 'info should be here', 4, 15, 2, 4, 4);
 
 INSERT INTO exercises (
 muscle_group_id, exercise_picture_url, exercise_name, exercise_video_url, exercise_info, total_time, num_of_reps, num_of_sets, intensity, rating)

@@ -3,20 +3,18 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
   useHistory,
 } from "react-router-dom";
 import axios from "axios";
 import "./App.css";
 import NavBar from "./components/NavBar";
-import CategoryList from "./components/CategoryList";
-import GenerateExercise from "./components/GenerateExercise";
-// import ExerciseList from "./components/ExerciseList";
+import MuscleGroupList from "./components/MuscleGroupList";
+import GenerateExercise from "./components/show/GenerateExercise";
 import Workout from "./components/Workout";
 import SavedWorkouts from "./components/SavedWorkouts";
 import Home from "./components/pages/Home";
 import Footer from "./components/pages/Footer";
-import Table from "./components/Table";
+import ExerciseTable from "./components/ExerciseTable";
 
 const withRouter = (WrappedComponent) => (props) => {
   return (
@@ -28,37 +26,39 @@ const withRouter = (WrappedComponent) => (props) => {
 
 const App = (props) => {
   const history = useHistory();
-  // console.log({ props });
   const [selectedMuscleGroups, setSelectedMuscleGroups] = useState([]); // for muscle group selection
   const [muscleGroups, setMuscleGroups] = useState([]); // for initial rendering of the muscle groups
   const [generatedExercises, setExercises] = useState([]); // for rendering a list of generated exercises
 
+  // handles the muscle group select and deselect feature on the muscle groups selection page
   const handleSelectMuscleGroup = (item) => {
     let newState = [...selectedMuscleGroups];
+    //filter out the muscle group that has been selected
     if (newState.includes(item)) {
       const index = newState.indexOf(item);
-      // newState = newState.splice(index, 1);
       newState = newState.filter((element, position) => position !== index);
     } else {
+      // add the selected muscle group
       newState = [...newState, item];
     }
     setSelectedMuscleGroups(newState);
   };
 
-  // muscle groups for front page
+  // for rendering muscle groups for front page
   useEffect(() => {
+    setSelectedMuscleGroups([]);
     axios.get("/api/musclegroups").then((res) => {
       setMuscleGroups(res.data.muscleGroups);
     });
   }, []);
 
+  // GET the list of exercises that match the selected muscle group ids
   const handleGenerateExercise = () => {
     // access endpoint/query with the state value
     const params = {
       muscleGroups: selectedMuscleGroups.map((group) => group.id),
     };
     axios.get("/api/exercises", { params }).then((res) => {
-      console.log("res.data.exercises:  ", res.data.exercises);
       setExercises(res.data.exercises);
     });
 
@@ -73,23 +73,26 @@ const App = (props) => {
       <Switch>
         <Route path="/" exact={true} component={Home} />
         <Route path="/musclegroups">
-          <CategoryList
+          <MuscleGroupList
             data={muscleGroups} //categoryData
             onClick={handleSelectMuscleGroup}
             selectedMuscleGroups={selectedMuscleGroups}
           />
-
-          <GenerateExercise
-            onClick={handleGenerateExercise}
-            children={"Generate Exercises"}
-          />
+          <div className="page--container">
+            <GenerateExercise
+              onClick={handleGenerateExercise}
+              children={"Generate Exercises"}
+            />
+          </div>
         </Route>
         <Route path="/exercises">
-          <Table exercises={generatedExercises} muscleGroups={muscleGroups} />
+          <ExerciseTable
+            exercises={generatedExercises}
+            muscleGroups={muscleGroups}
+          />
         </Route>
         <Route path="/workout" component={Workout} />
         <Route path="/savedworkouts" component={SavedWorkouts} />
-        {/* <Route path="/video" component={Video} /> */}
       </Switch>
       <Footer />
     </>
