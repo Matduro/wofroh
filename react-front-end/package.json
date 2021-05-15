@@ -9,6 +9,7 @@
     "axios": "^0.18.1",
     "classnames": "^2.3.1",
     "cookie-session": "^1.4.0",
+    "emailjs-com": "^2.6.4",
     "react": "^16.8.6",
     "react-alert": "^7.0.3",
     "react-dom": "^16.8.6",
