@@ -39,6 +39,14 @@ const StyledTableContainer = withStyles((theme) => ({
   },
 }))(TableContainer);
 
+const StyledTableHead = withStyles((theme) => ({
+  root: {
+    width: "940px",
+    margin: "32px auto 0px",
+    "background-color": "#dadae6",
+  },
+}))(TableHead);
+
 export default function Workout() {
   const history = useHistory();
   const { state } = useLocation();
@@ -156,7 +164,7 @@ export default function Workout() {
                 size="small"
                 aria-label="a dense table"
               >
-                <TableHead>
+                <StyledTableHead>
                   <TableRow classes={classes.tableRow}>
                     <TableCell>Exercise Name</TableCell>
                     <TableCell align="right">Time(m)</TableCell>
@@ -166,7 +174,7 @@ export default function Workout() {
                     <TableCell align="right">Intensity</TableCell>
                     <TableCell align="right">Rating</TableCell>
                   </TableRow>
-                </TableHead>
+                </StyledTableHead>
                 <TableBody>
                   {data.map(
                     // Map through exercises array returned from Axios call
@@ -187,6 +195,7 @@ export default function Workout() {
                       <StyledTableRow
                         key={exercise_name}
                         onClick={() => handleVideoURL(exercise_video_url)}
+                        className={videoURL === exercise_video_url ? "raw--selected" : ""}
                       >
                         <TableCell component="th" scope="row">
                           {exercise_name}
