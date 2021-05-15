@@ -54,7 +54,7 @@ CREATE TABLE exercises (
 
 CREATE TABLE workout_exercises (
   id SERIAL PRIMARY KEY NOT NULL,
-  excercise_id INTEGER ARRAY,
+  exercise_id INTEGER ARRAY,
   workout_id INTEGER REFERENCES workouts(id) ON DELETE CASCADE
 );
 

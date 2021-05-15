@@ -60,7 +60,7 @@ export default function Workout() {
   // Holds the css classes for form element
   const [formClass, setFormClass] = useState("save--workout");
   const [open, setOpen] = React.useState(false);
-
+  // console.log({ data });
   // Sets the video URL depending on selected exercise
   const handleVideoURL = (video) => {
     setVideoURL(video);
@@ -110,6 +110,7 @@ export default function Workout() {
     axios
       .get("/api/workout", { params })
       .then((res) => {
+        console.log("res.data.exercises=", res.data.exercises);
         setData(res.data.exercises);
         setVideoURL(res.data.exercises[0].exercise_video_url);
       })
