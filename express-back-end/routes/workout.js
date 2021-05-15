@@ -30,6 +30,17 @@ module.exports = (db) => {
       });
   });
 
+  router.get("/saved/exercises", (request, response) => {
+    console.log("MY REQUEST", { request });
+    // pulls exercises matching given workout
+    db.query(`SELECT * FROM workout_exercises WHERE workout_id = $1;`, [request.query.id])
+      .then((res) => response.json(res.rows))
+      .catch((error) => {
+        response.status(500).json({ error: error.message });
+      });
+  });
+
+
   router.post("/", (request, response) => {
     // POST for our saving workout feature
     const exerciseIDs = request.body.exerciseIDs;

@@ -272,15 +272,15 @@ VALUES (
 
 
 INSERT INTO workout_exercises (
-excercise_id, workout_id)
+exercise_id, workout_id)
 VALUES (
 '{1, 2}', 1);
 INSERT INTO workout_exercises (
-excercise_id, workout_id)
+exercise_id, workout_id)
 VALUES (
 '{3, 4}', 2);
 INSERT INTO workout_exercises (
-excercise_id, workout_id)
+exercise_id, workout_id)
 VALUES (
 '{5, 6}', 3);
 
