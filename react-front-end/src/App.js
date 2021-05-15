@@ -46,6 +46,7 @@ const App = (props) => {
 
   // for rendering muscle groups for front page
   useEffect(() => {
+    setSelectedMuscleGroups([]);
     axios.get("/api/musclegroups").then((res) => {
       setMuscleGroups(res.data.muscleGroups);
     });

@@ -64,13 +64,13 @@ function NavBar() {
                 className="nav-links-mobile"
                 onClick={closeMobileMenu}
               >
-                Sign Up
+                Log Out
               </Link>
             </li>
           </ul>
           {button && (
             <Button to="/sign-up" buttonStyle="btn-outline">
-              SIGN UP
+              LOG OUT
             </Button>
           )}
         </div>
