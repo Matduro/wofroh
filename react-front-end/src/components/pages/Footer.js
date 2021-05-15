@@ -2,6 +2,8 @@ import React from "react";
 import "./Footer.css";
 import { Button } from "../show/Button";
 import { Link } from "react-router-dom";
+import emailjs from "emailjs-com";
+import ContactForm from "./ContactForm";
 
 function Footer() {
   return (
@@ -16,13 +18,7 @@ function Footer() {
         </p>
         <div className="input-areas">
           <form>
-            <input
-              className="footer-input"
-              name="email"
-              type="email"
-              placeholder="Your Email"
-            />
-            <Button buttonStyle="btn--outline">Subscribe</Button>
+            <ContactForm />
           </form>
         </div>
       </section>
