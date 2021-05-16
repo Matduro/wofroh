@@ -7,7 +7,7 @@ const useStyles = makeStyles((theme) => ({
     //   margin: theme.spacing(1),
     // },
     // background: 'linear-gradient(45deg, #514e4e 30%, #1e120d 90%)',
-    background: "rgb(81 78 78);",
+    background: "#242424;",
     border: 1,
     boxShadow: "",
     color: "white",
