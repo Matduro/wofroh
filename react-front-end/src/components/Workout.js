@@ -44,6 +44,8 @@ const StyledTableHead = withStyles((theme) => ({
     width: "940px",
     margin: "32px auto 0px",
     "background-color": "#dadae6",
+    "font-style": "italic",
+    font: "32px"
   },
 }))(TableHead);
 

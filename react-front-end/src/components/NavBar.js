@@ -3,12 +3,13 @@ import { Link } from "react-router-dom";
 import { Button } from "./show/Button";
 import "./NavBar.css";
 
-function NavBar() {
+function NavBar(props) {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
 
   const handleClick = () => setClick(!click);
-  const closeMobileMenu = () => setClick(false);
+
+  const closeMobileMenu = () => { setClick(false) };
 
   const showButton = () => {
     if (window.innerWidth <= 960) {
@@ -39,7 +40,10 @@ function NavBar() {
               <Link
                 to="/musclegroups"
                 className="nav-links"
-                onClick={closeMobileMenu}
+                onClick={() => {
+                  closeMobileMenu();
+                  props.resetSelectedMusclegroups()
+                }}
               >
                 Build a Workout
               </Link>

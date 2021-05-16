@@ -229,7 +229,7 @@ VALUES (
 INSERT INTO exercises (
 muscle_group_id, exercise_picture_url, exercise_name, exercise_video_url, exercise_info, total_time, num_of_reps, num_of_sets, intensity, rating)
 VALUES (
-5, 'https://lh3.googleusercontent.com/proxy/HHMlY3YWZKdpd-75vEjPNhD8Luja7zEwbHkg9UdQNITDHm_taGEnxGSk2kp9y-WksWX4jZ2gzMEFczchBx0smLq6EfVrI5szKKw5j5tK2lgewr0clvSg6Bt2QBnj5dYtRAI', 'Lat Pulldown with Resistance Band', 'https://www.youtube.com/watch?v=8zv8Pray4-w', 'info should be here', 4, 15, 2, 4, 4);
+5, 'https://i1.wp.com/courtneymedicalgroupaz.com/wp-content/uploads/2019/01/lat-extension-resistance-bands-3751204973-1547521076608.jpg?fit=1024%2C524&ssl=1&resize=350%2C200', 'Lat Pulldown with Resistance Band', 'https://www.youtube.com/watch?v=8zv8Pray4-w', 'info should be here', 4, 15, 2, 4, 4);
 
 INSERT INTO exercises (
 muscle_group_id, exercise_picture_url, exercise_name, exercise_video_url, exercise_info, total_time, num_of_reps, num_of_sets, intensity, rating)
