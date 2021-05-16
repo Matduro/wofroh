@@ -68,7 +68,7 @@ const App = (props) => {
 
   return (
     <>
-      <NavBar />
+      <NavBar resetSelectedMusclegroups={() => setSelectedMuscleGroups([])} />
 
       <Switch>
         <Route path="/" exact={true} component={Home} />
