@@ -25,16 +25,16 @@
   transition: all 0.3s ease-out;
 }
 
-.btn--go {
-  background-color: rgb(163, 219, 163);
+.btn--delete {
+  background-color: rgb(245, 164, 153);
   color: #242424;
   padding: 8px 20px;
   /* border: 1px solid var(--night); */
   transition: all 0.3s ease-out;
 }
 
-.btn--saved:hover {
-  background: rgb(95, 182, 95);
+.btn--deleted:hover {
+  background: rgb(245, 164, 153);
   color: white;
   border-width: thin;
   transition: all 0.3s ease-out;

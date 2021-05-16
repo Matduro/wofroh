@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Button } from "./show/Button";
+import { DeleteButton } from "./show/DeleteButton";
 import "../App.css";
 import "./SavedWorkouts.css";
 import { useHistory } from "react-router-dom";
@@ -55,26 +56,11 @@ function SavedWorkouts() {
     const params = { id };
     axios
       .post(`/api/workout/delete`, { params })
-      .then((res) => {
-        // console.log({ res });
-        // setExerciseIDs(returnedIDs);
-        // return
-      })
+      .then((res) => {})
       .catch((err) => {
         console.log({ err });
       });
   };
-
-  // const handleDeleteWorkout = (id) => {
-  //   // DELETE request using axios with error handling
-  //   axios
-  //     .delete("http://localhost:3000/savedworkouts/:id")
-  //     .then((response) => console.log("Delete successful"))
-  //     .catch((error) => {
-  //       console.log(error.message);
-  //       console.error("There was an error!", error);
-  //     });
-  // };
 
   return (
     <body className="saved--container">
@@ -99,14 +85,15 @@ function SavedWorkouts() {
                   GO
                 </Button>
                 <div>
-                  <button
-                    style={{ marginLeft: "10px" }}
-                    className="btn btn-danger"
+                  <DeleteButton
+                    clasnName="btns"
+                    buttonStyle="btn--delete"
+                    buttonSize="btn--deleted"
                     path={`/workout/saved/${workout.id}`}
                     onClick={() => handleDeleteWorkout(workout.id)}
                   >
-                    Delete
-                  </button>
+                    DELETE
+                  </DeleteButton>
                 </div>
               </div>
             </>
