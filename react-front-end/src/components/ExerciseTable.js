@@ -50,7 +50,10 @@ function ExerciseTable({ exercises, muscleGroups }) {
     <body className="page--container">
       <table id="list">
         <tr className="table-head-row">
-          <th></th>
+          <th>
+            Sort By
+            <label>⇨</label>
+          </th>
           <th>
             <button
               type="button"
