@@ -94,16 +94,20 @@ module.exports = (db) => {
       });
   });
 
-  router.post("/:id", (request, response) => {
-    const exerciseIDs = request.body.exerciseIDs;
+  router.post("/delete", (request, response) => {
+    const workoutID = Number(request.body.params.id);
 
-    db.query(
-      `DELETE FROM workout_exercises WHERE workout_exercises.id = $1::int[]`,
-      [exerciseIDs]
-    )
+    db.query(`DELETE FROM workouts WHERE workouts.id = $1`, [workoutID])
       .then(() => {
         console.log("Workout Deleted!");
         response.json({ message: "Deleted" });
+      })
+      .then(() => {
+        console.log("WORKOUTID IN THE .THEN(): ", workoutID);
+        return db.query(
+          `DELETE FROM workout_exercises WHERE workout_id = $1::integer`,
+          [workoutID]
+        );
       })
       .catch((error) => {
         response.status(500).json({ error: error.message });

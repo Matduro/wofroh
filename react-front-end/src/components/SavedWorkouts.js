@@ -8,7 +8,7 @@ import { useHistory } from "react-router-dom";
 function SavedWorkouts() {
   const history = useHistory();
   const [savedWorkouts, setSavedWorkouts] = useState([]);
-  const [exerciseIDs, setExerciseIDs] = useState([]);
+  // const [exerciseIDs, setExerciseIDs] = useState([]);
 
   useEffect(() => {
     // console.log("state=", state);
@@ -41,7 +41,7 @@ function SavedWorkouts() {
         // return
       })
       .then((res) => {
-        console.log({ exerciseIDs });
+        // console.log({ exerciseIDs });
         // history.push("/workout", {
         //   exerciseIDs: exerciseIDs,
         // });
@@ -54,14 +54,9 @@ function SavedWorkouts() {
   const handleDeleteWorkout = (id) => {
     const params = { id };
     axios
-      .delete(`/api/workouts/`, { params })
+      .post(`/api/workout/delete`, { params })
       .then((res) => {
         // console.log({ res });
-        const returnedIDs = res.data[0].exercise_id;
-        console.log({ returnedIDs });
-        history.push("/workout", {
-          exerciseIDs: returnedIDs,
-        });
         // setExerciseIDs(returnedIDs);
         // return
       })
@@ -107,6 +102,7 @@ function SavedWorkouts() {
                   <button
                     style={{ marginLeft: "10px" }}
                     className="btn btn-danger"
+                    path={`/workout/saved/${workout.id}`}
                     onClick={() => handleDeleteWorkout(workout.id)}
                   >
                     Delete

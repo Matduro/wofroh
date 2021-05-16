@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -101,7 +101,7 @@ export default function Workout() {
       });
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!state) {
       history.push("/");
       return;
@@ -198,7 +198,9 @@ export default function Workout() {
                       <StyledTableRow
                         key={exercise_name}
                         onClick={() => handleVideoURL(exercise_video_url)}
-                        className={videoURL === exercise_video_url ? "raw--selected" : ""}
+                        className={
+                          videoURL === exercise_video_url ? "raw--selected" : ""
+                        }
                       >
                         <TableCell component="th" scope="row">
                           {exercise_name}
