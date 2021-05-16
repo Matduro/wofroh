@@ -27,12 +27,12 @@ function SavedWorkouts() {
   }, []);
 
   const handleClickWorkout = (id) => {
-    const params = { id }
+    const params = { id };
     axios
       .get("/api/workout/saved/exercises", { params })
       .then((res) => {
         // console.log({ res });
-        const returnedIDs = res.data[0].exercise_id
+        const returnedIDs = res.data[0].exercise_id;
         console.log({ returnedIDs });
         history.push("/workout", {
           exerciseIDs: returnedIDs,
@@ -45,13 +45,41 @@ function SavedWorkouts() {
         // history.push("/workout", {
         //   exerciseIDs: exerciseIDs,
         // });
-      }
-      )
+      })
       .catch((err) => {
         console.log({ err });
       });
-
   };
+
+  const handleDeleteWorkout = (id) => {
+    const params = { id };
+    axios
+      .delete(`/api/workouts/`, { params })
+      .then((res) => {
+        // console.log({ res });
+        const returnedIDs = res.data[0].exercise_id;
+        console.log({ returnedIDs });
+        history.push("/workout", {
+          exerciseIDs: returnedIDs,
+        });
+        // setExerciseIDs(returnedIDs);
+        // return
+      })
+      .catch((err) => {
+        console.log({ err });
+      });
+  };
+
+  // const handleDeleteWorkout = (id) => {
+  //   // DELETE request using axios with error handling
+  //   axios
+  //     .delete("http://localhost:3000/savedworkouts/:id")
+  //     .then((response) => console.log("Delete successful"))
+  //     .catch((error) => {
+  //       console.log(error.message);
+  //       console.error("There was an error!", error);
+  //     });
+  // };
 
   return (
     <body className="saved--container">
@@ -75,6 +103,15 @@ function SavedWorkouts() {
                 >
                   GO
                 </Button>
+                <div>
+                  <button
+                    style={{ marginLeft: "10px" }}
+                    className="btn btn-danger"
+                    onClick={() => handleDeleteWorkout(workout.id)}
+                  >
+                    Delete
+                  </button>
+                </div>
               </div>
             </>
           );

@@ -182,7 +182,7 @@ VALUES (
 INSERT INTO exercises (
 muscle_group_id, exercise_picture_url, exercise_name, exercise_video_url, exercise_info, total_time, num_of_reps, num_of_sets, intensity, rating)
 VALUES (
-4, 'https://www.jefit.com/images/exercises/800_600/3464.jpg', 'Dumbell Lateral Raise', 'https://cdn.prod.openfit.com/uploads/2017/08/29115457/Open_Fit_lateral_raise_770.jpg', 'info should be here', 5, 36, 3, 3, 4);
+4, 'https://www.jefit.com/images/exercises/800_600/3464.jpg', 'Dumbell Lateral Raise', 'https://www.youtube.com/watch?v=4p_m96HXMLk', 'info should be here', 5, 36, 3, 3, 4);
 INSERT INTO exercises (
 muscle_group_id, exercise_picture_url, exercise_name, exercise_video_url, exercise_info, total_time, num_of_reps, num_of_sets, intensity, rating)
 VALUES (
@@ -229,7 +229,7 @@ VALUES (
 INSERT INTO exercises (
 muscle_group_id, exercise_picture_url, exercise_name, exercise_video_url, exercise_info, total_time, num_of_reps, num_of_sets, intensity, rating)
 VALUES (
-5, 'https://lh3.googleusercontent.com/proxy/HHMlY3YWZKdpd-75vEjPNhD8Luja7zEwbHkg9UdQNITDHm_taGEnxGSk2kp9y-WksWX4jZ2gzMEFczchBx0smLq6EfVrI5szKKw5j5tK2lgewr0clvSg6Bt2QBnj5dYtRAI', 'Lat Pulldown with Resistance Band', 'https://www.youtube.com/watch?v=8zv8Pray4-w', 'info should be here', 4, 15, 2, 4, 4);
+5, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNHRsYp8sNuaZ2FdehyVYnv6lgFEvap10gAQ&usqp=CAU', 'Lat Pulldown with Resistance Band', 'https://www.youtube.com/watch?v=8zv8Pray4-w', 'info should be here', 4, 15, 2, 4, 4);
 
 INSERT INTO exercises (
 muscle_group_id, exercise_picture_url, exercise_name, exercise_video_url, exercise_info, total_time, num_of_reps, num_of_sets, intensity, rating)

@@ -34,13 +34,14 @@ module.exports = (db) => {
   router.get("/saved/exercises", (request, response) => {
     // console.log("MY REQUEST", { request });
     // pulls exercises matching given workout
-    db.query(`SELECT * FROM workout_exercises WHERE workout_id = $1;`, [request.query.id])
+    db.query(`SELECT * FROM workout_exercises WHERE workout_id = $1;`, [
+      request.query.id,
+    ])
       .then((res) => response.json(res.rows))
       .catch((error) => {
         response.status(500).json({ error: error.message });
       });
   });
-
 
   router.post("/", (request, response) => {
     // POST for our saving workout feature
@@ -87,6 +88,22 @@ module.exports = (db) => {
         // const savedWorkout = res.rows[0].id;
         // response.json({ savedWorkout });
         response.json("workout saved");
+      })
+      .catch((error) => {
+        response.status(500).json({ error: error.message });
+      });
+  });
+
+  router.post("/:id", (request, response) => {
+    const exerciseIDs = request.body.exerciseIDs;
+
+    db.query(
+      `DELETE FROM workout_exercises WHERE workout_exercises.id = $1::int[]`,
+      [exerciseIDs]
+    )
+      .then(() => {
+        console.log("Workout Deleted!");
+        response.json({ message: "Deleted" });
       })
       .catch((error) => {
         response.status(500).json({ error: error.message });
