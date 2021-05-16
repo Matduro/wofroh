@@ -1,7 +1,7 @@
 .table--avatar {
-  border: 3px;
+  /* border: 3px; */
   height: 100px;
-  width: 100px;
+  max-width: 100px;
   border-radius: 2px;
   padding-top: 6px;
 }
@@ -13,7 +13,7 @@
 
 #list td,
 #list th {
-  border: 1px solid #ddd;
+  /* border: 1px solid #ddd; */
   /* padding: 8px; */
   text-align: center;
 }
@@ -36,4 +36,16 @@
 
 .raw--selected {
   background-color: rgb(163, 219, 163) !important;
+}
+
+th button.ascending::after {
+  content: "⬇️";
+  display: inline-block;
+  margin-left: 1em;
+}
+
+th button.descending::after {
+  content: "⬆️";
+  display: inline-block;
+  margin-left: 1em;
 }

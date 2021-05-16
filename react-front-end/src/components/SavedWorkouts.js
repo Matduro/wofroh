@@ -8,7 +8,7 @@ import { useHistory } from "react-router-dom";
 function SavedWorkouts() {
   const history = useHistory();
   const [savedWorkouts, setSavedWorkouts] = useState([]);
-  const [exerciseIDs, setExerciseIDs] = useState([]);
+  // const [exerciseIDs, setExerciseIDs] = useState([]);
 
   useEffect(() => {
     // console.log("state=", state);
@@ -27,12 +27,12 @@ function SavedWorkouts() {
   }, []);
 
   const handleClickWorkout = (id) => {
-    const params = { id }
+    const params = { id };
     axios
       .get("/api/workout/saved/exercises", { params })
       .then((res) => {
         // console.log({ res });
-        const returnedIDs = res.data[0].exercise_id
+        const returnedIDs = res.data[0].exercise_id;
         console.log({ returnedIDs });
         history.push("/workout", {
           exerciseIDs: returnedIDs,
@@ -40,17 +40,16 @@ function SavedWorkouts() {
         // setExerciseIDs(returnedIDs);
         // return
       })
-      .then((res) => {
-        console.log({ exerciseIDs });
-        // history.push("/workout", {
-        //   exerciseIDs: exerciseIDs,
-        // });
-      }
-      )
+      // .then((res) => {
+      //   console.log({ exerciseIDs });
+      //   // history.push("/workout", {
+      //   //   exerciseIDs: exerciseIDs,
+      //   // });
+      // }
+      // )
       .catch((err) => {
         console.log({ err });
       });
-
   };
 
   return (
