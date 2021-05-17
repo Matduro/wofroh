@@ -2,7 +2,7 @@
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   min-width: 350px;
   width: 30%;
   margin: 15px auto;
@@ -16,7 +16,14 @@
   opacity: 1;
 }
 
+.paragraph-style {
+  display: flex;
+  margin-right: auto;
+}
+
 .saved-list {
+  display: flex;
+  margin-right: auto;
   border: solid;
   border-width: thin medium;
   border-radius: 100px;
