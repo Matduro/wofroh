@@ -4,24 +4,12 @@ import { Button } from "../show/Button";
 import { Link } from "react-router-dom";
 import emailjs from "emailjs-com";
 import ContactForm from "./ContactForm";
-import Snackbar from "@material-ui/core/Snackbar";
-import MuiAlert from "@material-ui/lab/Alert";
+
 
 
 
 function Footer() {
-  const [open, setOpen] = React.useState(false);
 
-  const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-    setOpen(false);
-  };
-
-  function Alert(props) {
-    return <MuiAlert elevation={6} variant="filled" {...props} />;
-  }
 
   return (
     <div className="footer-container">
@@ -37,17 +25,7 @@ function Footer() {
           <form>
             <ContactForm />
           </form>
-          <Snackbar
-            className="snackbar"
-            open={open}
-            autoHideDuration={6000}
-            onClose={handleClose}
-            anchorOrigin={{ vertical: "top", horizontal: "center" }}
-          >
-            <Alert onClose={handleClose} severity="success">
-              Your workout has been saved!
-            </Alert>
-          </Snackbar>
+
         </div>
       </section>
       <div class="footer-links">
