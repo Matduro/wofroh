@@ -17,7 +17,8 @@
     "dev:frontend": "npm install --prefix react-front-end start",
     "sequelize": "npm run --prefix express-back-end sequelize",
     "sequelize-cli": "npm run --prefix express-back-end sequelize-cli",
-    "start": "npm start --prefix express-back-end"
+    "start": "npm start --prefix express-back-end",
+    "db:reset": "npm --prefix express-back-end run db:reset"
   },
   "repository": {
     "type": "git",
