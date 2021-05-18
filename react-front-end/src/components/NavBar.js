@@ -9,7 +9,9 @@ function NavBar(props) {
 
   const handleClick = () => setClick(!click);
 
-  const closeMobileMenu = () => { setClick(false) };
+  const closeMobileMenu = () => {
+    setClick(false);
+  };
 
   const showButton = () => {
     if (window.innerWidth <= 960) {
@@ -42,8 +44,9 @@ function NavBar(props) {
                 className="nav-links"
                 onClick={() => {
                   closeMobileMenu();
-                  props.resetSelectedMusclegroups()
+                  props.resetSelectedMusclegroups();
                 }}
+                data-cy="buildworkout"
               >
                 Build a Workout
               </Link>
@@ -71,8 +74,13 @@ function NavBar(props) {
                 Log Out
               </Link>
             </li>
-            <li className="hello-user"><Link to="/" className="nav-links hello-user" onClick={closeMobileMenu}>
-              Hello, Warrior
+            <li className="hello-user">
+              <Link
+                to="/"
+                className="nav-links hello-user"
+                onClick={closeMobileMenu}
+              >
+                Hello, Warrior
               </Link>
             </li>
           </ul>

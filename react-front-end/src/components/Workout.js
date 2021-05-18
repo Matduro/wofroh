@@ -45,7 +45,7 @@ const StyledTableHead = withStyles((theme) => ({
     margin: "32px auto 0px",
     "background-color": "#dadae6",
     "font-style": "italic",
-    font: "32px"
+    font: "32px",
   },
 }))(TableHead);
 
@@ -194,8 +194,10 @@ export default function Workout() {
                       title,
                       exercise_picture_url,
                       exercise_info,
+                      id,
                     }) => (
                       <StyledTableRow
+                        data-cy={`workoutexerciseid${id}`}
                         key={exercise_name}
                         onClick={() => handleVideoURL(exercise_video_url)}
                         className={

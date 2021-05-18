@@ -19,7 +19,6 @@ function SavedWorkouts() {
     axios
       .get("/api/workout/saved")
       .then((res) => {
-        console.log("response for saved workouts", res.data);
         setSavedWorkouts(res.data);
       })
       .catch((err) => {
@@ -70,7 +69,10 @@ function SavedWorkouts() {
           // console.log({ workout });
           return (
             <>
-              <div className="hero-btns saved-workouts">
+              <div
+                className="hero-btns saved-workouts"
+                data-cy={`savedid${workout.id}`}
+              >
                 <label className="saved-list">
                   {index > 8 ? index + 1 : "0" + (index + 1).toString()}
                 </label>

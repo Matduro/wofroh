@@ -31,6 +31,7 @@ export default function GenerateExercise({ onClick, children }) {
   return (
     <div className={classes.root}>
       <Button
+        data-cy="generate"
         style={{
           border: "none",
           height: "100%",

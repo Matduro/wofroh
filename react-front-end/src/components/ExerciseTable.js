@@ -85,6 +85,7 @@ function ExerciseTable({ exercises, muscleGroups }) {
         {exerciseList.map((exercise) => {
           return (
             <tr
+              data-cy={`exercisetableid${exercise.id}`}
               key={exercise.id}
               onClick={() => {
                 handleToggle(exercise);

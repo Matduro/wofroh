@@ -104,8 +104,9 @@ export default function MuscleGroupList({
         style={{
           width: "33.125%",
         }}
+        data-cy={`muscleid${index}`}
       >
-        <div onClick={() => onClick(obj)} style={{}}>
+        <div onClick={() => onClick(obj)}>
           <span
             className={classes.imageSrc}
             style={{
