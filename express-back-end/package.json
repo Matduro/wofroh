@@ -7,13 +7,16 @@
   "license": "MIT",
   "scripts": {
     "go": "nodemon server.js",
-    "db:reset": "node bin/resetdb.js"
+    "db:reset": "node bin/resetdb.js",
+    "sequelize": "sequelize",
+    "sequelize-cli": "sequelize-cli"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
     "cookie-session": "^1.4.0",
     "dotenv": "^9.0.1",
     "express": "^4.16.4",
+    "per-env": "^1.0.2",
     "pg": "^8.6.0",
     "pg-native": "^3.0.0"
   },
