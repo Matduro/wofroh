@@ -9,7 +9,7 @@ const Client = require("pg-native");
 // PG connection setup
 const connectionString =
   process.env.DATABASE_URL ||
-  `postgresql://${process.env.PGUSER}:${process.env.PGPASSWORD}@${process.env.PGHOST}:${process.env.PGPORT}/${process.env.PGDATABASE}?sslmode=disable`;
+  `postgresql://${process.env.PGUSER}:${process.env.PGPASSWORD}@${process.env.PGHOST}:${process.env.PGPORT}/${process.env.PGDATABASE}?sslmode=require`;
 const client = new Client();
 
 // Loads the schema files from db/schema

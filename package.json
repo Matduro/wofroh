@@ -18,7 +18,7 @@
     "sequelize": "npm run --prefix express-back-end sequelize",
     "sequelize-cli": "npm run --prefix express-back-end sequelize-cli",
     "start": "npm start --prefix express-back-end",
-    "db:reset": "npm --prefix express-back-end run db:reset"
+    "db:reset": "npm --prefix express-back-end node bin/resetdb.js"
   },
   "repository": {
     "type": "git",
