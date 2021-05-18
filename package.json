@@ -1,6 +1,10 @@
 {
   "name": "wofroh",
   "version": "1.0.0",
+  "engines": {
+    "node": "10.x",
+    "npm": "6.9.0"
+  },
   "description": "A boilerplate project for anyone interested in making a project that uses React and Express.",
   "main": "index.js",
   "dependencies": {},
