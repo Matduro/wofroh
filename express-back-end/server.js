@@ -10,6 +10,7 @@ const dbParams = require("./lib/db.js");
 // Express Configuration
 App.use(BodyParser.urlencoded({ extended: false }));
 App.use(BodyParser.json());
+const path = require('path');
 App.use(Express.static(path.resolve(__dirname, '../react-front-end', 'build')));
 
 // connection to the postgre databate, with our .env parameters
