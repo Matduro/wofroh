@@ -5,7 +5,12 @@ import { Link } from "react-router-dom";
 import emailjs from "emailjs-com";
 import ContactForm from "./ContactForm";
 
+
+
+
 function Footer() {
+
+
   return (
     <div className="footer-container">
       <section className="footer-subscription">
@@ -20,6 +25,7 @@ function Footer() {
           <form>
             <ContactForm />
           </form>
+
         </div>
       </section>
       <div class="footer-links">

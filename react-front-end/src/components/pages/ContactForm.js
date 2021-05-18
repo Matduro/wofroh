@@ -1,11 +1,25 @@
 import React from "react";
 import emailjs from "emailjs-com";
 import { useState } from "react";
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
 
 import "./ContactForm.css";
 
 export default function ContactUs() {
   const [email, setEmail] = useState("");
+  const [open, setOpen] = React.useState(false);
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpen(false);
+  };
+
+  function Alert(props) {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
+  }
 
   function sendEmail(e) {
     e.preventDefault();
@@ -21,6 +35,7 @@ export default function ContactUs() {
         (result) => {
           console.log(result.text);
           setEmail("");
+          setOpen(true);
         },
         (error) => {
           console.log(error.text);
@@ -45,6 +60,17 @@ export default function ContactUs() {
           buttonStyle="btn--outline"
           name="Subscribe"
         />
+        <Snackbar
+          className="snackbar"
+          open={open}
+          autoHideDuration={6000}
+          onClose={handleClose}
+          anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+        >
+          <Alert onClose={handleClose} severity="success">
+            Thank you for subscribing. Be sure to check your email!
+            </Alert>
+        </Snackbar>
       </form>
     </div>
   );

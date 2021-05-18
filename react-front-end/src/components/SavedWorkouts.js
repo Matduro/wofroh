@@ -9,6 +9,7 @@ import { useHistory } from "react-router-dom";
 function SavedWorkouts() {
   const history = useHistory();
   const [savedWorkouts, setSavedWorkouts] = useState([]);
+  const [deleted, setDeleted] = useState("");
   // const [exerciseIDs, setExerciseIDs] = useState([]);
 
   useEffect(() => {
@@ -24,7 +25,7 @@ function SavedWorkouts() {
       .catch((err) => {
         console.log({ err });
       });
-  }, []);
+  }, [deleted]);
 
   const handleClickWorkout = (id) => {
     const params = { id };
@@ -55,7 +56,7 @@ function SavedWorkouts() {
     const params = { id };
     axios
       .post(`/api/workout/delete`, { params })
-      .then((res) => {})
+      .then((res) => { setDeleted(id) })
       .catch((err) => {
         console.log({ err });
       });
@@ -76,7 +77,7 @@ function SavedWorkouts() {
                 <label className="saved-list">
                   {index > 8 ? index + 1 : "0" + (index + 1).toString()}
                 </label>
-                <p>{workout.name}</p>
+                <p className="paragraph-style">{workout.name}</p>
                 <Button
                   className="btns"
                   buttonStyle="btn--go"
@@ -86,7 +87,7 @@ function SavedWorkouts() {
                 >
                   GO
                 </Button>
-                <div>
+                <div >
                   <DeleteButton
                     clasnName="btns"
                     buttonStyle="btn--delete"
