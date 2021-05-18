@@ -10,7 +10,7 @@ const dbParams = require("./lib/db.js");
 // Express Configuration
 App.use(BodyParser.urlencoded({ extended: false }));
 App.use(BodyParser.json());
-App.use(Express.static("public"));
+App.use(Express.static(path.resolve(__dirname, '../react-front-end', 'build')));
 
 // connection to the postgre databate, with our .env parameters
 const pool = new Pool(dbParams);
@@ -33,6 +33,22 @@ App.use("/api/workout", workoutApiRoutes(pool));
 //     message: "Seems to work!",
 //   })
 // );
+
+// if (process.env.NODE_ENV === 'production') {
+//   const path = require('path');
+//   App.get('*', (request, response) => {
+//     response.sendFile(path.resolve(__dirname, '../react-front-end', 'build', 'index.html'));
+//   });
+// }
+// // And also add this:
+
+App.get('*', (request, response) => {
+  response.sendFile(path.resolve(__dirname, '../react-front-end', 'build', 'index.html'));
+});
+
+
+
+
 
 App.listen(PORT, () => {
   // eslint-disable-next-line no-console
