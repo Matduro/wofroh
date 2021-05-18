@@ -1,6 +1,6 @@
 let dbParams = {};
 if (process.env.DATABASE_URL) {
-  dbParams.connectionString = process.env.DATABASE_URL + "?sslmode=require";
+  dbParams.connectionString = process.env.DATABASE_URL;
   dbParams.ssl = { rejectUnauthorized: false }
 } else {
   dbParams = {
