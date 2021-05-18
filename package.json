@@ -7,13 +7,13 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku-postbuild": "npm run build --prefix frontend",
-    "install": "npm --prefix backend install backend && npm --prefix frontend install frontend",
-    "dev:backend": "npm install --prefix backend start",
-    "dev:frontend": "npm install --prefix frontend start",
-    "sequelize": "npm run --prefix backend sequelize",
-    "sequelize-cli": "npm run --prefix backend sequelize-cli",
-    "start": "npm start --prefix backend"
+    "heroku-postbuild": "npm run build --prefix react-front-end",
+    "install": "npm --prefix express-back-end install express-back-end && npm --prefix react-front-end install react-front-end",
+    "dev:backend": "npm install --prefix express-back-end start",
+    "dev:frontend": "npm install --prefix react-front-end start",
+    "sequelize": "npm run --prefix express-back-end sequelize",
+    "sequelize-cli": "npm run --prefix express-back-end sequelize-cli",
+    "start": "npm start --prefix express-back-end"
   },
   "repository": {
     "type": "git",
