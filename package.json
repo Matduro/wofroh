@@ -1,0 +1,34 @@
+{
+  "name": "wofroh",
+  "version": "1.0.0",
+  "engines": {
+    "node": "10.x",
+    "npm": "6.9.0"
+  },
+  "description": "A boilerplate project for anyone interested in making a project that uses React and Express.",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "heroku-postbuild": "npm run build --prefix react-front-end",
+    "install": "npm --prefix express-back-end install express-back-end && npm --prefix react-front-end install react-front-end",
+    "dev:backend": "npm install --prefix express-back-end start",
+    "dev:frontend": "npm install --prefix react-front-end start",
+    "sequelize": "npm run --prefix express-back-end sequelize",
+    "sequelize-cli": "npm run --prefix express-back-end sequelize-cli",
+    "start": "npm start --prefix express-back-end",
+    "db:reset": "npm --prefix express-back-end node bin/resetdb.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Matduro/wofroh.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Matduro/wofroh/issues"
+  },
+  "homepage": "https://github.com/Matduro/wofroh#readme"
+}
