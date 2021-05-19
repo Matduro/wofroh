@@ -33,7 +33,7 @@ VALUES (
   INSERT INTO workouts (
 name, workout_time)
 VALUES (
-  'Chest explosions for Andy', 60
+  'Chest explosion', 60
   );
 
 
