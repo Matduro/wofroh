@@ -15,8 +15,8 @@ function HeroSection() {
         loop
         muted
       />
-      <h1>NEW DAY - NEW YOU</h1>
-      <p>Workout From Home</p>
+      <h1>Workout From Home</h1>
+      <p>NEW DAY - NEW YOU</p>
       <div className="hero-btns">
         <Button
           className="btns"
@@ -31,7 +31,7 @@ function HeroSection() {
           buttonStyle="btn--primary"
           buttonSyze="btn--large"
         >
-          WATCH TRAILER <i className="far fa-play-circle" />
+          TUTORIAL <i className="far fa-play-circle" />
         </Button>
       </div>
     </div>

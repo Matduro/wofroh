@@ -30,6 +30,11 @@ name, workout_time)
 VALUES (
   'Jedi Master', 60
   );
+  INSERT INTO workouts (
+name, workout_time)
+VALUES (
+  'Chest explosion', 60
+  );
 
 
 INSERT INTO muscle_groups (
@@ -104,7 +109,7 @@ VALUES (
 INSERT INTO exercises (
 muscle_group_id, exercise_picture_url, exercise_name, exercise_video_url, exercise_info, total_time, num_of_reps, num_of_sets, intensity, rating) 
 VALUES (
-7, 'https://www.elitefts.com/wp/wp-content/uploads/2012/03/IMG_1456-600x300.jpg', 'Bench Press', 'https://www.youtube.com/watch?v=gRVjAtPip0Y', 'info should be here', 4, 36, 3, 3, 5);
+7, 'https://www.elitefts.com/wp/wp-content/uploads/2012/03/IMG_1456-600x300.jpg', 'Bench Press', 'https://www.youtube.com/watch?v=xmLiwqQXK-Q', 'info should be here', 4, 36, 3, 3, 5);
 INSERT INTO exercises (
 muscle_group_id, exercise_picture_url, exercise_name, exercise_video_url, exercise_info, total_time, num_of_reps, num_of_sets, intensity, rating) 
 VALUES (
@@ -148,7 +153,7 @@ VALUES (
 INSERT INTO exercises (
 muscle_group_id, exercise_picture_url, exercise_name, exercise_video_url, exercise_info, total_time, num_of_reps, num_of_sets, intensity, rating)
 VALUES (
-1, 'https://images.unsplash.com/flagged/photo-1566064352554-f36ef0ef23b2?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8c3F1YXQlMjB3b3Jrb3V0fGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60', 'Squats', 'https://www.youtube.com/watch?v=X0qC1k0Zi6k', 'info should be here', 5, 36, 3, 5, 4);
+1, 'https://images.unsplash.com/flagged/photo-1566064352554-f36ef0ef23b2?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8c3F1YXQlMjB3b3Jrb3V0fGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60', 'Squats', 'https://www.youtube.com/watch?v=MJao9o7ROs0', 'info should be here', 5, 36, 3, 5, 4);
 INSERT INTO exercises (
 muscle_group_id, exercise_picture_url, exercise_name, exercise_video_url, exercise_info, total_time, num_of_reps, num_of_sets, intensity, rating)
 VALUES (
@@ -283,6 +288,10 @@ INSERT INTO workout_exercises (
 exercise_id, workout_id)
 VALUES (
 '{5, 6}', 3);
+INSERT INTO workout_exercises (
+exercise_id, workout_id)
+VALUES (
+'{7, 8}', 4);
 
 
 
@@ -301,6 +310,7 @@ INSERT INTO user_ratings(
  VALUES (
    3, 1, 5, true, 50, 'I don''t think I can take more than one workout like this per month, but wow I''ve never felt better'
 );
+
 
 
 INSERT INTO messagings (
@@ -330,6 +340,7 @@ INSERT INTO user_workouts (
  VALUES (
    3, 3, FALSE, FALSE
 );
+
 
 INSERT INTO friends (
  friend_1_id, friend_2_id)

@@ -32,7 +32,6 @@ module.exports = (db) => {
   });
 
   router.get("/saved/exercises", (request, response) => {
-    // console.log("MY REQUEST", { request });
     // pulls exercises matching given workout
     db.query(`SELECT * FROM workout_exercises WHERE workout_id = $1;`, [
       request.query.id,
@@ -99,11 +98,9 @@ module.exports = (db) => {
 
     db.query(`DELETE FROM workouts WHERE workouts.id = $1`, [workoutID])
       .then(() => {
-        console.log("Workout Deleted!");
         response.json({ message: "Deleted" });
       })
       .then(() => {
-        console.log("WORKOUTID IN THE .THEN(): ", workoutID);
         return db.query(
           `DELETE FROM workout_exercises WHERE workout_id = $1::integer`,
           [workoutID]
