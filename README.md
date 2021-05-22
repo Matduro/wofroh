@@ -1,14 +1,60 @@
-# React + Express No-Fluff Boilerplate
+# WoFroH
 
-A boilerplate project for anyone interested in making a project that uses React and Express.
+Trying to stay fit is an endeavor that is probably on your mind, but lets face
+it, it's easier said than done. There always seems to be something getting in the way. Maybe the sports team you're a part of cancelled their next game, or you can't go to the gym for some reason or another, and you would like to workout at home but you don't know what to do?
 
-This repository is a bootleg of @NimaBoscarino's [React Rails Boilerplate](https://github.com/NimaBoscarino/react-rails-boilerplate). It uses the same React app, but replaces the Rails server with an Express server.
+If that has been you at any point in time, this app is for you. Our team designed this app to people like you and me. To stay fit, no matter where they are, what little equipment we have, and using any device.
 
-Note! This boilerplate has _no fluff_! That means that there's nothing set up for you to do authentication stuff, there's no Redux stuff, and there's no React Router stuff. On the Express end, there is no session storage or database connection.
+With WoFroH, all you need to do is figure out what your goal is and it does the heavy lifting for you.
 
-The main important bit is that the React project has `proxy` set to `localhost:8080` in the `package.json` file, and that the Express app listens to port 8080 in `server.js`. Take a look!
+## Key Endeavors
 
-You can (and perhaps should) rename the directories `express-back-end` and `react-front-end` if you want-- The name doesn't matter.
+- Build a Full Stack Web Application
+- Make a simple and elegant design
+- Use React Router
+- Custom Hooks
+
+## Tech Stack
+
+**Front End:**
+
+- React
+- JSX
+- Axios
+- CSS
+- Javascript
+
+**Back End:**
+
+- Node.js
+- Express
+- PostgreSQL
+
+**Testing:**
+
+- Cypress
+
+## The Key Features
+
+### Main page
+
+![Main page](https://github.com/Matduro/wofroh/blob/master/react-front-end/docs/2021-05-21%2011.25.05.gif)
+
+### Main page
+
+![Articles section](https://github.com/Matduro/wofroh/blob/master/react-front-end/docs/2021-05-21%2011.25.56.gif)
+
+### Muscle Group Selection
+
+![Muscle Group Selection](https://github.com/Matduro/wofroh/blob/master/react-front-end/docs/2021-05-21%2011.26.27.gif)
+
+### Exercise Selection
+
+![Exercise Selection](https://github.com/Matduro/wofroh/blob/master/react-front-end/docs/2021-05-21%2011.26.52.gif)
+
+### Your Workout Page
+
+![Your Workout Page](https://github.com/Matduro/wofroh/blob/master/react-front-end/docs/2021-05-21%2011.27.54.gif)
 
 ## Running the projects
 
@@ -22,25 +68,9 @@ In the browser, you can click on the button and see the data get loaded.
 
 If this doesn't work, please message me!
 
-## Next steps
+## Future features
 
-From here, you can start working on your project!
-
-As soon as the dependencies are installed, your Express server can serve JSON and static assets (like images) in response to API calls from the React app. You can get started on developing your React app, routing plan, etc. right away! Any request that isn't handled by React is passed on to the Express server. That means that you can call a route like `/api/users` from React using `fetch`, `axios`, or something else, and Express will receive it as though they originated from the same app. For routing, best practice is to namespace all of your data routes to `/api`, so that they don't clash with other routing schemes, like React Router.
-
-At some point, you'll likely want to install and configure a database driver for Postgres or MongoDB-- Refer to past projects for hints on how to do this.
-
-And don't forget to update the README!
-
-## Example Projects
-
-You might want to look at examples of projects that have used this boilerplate for hints on how to extend it. Here are a few:
-
-* [Later Cart](https://github.com/bonitac/later-cart)
-* [Buddi.io](https://github.com/Danny-Tran/buddi.io)
-
-If you'd like your project added to the list, please shoot me a message.
-
-## Contact
-
-Please contact me on Slack (@garrettgsb) or Nima at `nima@lighthouselabs.com` if you have any questions, requests, or feedback, or post an issue to this repo. If you are using the boilerplate, I'd love to hear from you as well!
+1. Addtional exercises
+2. User created exercises
+3. Equipment selection component
+4. Securing the backend API
