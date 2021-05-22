@@ -38,7 +38,11 @@ With WoFroH, all you need to do is figure out what your goal is and it does the 
 
 ### Main page
 
-![Main page](https://github.com/Matduro/wofroh/blob/master/react-front-end/docs/2021-05-21%2011.25.56.gif)
+![Main page](https://github.com/Matduro/wofroh/blob/master/react-front-end/docs/2021-05-21%2011.25.05.gif)
+
+### Main page
+
+![Articles section](https://github.com/Matduro/wofroh/blob/master/react-front-end/docs/2021-05-21%2011.25.56.gif)
 
 ### Muscle Group Selection
 
