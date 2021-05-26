@@ -21,15 +21,15 @@ function HeroSection() {
         <Button
           className="btns"
           buttonStyle="btn--outline"
-          buttonSyze="btn--large"
-          href="/musclegroups"
+          buttonSize="btn--large"
+          to="/musclegroups"
         >
           GET STARTED
         </Button>
         <Button
           className="btns"
           buttonStyle="btn--primary"
-          buttonSyze="btn--large"
+          buttonSize="btn--large"
         >
           TUTORIAL <i className="far fa-play-circle" />
         </Button>
