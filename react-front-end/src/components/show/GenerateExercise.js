@@ -49,24 +49,3 @@ export default function GenerateExercise({ onClick, children }) {
     </div>
   );
 }
-
-// const useStyles = makeStyles((theme) => ({
-//   root: {
-// "& > *": {
-//   margin: theme.spacing(1),
-// },
-//   },
-// }));
-
-// export default function GenerateExercise({ onClick }) {
-//   const classes = useStyles();
-
-//   return (
-//     <div className={classes.root}>
-
-//       <Button style={{ margin: '0 auto', display: "flex" }} variant="outlined" color="primary" onClick={onClick}>
-//         Generate Exercises!
-//       </Button>
-//     </div>
-//   );
-// }
