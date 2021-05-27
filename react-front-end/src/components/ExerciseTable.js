@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useState } from "react";
 import {
   useHistory,
 } from "react-router-dom";
@@ -10,10 +10,12 @@ import { useSortableData, SORT_CONFIG } from "../hooks/useSortableData";
 
 function ExerciseTable({ exercises, muscleGroups }) {
   const history = useHistory();
-  const [toggle, setToggle] = useState([]);
-  const { exerciseList, requestSort, sortConfig } = useSortableData(exercises);
+  const [toggle, setToggle] = useState([]); // for holding record of selected exercises
+  const { exerciseList, requestSort, sortConfig } = useSortableData(exercises); // functions from custom hook for sorting the table
 
-  const exIDs = toggle.map((ex) => ex.id);
+  const exIDs = toggle.map((ex) => ex.id); // IDs of selected exercises on the page
+
+  // Sets toggle state according to selected exercises
   const handleToggle = (exerciseObj) => {
     let newState = [...toggle];
     if (newState.some((exercise) => exercise.id === exerciseObj.id)) {
@@ -23,17 +25,19 @@ function ExerciseTable({ exercises, muscleGroups }) {
     }
     setToggle(newState);
   };
-
+  // Go to /workout page and pass IDs of selected exercises
   const handleCreateWorkout = () => {
     history.push("/workout", {
       exerciseIDs: toggle.map((obj) => obj.id),
     });
   };
 
+  // For displaying muscle group for each exercise
   const muscleGroupName = (id) => {
     return muscleGroups.filter((group) => group.id === id)[0].title;
   };
 
+  // Gets className for table header buttons
   const getClassNamesFor = (name) => {
     if (!sortConfig) {
       return;
