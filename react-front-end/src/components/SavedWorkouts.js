@@ -56,7 +56,9 @@ function SavedWorkouts() {
     const params = { id };
     axios
       .post(`/api/workout/delete`, { params })
-      .then((res) => { setDeleted(id) })
+      .then((res) => {
+        setDeleted(id);
+      })
       .catch((err) => {
         console.log({ err });
       });
@@ -87,7 +89,7 @@ function SavedWorkouts() {
                 >
                   GO
                 </Button>
-                <div >
+                <div>
                   <DeleteButton
                     clasnName="btns"
                     buttonStyle="btn--delete"

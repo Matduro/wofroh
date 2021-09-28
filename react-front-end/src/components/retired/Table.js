@@ -6,9 +6,9 @@ import {
   Link,
   useHistory,
 } from "react-router-dom";
-import Timer from "./show/Timer";
+import Timer from "../show/Timer";
 import classNames from "classnames";
-import GenerateExercise from "./show/GenerateExercise";
+import GenerateExercise from "../show/GenerateExercise";
 import "./Workout.css";
 import "./ExerciseTable.css";
 
