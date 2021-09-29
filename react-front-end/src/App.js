@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -24,10 +24,10 @@ const withRouter = (WrappedComponent) => (props) => {
   );
 };
 
-const App = (props) => {
+const App = () => {
   const history = useHistory();
-  const [selectedMuscleGroups, setSelectedMuscleGroups] = useState([]); // for muscle group selection
   const [muscleGroups, setMuscleGroups] = useState([]); // for initial rendering of the muscle groups
+  const [selectedMuscleGroups, setSelectedMuscleGroups] = useState([]); // for muscle group selection
   const [generatedExercises, setExercises] = useState([]); // for rendering a list of generated exercises
 
   // handles the muscle group select and deselect feature on the muscle groups selection page

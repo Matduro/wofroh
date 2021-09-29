@@ -28,27 +28,9 @@ App.use("/api/exercises", exercisesApiRoutes(pool));
 App.use("/api/musclegroups", muscleGroupsApiRoutes(pool));
 App.use("/api/workout", workoutApiRoutes(pool));
 
-// Sample GET route
-// App.get("/api/data", (req, res) =>
-//   res.json({
-//     message: "Seems to work!",
-//   })
-// );
-
-// if (process.env.NODE_ENV === 'production') {
-//   const path = require('path');
-//   App.get('*', (request, response) => {
-//     response.sendFile(path.resolve(__dirname, '../react-front-end', 'build', 'index.html'));
-//   });
-// }
-// // And also add this:
-
 App.get('*', (request, response) => {
   response.sendFile(path.resolve(__dirname, '../react-front-end', 'build', 'index.html'));
 });
-
-
-
 
 
 App.listen(PORT, () => {

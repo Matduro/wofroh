@@ -122,7 +122,3 @@ const muscleGroupId = {
   2: "legs",
   3: "core",
 };
-
-// const userRatings = {}
-// const users = {}
-// const userRatingComment = {}
