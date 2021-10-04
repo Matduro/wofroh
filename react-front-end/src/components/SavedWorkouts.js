@@ -35,18 +35,17 @@ function SavedWorkouts() {
         // console.log({ res });
         const returnedIDs = res.data[0].exercise_id;
         console.log({ returnedIDs });
-        history.push("/workout", {
-          exerciseIDs: returnedIDs,
-        });
-        // setExerciseIDs(returnedIDs);
-        // return
+        history.push("/workout", { exerciseIDs: returnedIDs });
       })
-      .then((res) => {
-        // console.log({ exerciseIDs });
-        // history.push("/workout", {
-        //   exerciseIDs: exerciseIDs,
-        // });
-      })
+      // setExerciseIDs(returnedIDs);
+      // return
+      // })
+      // .then((res) => {
+      //   console.log({ exerciseIDs });
+      //   history.push("/workout", {
+      //     exerciseIDs: exerciseIDs,
+      //   });
+      // })
       .catch((err) => {
         console.log({ err });
       });
